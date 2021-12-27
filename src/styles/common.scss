@@ -1,0 +1,12 @@
+*,
+html,
+body {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
+
+// float 초기화
+.clear::after {
+  content: "";
+  display: block;
+  clear: both;
+}
