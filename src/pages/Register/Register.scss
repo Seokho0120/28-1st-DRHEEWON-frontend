@@ -1,0 +1,121 @@
+@import './../../styles/baseStyle/colors.scss';
+@import './../../styles/baseStyle/size.scss';
+@import './../../styles/baseStyle/font.scss';
+@import './../../styles/baseStyle/border.scss';
+
+.registerContainer {
+  width: $mainContentWidth;
+  margin: $navMarginTop auto 0;
+
+  .infoPage {
+    h1 {
+      padding-top: 37px;
+      padding-bottom: 20px;
+      color: $deepBlack;
+      font-size: $largeFont;
+      font-weight: 700;
+      letter-spacing: -0.36px;
+    }
+  }
+
+  .RegisterMainWrap {
+    .welcomeWrap {
+      text-align: center;
+
+      h2 {
+        font-size: $largeFont;
+        font-weight: 700;
+      }
+
+      p {
+        margin-top: 18px;
+        color: $deepGrey;
+        font-size: $mediumFont;
+      }
+    }
+
+    .registerWrap {
+      display: flex;
+      justify-content: center;
+      width: 980px;
+      margin: 60px auto 0;
+
+      form {
+        width: 100%;
+
+        h3 {
+          font-weight: 700;
+          margin-bottom: 20px;
+          padding-bottom: 40px;
+          text-align: center;
+          font-size: 24px;
+          border-bottom: 3px solid $black;
+        }
+
+        table {
+          width: 100%;
+          text-align: left;
+
+          th {
+            width: 30%;
+            font-size: 20px;
+            padding: 30px 20px 30px 0px;
+
+            &::after {
+              content: '';
+              display: inline-block;
+              width: 8px;
+              height: 8px;
+              margin-left: 7px;
+              border-radius: $radiusBorder;
+              vertical-align: text-top;
+              background-color: $yellow;
+            }
+          }
+
+          td:not(td:nth-child(3)) {
+            width: 50%;
+            // border: 1px solid black;
+
+            input {
+              width: 100%;
+              padding: 20px 24px;
+              font-size: $mediumFont;
+              border: 1px solid $grey;
+              border-radius: 4px;
+            }
+          }
+
+          td:nth-child(3) {
+            width: 20%;
+
+            button {
+              width: calc(100% - 20px);
+              display: inline-block;
+              padding: 20px 24px;
+              margin-left: 20px;
+              background-color: $white;
+              border: 2px solid $yellow;
+              border-radius: 4px;
+              font-size: $mediumFont;
+              font-weight: $bold;
+              text-align: center;
+            }
+          }
+        }
+
+        .submitRegister {
+          display: block;
+          width: 420px;
+          height: 62px;
+          margin: 80px auto 50px;
+          border-radius: 4px;
+          background-color: $yellow;
+          font-size: 22px;
+          font-weight: $extraBold;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
