@@ -3,6 +3,21 @@ import { useState, useEffect } from 'react';
 export default function MainSlider() {
   const [sliderPosition, setSliderPosition] = useState(1);
   const [stopTran, setStopTran] = useState(false);
+  const [isWindowExtend, setIsWindowExtend] = useState(
+    window.innerWidth > 1626
+  );
+  useEffect(() => {
+    function handleResize(event) {
+      event.target.innerWidth > 1626
+        ? setIsWindowExtend(true)
+        : setIsWindowExtend(false);
+    }
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (sliderPosition === 4 || sliderPosition === 0) {
@@ -34,7 +49,11 @@ export default function MainSlider() {
     <section className="sliderSection">
       <ul
         className={`sliderUl ${stopTran ? 'stopTran' : ''}`}
-        style={{ transform: `translateX(-${sliderPosition * 1650}px)` }}
+        style={{
+          transform: `translateX(-${
+            isWindowExtend ? sliderPosition * 1920 : sliderPosition * 1626
+          }px)`,
+        }}
       >
         <li>
           <img src="images/3.png" alt="dummyDuplicate" />

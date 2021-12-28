@@ -65,11 +65,14 @@ export default function MainBestIconPage({ selectedBestIcon }) {
           ? products.map((item, flexIndex) => {
               if (flexIndex % 2 === 0) {
                 return (
-                  <div className="bestIconContentsEach">
+                  <div key={flexIndex} className="bestIconContentsEach">
                     {products.map((item, index) => {
                       if (index <= flexIndex + 1 && index >= flexIndex)
                         return (
-                          <div className="bestIconContentsEachWrapper">
+                          <div
+                            key={index}
+                            className="bestIconContentsEachWrapper"
+                          >
                             <img src={item.imgPath} alt="dummy" />
                             <img src={item.imgPath} alt="dummy" />
                             <div className="bestIconContentsEachDetail">
@@ -106,6 +109,7 @@ export default function MainBestIconPage({ selectedBestIcon }) {
             if (index % 2 === 0)
               return (
                 <span
+                  key={index}
                   className={
                     sliderPosition === Math.ceil(index / 2) ? 'active' : ''
                   }
