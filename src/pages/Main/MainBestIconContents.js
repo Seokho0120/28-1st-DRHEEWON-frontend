@@ -93,10 +93,12 @@ export default function MainBestIconPage({ selectedBestIcon }) {
                             </div>
                           </div>
                         );
+                      return '';
                     })}
                   </div>
                 );
               }
+              return '';
             })
           : ''}
       </div>
