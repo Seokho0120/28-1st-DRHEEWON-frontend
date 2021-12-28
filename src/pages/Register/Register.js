@@ -3,19 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Register.scss';
 
-const Register = () => {
-  const checkEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
-  const checkPassWord = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
+const validPassWord = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
-  const [validEmail, setValidEmail] = useState('');
+const Register = () => {
+  const [checkEmail, setCheckEmail] = useState('');
   const [checkPw, setCheckPw] = useState('');
   const [doubleCheckPw, setDoubleCheckPw] = useState('');
 
-  const check = e => {
+  const stateValueList = e => {
     const { value, name } = e.target;
     switch (name) {
       case 'email':
-        setValidEmail(value);
+        setCheckEmail(value);
         break;
       case 'password':
         setCheckPw(value);
@@ -29,9 +29,9 @@ const Register = () => {
 
   const validValues = () => {
     // 이메일이 아닐때
-    if (!checkEmail.test(validEmail)) alert('이메일이 올바르지 않습니다.');
+    if (!validEmail.test(checkEmail)) alert('이메일이 올바르지 않습니다.');
     // 비밀번호가 특수문자 1개, 숫자 1개, 8자 이상이 아닐때
-    if (!checkPassWord.test(checkPw)) alert('비밀번호가 올바르지 않습니다.');
+    if (!validPassWord.test(checkPw)) alert('비밀번호가 올바르지 않습니다.');
     // 입력한 비밀번호가 같지 않을때
     if (!(checkPw === doubleCheckPw))
       alert('입력하신 비밀번호가 동일하지 않습니다.');
@@ -75,7 +75,7 @@ const Register = () => {
                   <th>이메일</th>
                   <td>
                     <input
-                      onChange={check}
+                      onChange={stateValueList}
                       name="email"
                       type="email"
                       placeholder="ex) drheewon@dr.com"
@@ -86,7 +86,7 @@ const Register = () => {
                   <th>비밀번호</th>
                   <td>
                     <input
-                      onChange={check}
+                      onChange={stateValueList}
                       name="password"
                       type="password"
                       placeholder="특수 문자와 숫자를 포함한 8자 이상"
@@ -97,7 +97,7 @@ const Register = () => {
                   <th>비밀번호 확인</th>
                   <td>
                     <input
-                      onChange={check}
+                      onChange={stateValueList}
                       name="dPassword"
                       type="password"
                       placeholder="비밀번호를 한번 더 입력해주세요"
