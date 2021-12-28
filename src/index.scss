@@ -6,3 +6,8 @@
 @import './styles/baseStyle/font';
 @import './styles/baseStyle/size';
 @import './styles/baseStyle/border';
+
+.headContainer {
+  min-width: $widthSize;
+  width: 100%;
+}
