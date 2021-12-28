@@ -1,0 +1,107 @@
+@import '../../styles/baseStyle/font.scss';
+@import '../../styles/baseStyle/size.scss';
+@import '../../styles/baseStyle/colors.scss';
+
+.navHead {
+  box-shadow: 0 3px 7px 0 rgb(0 0 0 / 10%);
+  .navUpper {
+    height: 40px;
+    background-color: #fafafa;
+    .navUpperFixedWidth {
+      position: relative;
+      width: $widthSize;
+      height: 100%;
+      margin: 0 auto;
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        line-height: 40px;
+        a {
+          font-size: $smallFontSize12;
+          color: $colorBlack111;
+          &:nth-child(n + 2) {
+            margin-left: 20px;
+          }
+        }
+        a.strong {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .navBottom {
+    width: 100%;
+    height: 85px;
+    margin: 10px auto;
+    .navBottomFixedWidth {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+      width: 1140px;
+      height: 100%;
+      margin: 0 auto;
+      button {
+        position: relative;
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        width: 47px;
+        height: 45px;
+        padding: 8px;
+        margin-left: -90px;
+        transform: translate(0);
+        .hamburgerBtnLine {
+          display: block;
+          width: 27px;
+          height: 3px;
+          background-color: $colorBlack111;
+          &::before {
+            top: 10px;
+            position: absolute;
+            display: block;
+            width: 27px;
+            height: 3px;
+            background-color: $colorBlack111;
+            content: '';
+          }
+          &::after {
+            bottom: 10px;
+            position: absolute;
+            display: block;
+            width: 27px;
+            height: 3px;
+            background-color: $colorBlack111;
+            content: '';
+          }
+        }
+      }
+      .beautifulMargin {
+        width: 100%;
+        flex: 1 1 auto;
+      }
+      .navInput {
+        position: relative;
+        .inputWrapper {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 490px;
+          input {
+            width: calc(100% - 50px);
+            font-size: 20px;
+            background-color: transparent;
+          }
+        }
+      }
+      .fontAwesomeIcon {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        &:nth-child(n + 2) {
+          margin-left: 32px;
+        }
+      }
+    }
+  }
+}
