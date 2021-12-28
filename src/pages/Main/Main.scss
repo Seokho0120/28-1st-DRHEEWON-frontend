@@ -1,0 +1,213 @@
+@import '../../styles/baseStyle/colors.scss';
+
+.mainWrapper {
+  padding-top: 150px;
+  min-width: 1140px;
+  max-width: 1920px;
+
+  .sectionMargin {
+    height: 80px;
+  }
+
+  .sliderSection {
+    width: 100%;
+    height: 800px;
+    list-style: none;
+    overflow: hidden;
+
+    .sliderUl {
+      display: flex;
+      height: 100%;
+
+      li {
+        img {
+          width: 1650px;
+          height: 100%;
+        }
+      }
+    }
+
+    .sliderUl.stopTran {
+      transition: none;
+    }
+
+    .slideBtnArea {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      top: -50%;
+      margin: 0 50px;
+    }
+  }
+
+  .bestIconSection {
+    height: 800px;
+
+    header {
+      text-align: center;
+
+      h1 {
+        opacity: 0;
+      }
+
+      h1.active {
+        opacity: 1;
+      }
+    }
+
+    .iconImagesWrapper {
+      width: 100%;
+      background-color: #e0e0e2;
+
+      .iconImagesContainer {
+        width: 1140px;
+        height: 260px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        opacity: 0;
+
+        .iconEach {
+          width: 168.33px;
+          opacity: 0.3;
+          text-align: center;
+          cursor: pointer;
+
+          .iconImage {
+            width: 100%;
+            height: 210px;
+            pointer-events: none;
+          }
+
+          h3 {
+            display: inline-block;
+            padding-bottom: 4px;
+            pointer-events: none;
+          }
+
+          h3.active {
+            border-bottom: 2px solid black;
+          }
+
+          &:nth-child(n + 1) {
+            margin-right: 30px;
+          }
+        }
+
+        .iconEach.active {
+          opacity: 1;
+        }
+      }
+
+      .iconImagesContainer.active {
+        opacity: 1;
+      }
+    }
+
+    .bestIconContentsWrapper {
+      width: 1140px;
+      margin: 0 auto;
+      opacity: 0;
+      overflow: hidden;
+
+      .bestIconContentsContainer {
+        position: relative;
+        width: 100%;
+        height: 467px;
+        display: flex;
+        box-sizing: content-box;
+
+        .bestIconContentsEach {
+          width: 1140px;
+          display: flex;
+          flex-shrink: 0;
+          justify-content: space-between;
+
+          .bestIconContentsEachWrapper {
+            width: 530px;
+
+            .bestIconContentsEachDetail {
+              display: flex;
+              padding: 0 20px;
+              font-size: 20px;
+              font-weight: 700;
+
+              .detailLeft {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+
+                p {
+                  margin-bottom: 10px;
+
+                  &:nth-child(2) {
+                    color: $colorDeepGrey666;
+                  }
+                }
+              }
+
+              .detailRight {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                text-align: center;
+
+                .cartBtn {
+                  font-size: 18px;
+                  height: 52px;
+                  border: 1px solid;
+                  padding: 0 17px;
+                }
+              }
+            }
+
+            img {
+              width: 50%;
+            }
+          }
+        }
+      }
+
+      .bestIconContentsBtn {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          width: 84px;
+          background-color: black;
+
+          span {
+            font-size: 50px;
+            color: $colorWhite;
+            pointer-events: none;
+          }
+        }
+
+        .bestIconLengthDot {
+          display: flex;
+          align-items: center;
+
+          span {
+            width: 12px;
+            height: 12px;
+            background-color: black;
+            box-sizing: border-box;
+            margin-left: 18px;
+          }
+
+          span.active {
+            width: 42px;
+          }
+        }
+      }
+    }
+
+    .bestIconContentsWrapper.active {
+      opacity: 1;
+    }
+  }
+}
+
+* {
+  transition: all 0.5s ease;
+}

@@ -4,12 +4,12 @@ import { faHeart, faEye, faUser } from '@fortawesome/free-regular-svg-icons';
 
 import './Nav.scss';
 
-export default function Nav() {
+export default function Nav({ visibleValue }) {
   return (
-    <header className="navHead">
-      <section className="navUpper">
+    <header className={`navHead ${visibleValue ? '' : 'hide'}`}>
+      <section className={`navUpper ${visibleValue ? '' : 'hide'}`}>
         <div className="navUpperFixedWidth">
-          <nav>
+          <div className="navUpperBtns">
             <a href="#!">로그인</a>
             <a href="#!" className="strong">
               회원가입
@@ -17,10 +17,10 @@ export default function Nav() {
             <a href="#!">매장찾기</a>
             <a href="#!">브랜드헤리티지</a>
             <a href="#!">고객센터</a>
-          </nav>
+          </div>
         </div>
       </section>
-      <section className="navBottom">
+      <section className={`navBottom ${visibleValue ? '' : 'hide'}`}>
         <div className="navBottomFixedWidth">
           <button type="button" className="navHamburgerBtn">
             <span className="hamburgerBtnLine" />
