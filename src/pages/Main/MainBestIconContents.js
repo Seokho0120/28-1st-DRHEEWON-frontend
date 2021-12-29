@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { useScrollFadeIn } from '../../hooks/useScroll';
 
+import { MainSlideButton } from '../../components/Buttons/Button';
+
 export default function MainBestIconPage({ selectedBestIcon }) {
   const [products, setProducts] = useState([]);
   const [sliderPosition, setSliderPosition] = useState(0);
@@ -103,10 +105,8 @@ export default function MainBestIconPage({ selectedBestIcon }) {
           : ''}
       </div>
       <div className="bestIconContentsBtn">
-        <button name="slidePrev" onClick={sliderClick}>
-          <span>&lang;</span>
-        </button>
-        <div className="bestIconLengthDot">
+        <MainSlideButton type="slidePrev" onClickMethod={sliderClick} />
+        <div className="slideDots">
           {products.map((item, index) => {
             if (index % 2 === 0)
               return (
@@ -120,9 +120,7 @@ export default function MainBestIconPage({ selectedBestIcon }) {
             return '';
           })}
         </div>
-        <button name="slideNext" onClick={sliderClick}>
-          <span>&rang;</span>
-        </button>
+        <MainSlideButton type="slideNext" onClickMethod={sliderClick} />
       </div>
     </section>
   );

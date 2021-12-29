@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { MainSlideButton } from '../../components/Buttons/Button';
 
 export default function MainSlider() {
   const [sliderPosition, setSliderPosition] = useState(1);
@@ -6,6 +7,22 @@ export default function MainSlider() {
   const [isWindowExtend, setIsWindowExtend] = useState(
     window.innerWidth > 1626
   );
+
+  const slideImgs = [
+    {
+      id: 1,
+      imgPath: 'images/1.jpg',
+    },
+    {
+      id: 2,
+      imgPath: 'images/2.jpg',
+    },
+    {
+      id: 3,
+      imgPath: 'images/3.png',
+    },
+  ];
+
   useEffect(() => {
     function handleResize(event) {
       event.target.innerWidth > 1626
@@ -35,10 +52,10 @@ export default function MainSlider() {
   const clickSliderBtn = event => {
     const { name } = event.target;
     switch (name) {
-      case 'sliderPrev':
+      case 'slidePrev':
         setSliderPosition(sliderPosition - 1);
         break;
-      case 'sliderNext':
+      case 'slideNext':
         setSliderPosition(sliderPosition + 1);
         break;
       default:
@@ -47,37 +64,42 @@ export default function MainSlider() {
 
   return (
     <section className="sliderSection">
-      <ul
+      <div
         className={`sliderUl ${stopTran ? 'stopTran' : ''}`}
         style={{
           transform: `translateX(-${
-            isWindowExtend ? sliderPosition * 1920 : sliderPosition * 1626
+            isWindowExtend ? sliderPosition * 2114 : sliderPosition * 1607
           }px)`,
         }}
       >
-        <li>
-          <img src="images/3.png" alt="dummyDuplicate" />
-        </li>
-        <li>
-          <img src="images/1.jpg" alt="dummy" />
-        </li>
-        <li>
-          <img src="images/2.jpg" alt="dummy" />
-        </li>
-        <li>
-          <img src="images/3.png" alt="dummy" />
-        </li>
-        <li>
-          <img src="images/1.jpg" alt="dummyDuplicate" />
-        </li>
-      </ul>
+        <div>
+          <img
+            src={slideImgs[slideImgs.length - 1].imgPath}
+            alt="dummyDuplicate"
+          />
+        </div>
+        {slideImgs.map((item, index) => (
+          <div key={index}>
+            <img src={slideImgs[index].imgPath} alt="dummy" />
+          </div>
+        ))}
+        <div>
+          <img src={slideImgs[0].imgPath} alt="dummyDuplicate" />
+        </div>
+      </div>
       <div className="slideBtnArea">
-        <button name="sliderPrev" onClick={clickSliderBtn}>
-          &lang;
-        </button>
-        <button name="sliderNext" onClick={clickSliderBtn}>
-          &rang;
-        </button>
+        <MainSlideButton type="slidePrev" onClickMethod={clickSliderBtn} />
+        <MainSlideButton type="slideNext" onClickMethod={clickSliderBtn} />
+      </div>
+      <div className="slideDotsContainer">
+        <div className="slideDots">
+          {slideImgs.map((item, index) => (
+            <span
+              key={index}
+              className={index + 1 === sliderPosition ? 'active' : ''}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
