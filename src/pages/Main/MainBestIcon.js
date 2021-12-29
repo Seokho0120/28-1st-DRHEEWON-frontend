@@ -5,6 +5,32 @@ import MainBestIconContents from './MainBestIconContents';
 
 export default function MainBestIcon() {
   const [selectedBestIcon, setSelectedBestIcon] = useState(1);
+  const bestIconImages = [
+    {
+      id: '1',
+      imgPath: 'images/black_shoe.png',
+    },
+    {
+      id: '2',
+      imgPath: 'images/black_shoe.png',
+    },
+    {
+      id: '3',
+      imgPath: 'images/black_shoe.png',
+    },
+    {
+      id: '4',
+      imgPath: 'images/black_shoe.png',
+    },
+    {
+      id: '5',
+      imgPath: 'images/black_shoe.png',
+    },
+    {
+      id: '6',
+      imgPath: 'images/black_shoe.png',
+    },
+  ];
 
   const bestIconHeadText = useScrollFadeIn();
   const iconImagesWrapper = useScrollFadeIn();
@@ -43,78 +69,25 @@ export default function MainBestIcon() {
       <div className="sectionMargin" />
       <main className="iconImagesWrapper">
         <section className="iconImagesContainer" {...iconImagesWrapper}>
-          <div
-            className={`iconEach ${selectedBestIcon === 1 ? 'active' : ''}`}
-            onClick={stateHandler}
-            name="icon1"
-          >
-            <div className="iconImage">
-              <img src="images/black_shoe.png" alt="dummy" />
+          {bestIconImages.map((item, index) => (
+            <div
+              key={index}
+              className={`iconEach ${
+                selectedBestIcon === index + 1 ? 'active' : ''
+              }`}
+              onClick={stateHandler}
+              name={`icon${index + 1}`}
+            >
+              <div className="iconImage">
+                <img src={item.imgPath} alt="dummy" />
+              </div>
+              <h3
+                className={`${selectedBestIcon === index + 1 ? 'active' : ''}`}
+              >
+                슈즈{item.id}
+              </h3>
             </div>
-            <h3 className={`${selectedBestIcon === 1 ? 'active' : ''}`}>
-              슈즈1
-            </h3>
-          </div>
-          <div
-            className={`iconEach ${selectedBestIcon === 2 ? 'active' : ''}`}
-            onClick={stateHandler}
-            name="icon2"
-          >
-            <div className="iconImage">
-              <img src="images/black_shoe.png" alt="dummy" />
-            </div>
-            <h3 className={`${selectedBestIcon === 2 ? 'active' : ''}`}>
-              슈즈2
-            </h3>
-          </div>
-          <div
-            className={`iconEach ${selectedBestIcon === 3 ? 'active' : ''}`}
-            onClick={stateHandler}
-            name="icon3"
-          >
-            <div className="iconImage">
-              <img src="images/black_shoe.png" alt="dummy" />
-            </div>
-            <h3 className={`${selectedBestIcon === 3 ? 'active' : ''}`}>
-              슈즈3
-            </h3>
-          </div>
-          <div
-            className={`iconEach ${selectedBestIcon === 4 ? 'active' : ''}`}
-            onClick={stateHandler}
-            name="icon4"
-          >
-            <div className="iconImage">
-              <img src="images/black_shoe.png" alt="dummy" />
-            </div>
-            <h3 className={`${selectedBestIcon === 4 ? 'active' : ''}`}>
-              슈즈4
-            </h3>
-          </div>
-          <div
-            className={`iconEach ${selectedBestIcon === 5 ? 'active' : ''}`}
-            onClick={stateHandler}
-            name="icon5"
-          >
-            <div className="iconImage">
-              <img src="images/black_shoe.png" alt="dummy" />
-            </div>
-            <h3 className={`${selectedBestIcon === 5 ? 'active' : ''}`}>
-              슈즈5
-            </h3>
-          </div>
-          <div
-            className={`iconEach ${selectedBestIcon === 6 ? 'active' : ''}`}
-            onClick={stateHandler}
-            name="icon6"
-          >
-            <div className="iconImage">
-              <img src="images/black_shoe.png" alt="dummy" />
-            </div>
-            <h3 className={`${selectedBestIcon === 6 ? 'active' : ''}`}>
-              슈즈6
-            </h3>
-          </div>
+          ))}
         </section>
       </main>
       <div className="sectionMargin" />

@@ -20,13 +20,13 @@ export default function Router() {
   }, [windowY, visibleValue]);
 
   return (
-    <main className="headContainer">
+    <div className="headContainer">
       <Nav visibleValue={visibleValue} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
         </Routes>
       </BrowserRouter>
-    </main>
+    </div>
   );
 }

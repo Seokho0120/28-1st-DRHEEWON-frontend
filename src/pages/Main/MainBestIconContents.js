@@ -8,9 +8,9 @@ import { MainSlideButton } from '../../components/Buttons/Button';
 export default function MainBestIconPage({ selectedBestIcon }) {
   const [products, setProducts] = useState([]);
   const [sliderPosition, setSliderPosition] = useState(0);
+  const [delayRender, setDelayRender] = useState();
 
   const bestIconContentsWrapper = useScrollFadeIn();
-
   useEffect(() => {
     setProducts([
       {
@@ -38,6 +38,10 @@ export default function MainBestIconPage({ selectedBestIcon }) {
         imgPath: 'images/black_shoe.png',
       },
     ]);
+    setDelayRender(false);
+    setTimeout(() => {
+      setDelayRender(true);
+    }, 500);
   }, []);
 
   const sliderClick = event => {
@@ -46,10 +50,10 @@ export default function MainBestIconPage({ selectedBestIcon }) {
       case 'slidePrev':
         sliderPosition > 0
           ? setSliderPosition(sliderPosition - 1)
-          : setSliderPosition(products.length / 2 - 1);
+          : setSliderPosition(Math.round(products.length / 2 - 1));
         break;
       case 'slideNext':
-        sliderPosition < Math.floor(products.length / 2) - 1
+        sliderPosition < Math.round(products.length / 2 - 1)
           ? setSliderPosition(sliderPosition + 1)
           : setSliderPosition(0);
         break;
@@ -60,7 +64,7 @@ export default function MainBestIconPage({ selectedBestIcon }) {
   return (
     <section className="bestIconContentsWrapper" {...bestIconContentsWrapper}>
       <div
-        className="bestIconContentsContainer"
+        className={`bestIconContentsContainer  ${delayRender ? 'active' : ''}`}
         style={{ transform: `translateX(-${sliderPosition * 1140}px)` }}
       >
         {products.length > 0

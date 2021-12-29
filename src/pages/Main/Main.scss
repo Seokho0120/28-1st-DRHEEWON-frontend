@@ -30,6 +30,10 @@
       width: 42px;
     }
   }
+
+  .slideDots.active {
+    opacity: 1;
+  }
 }
 
 .mainWrapper {
@@ -162,6 +166,7 @@
         height: 467px;
         display: flex;
         box-sizing: content-box;
+        opacity: 0;
 
         .bestIconContentsEach {
           width: 1140px;
@@ -212,6 +217,10 @@
             }
           }
         }
+      }
+
+      .bestIconContentsContainer.active {
+        opacity: 1;
       }
 
       .bestIconContentsBtn {
