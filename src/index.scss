@@ -1,13 +1,3 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 @import './styles/common';
 @import './styles/reset';
-@import './styles/baseStyle/colors';
-@import './styles/baseStyle/z-index';
-@import './styles/baseStyle/font';
-@import './styles/baseStyle/size';
-@import './styles/baseStyle/border';
-
-.headContainer {
-  min-width: $widthSize;
-  width: 100%;
-}
