@@ -1,4 +1,6 @@
 // import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Login.scss';
@@ -20,19 +22,20 @@ const Login = () => {
         <article className="registerWrap">
           <form action="POST">
             <h3>로그인</h3>
-            <div>
-              <label>
-                <span>아이디</span>
-                <input type="text" />
-              </label>
-            </div>
-            <div>
-              <label>
-                <span>비밀번호</span>
-                <input type="password" />
-              </label>
-            </div>
-            <button type="button">로그인</button>
+            <label className="inputWrap">
+              <span>아이디</span>
+              <input type="text" />
+            </label>
+            <label className="inputWrap">
+              <span>비밀번호</span>
+              <input type="password" />
+            </label>
+            <button className="submitRegister" type="button">
+              로그인
+            </button>
+            <button className="goRegister" type="button">
+              <Link to="/register">회원가입</Link>
+            </button>
           </form>
         </article>
       </main>
