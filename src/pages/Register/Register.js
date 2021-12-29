@@ -7,21 +7,21 @@ const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
 const validPassWord = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
 const Register = () => {
-  const [checkEmail, setCheckEmail] = useState('');
-  const [checkPw, setCheckPw] = useState('');
-  const [doubleCheckPw, setDoubleCheckPw] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
 
-  const stateValueList = e => {
+  const handleLoginInput = e => {
     const { value, name } = e.target;
     switch (name) {
       case 'email':
-        setCheckEmail(value);
+        setEmail(value);
         break;
       case 'password':
-        setCheckPw(value);
+        setPassword(value);
         break;
       case 'dPassword':
-        setDoubleCheckPw(value);
+        setRePassword(value);
         break;
       default:
     }
@@ -29,11 +29,11 @@ const Register = () => {
 
   const validValues = () => {
     // 이메일이 아닐때
-    if (!validEmail.test(checkEmail)) alert('이메일이 올바르지 않습니다.');
+    if (!validEmail.test(email)) alert('이메일이 올바르지 않습니다.');
     // 비밀번호가 특수문자 1개, 숫자 1개, 8자 이상이 아닐때
-    if (!validPassWord.test(checkPw)) alert('비밀번호가 올바르지 않습니다.');
+    if (!validPassWord.test(password)) alert('비밀번호가 올바르지 않습니다.');
     // 입력한 비밀번호가 같지 않을때
-    if (!(checkPw === doubleCheckPw))
+    if (!(password === rePassword))
       alert('입력하신 비밀번호가 동일하지 않습니다.');
     // 값이 하나도 없을때
   };
@@ -75,7 +75,7 @@ const Register = () => {
                   <th>이메일</th>
                   <td>
                     <input
-                      onChange={stateValueList}
+                      onChange={handleLoginInput}
                       name="email"
                       type="email"
                       placeholder="ex) drheewon@dr.com"
@@ -86,7 +86,7 @@ const Register = () => {
                   <th>비밀번호</th>
                   <td>
                     <input
-                      onChange={stateValueList}
+                      onChange={handleLoginInput}
                       name="password"
                       type="password"
                       placeholder="특수 문자와 숫자를 포함한 8자 이상"
@@ -97,7 +97,7 @@ const Register = () => {
                   <th>비밀번호 확인</th>
                   <td>
                     <input
-                      onChange={stateValueList}
+                      onChange={handleLoginInput}
                       name="dPassword"
                       type="password"
                       placeholder="비밀번호를 한번 더 입력해주세요"
