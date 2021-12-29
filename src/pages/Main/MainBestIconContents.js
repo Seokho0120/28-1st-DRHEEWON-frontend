@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { useScrollFadeIn } from '../../hooks/useScroll';
 
-import { MainSlideButton } from '../../components/Buttons/Button';
+import {
+  MainBorderButton,
+  MainSlideButton,
+} from '../../components/Buttons/Button';
 
 export default function MainBestIconPage({ selectedBestIcon }) {
   const [products, setProducts] = useState([]);
@@ -92,9 +95,7 @@ export default function MainBestIconPage({ selectedBestIcon }) {
                               </div>
                               <div className="detailRight strong">
                                 <p>₩ 190,000</p>
-                                <button className="cartBtn">
-                                  <span>장바구니 담기</span>
-                                </button>
+                                <MainBorderButton type="putCart" />
                               </div>
                             </div>
                           </div>

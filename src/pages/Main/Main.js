@@ -1,7 +1,8 @@
 import MainSlider from './MainSlider';
+import MainBestIcon from './MainBestIcon';
+import MainStickyArea from './MainStickyArea';
 
 import './Main.scss';
-import MainBestIcon from './MainBestIcon';
 
 export default function Main() {
   return (
@@ -9,6 +10,7 @@ export default function Main() {
       <MainSlider />
       <div className="sectionMargin" />
       <MainBestIcon />
+      <MainStickyArea />
     </div>
   );
 }

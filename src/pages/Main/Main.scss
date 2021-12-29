@@ -1,4 +1,6 @@
 @import '../../styles/baseStyle/colors.scss';
+@import '../../styles/baseStyle/size.scss';
+@import '../../styles/baseStyle/font.scss';
 
 @mixin slideButton {
   button {
@@ -37,9 +39,9 @@
 }
 
 .mainWrapper {
-  padding-top: 150px;
   width: 100%;
   margin: 0 auto;
+  padding-top: 150px;
 
   .sectionMargin {
     height: 80px;
@@ -55,8 +57,8 @@
       height: 100%;
 
       div {
-        width: 100%;
         flex-shrink: 0;
+        width: 100%;
 
         img {
           width: 100%;
@@ -71,9 +73,9 @@
     }
 
     .slideBtnArea {
-      position: relative;
       display: flex;
       justify-content: space-between;
+      position: relative;
       top: -50%;
       margin: 0 50px;
 
@@ -91,8 +93,6 @@
   }
 
   .bestIconSection {
-    height: 800px;
-
     header {
       text-align: center;
 
@@ -110,11 +110,11 @@
       background-color: #e0e0e2;
 
       .iconImagesContainer {
+        display: flex;
+        justify-content: space-between;
         width: 1140px;
         height: 260px;
         margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
         opacity: 0;
 
         .iconEach {
@@ -161,18 +161,18 @@
       overflow: hidden;
 
       .bestIconContentsContainer {
+        display: flex;
         position: relative;
         width: 100%;
         height: 467px;
-        display: flex;
         box-sizing: content-box;
         opacity: 0;
 
         .bestIconContentsEach {
-          width: 1140px;
           display: flex;
           flex-shrink: 0;
           justify-content: space-between;
+          width: 1140px;
 
           .bestIconContentsEachWrapper {
             width: 530px;
@@ -202,13 +202,6 @@
                 flex-direction: column;
                 justify-content: space-between;
                 text-align: center;
-
-                .cartBtn {
-                  font-size: 18px;
-                  height: 52px;
-                  border: 1px solid;
-                  padding: 0 17px;
-                }
               }
             }
 
@@ -234,6 +227,115 @@
 
     .bestIconContentsWrapper.active {
       opacity: 1;
+    }
+  }
+
+  .stickyWrapper {
+    color: $white;
+    background-color: $black;
+
+    .stickyImage {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 1100px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+    }
+
+    .stickyContentWrapper {
+      position: relative;
+      width: $mainContentWidth;
+      min-height: 120vh;
+      margin: 0 auto;
+
+      .stickyContentContainer {
+        display: flex;
+        flex-direction: column;
+        font-size: $extraLargeFont;
+        line-height: 1.09;
+        letter-spacing: 1.5px;
+
+        .stickyHeader {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .stickyBody {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-top: 80px;
+
+          .underbarSpan {
+            display: flex;
+
+            &::before {
+              content: '';
+              display: block;
+              position: relative;
+              width: 450px;
+              height: 12px;
+              background: $white;
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              position: relative;
+              left: 30px;
+              width: 80px;
+              height: 12px;
+              background: $white;
+            }
+          }
+
+          .stickyBodyText {
+            position: relative;
+            top: 30px;
+            font-size: $largeFont;
+            line-height: 60px;
+
+            a {
+              display: block;
+              margin-top: 32px;
+
+              button {
+                &:hover {
+                  border: none;
+                }
+
+                div {
+                  position: relative;
+
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 0%;
+                    height: 100%;
+                    background: $white;
+                    transition: all 0.3s;
+                  }
+
+                  &:hover::before {
+                    width: 100%;
+                  }
+                  span {
+                    position: relative;
+                  }
+
+                  &:hover span {
+                    color: black;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

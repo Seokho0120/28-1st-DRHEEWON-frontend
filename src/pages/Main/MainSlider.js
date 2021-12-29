@@ -97,6 +97,7 @@ export default function MainSlider() {
             <span
               key={index}
               className={index + 1 === sliderPosition ? 'active' : ''}
+              style={{ backgroundColor: 'yellow' }}
             />
           ))}
         </div>
