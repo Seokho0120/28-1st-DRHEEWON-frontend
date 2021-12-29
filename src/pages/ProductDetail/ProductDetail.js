@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ProductDetail.scss';
+// import '../../styles/baseStyle/colors.scss';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // import { faSearch, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -8,14 +9,30 @@ import './ProductDetail.scss';
 // }
 
 export default function ProductDetail() {
-  const [slides, setSlides] = useState(0);
-  // 버튼 클릭하면 이미지 넘어가게 하기
+  const [slidePosition, setSlidePosition] = useState(0);
+
+  const movePrev = () => {
+    slidePosition > 0
+      ? setSlidePosition(slidePosition - 1)
+      : setSlidePosition(4);
+
+    // slides의 인덱스 -1
+  };
+
+  const moveNext = () => {
+    slidePosition < 4
+      ? setSlidePosition(slidePosition + 1)
+      : setSlidePosition(0);
+
+    // slides의 인덱스 +1
+  };
+
   return (
     <div className="container">
       <div id="slideShow">
         <ul
           className="slides"
-          style={{ transform: `translateX(-${slides * 560}px)` }}
+          style={{ transform: `translateX(-${slidePosition * 560}px)` }}
         >
           <li className="slideContent">
             <img src="ProductDetail/drmartens1.jpeg" alt="drmartens1" />
@@ -33,11 +50,16 @@ export default function ProductDetail() {
             <img src="ProductDetail/drmartens5.jpeg" alt="drmartens5" />
           </li>
         </ul>
-        <p className="controller">
-          <span className="prev">&lang;</span>
-          <span className="next">&rang;</span>
-        </p>
+        <div className="slideButton">
+          <button className="prev" onClick={movePrev}>
+            &lang;
+          </button>
+          <button className="next" onClick={moveNext}>
+            &rang;
+          </button>
+        </div>
       </div>
+
       <aside className="headerContainer">
         <div className="headerTop" />
         <div className="headerTitle" />
