@@ -84,7 +84,7 @@ export default function MainBestIconPage({ selectedBestIcon }) {
                           >
                             <img src={item.imgPath} alt="dummy" />
                             <img src={item.imgPath} alt="dummy" />
-                            <div className="bestIconContentsEachDetail">
+                            {/* <div className="bestIconContentsEachDetail">
                               <div className="detailLeft">
                                 <p className="strong">1461 스무스</p>
                                 <p>오리지널 | 블랙</p>
@@ -97,7 +97,7 @@ export default function MainBestIconPage({ selectedBestIcon }) {
                                 <p>₩ 190,000</p>
                                 <MainBorderButton type="putCart" />
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         );
                       return '';

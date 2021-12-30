@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useScrollFadeIn } from '../../hooks/useScroll';
 
-import MainBestIconContents from './MainBestIconContents';
+import MainFlexSlider from './MainFlexSlider';
 
 export default function MainBestIcon() {
   const [selectedBestIcon, setSelectedBestIcon] = useState(1);
@@ -91,7 +91,10 @@ export default function MainBestIcon() {
         </section>
       </main>
       <div className="sectionMargin" />
-      <MainBestIconContents selectedBestIcon={selectedBestIcon} />
+      <MainFlexSlider
+        sectionArea="BestIcon"
+        selectedBestIcon={selectedBestIcon}
+      />
       <div className="sectionMargin" />
     </section>
   );
