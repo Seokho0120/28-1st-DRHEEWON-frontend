@@ -27,10 +27,18 @@ const Register = () => {
     // 값이 없을때: value 값이 존재하지 않음
     // => 어떤 값이 비어있을때: `${가장 최상단에 위치한 값}이 입력되지 않았습니다.`
 
+    if (!Object.keys(formInput).length) return alert('내용을 입력해주세요.');
+    const { name, id, email, password, rePassword, birth, tel } = formInput;
+    const isKeyValid = input =>
+      typeof input !== 'undefined' ? input.length : false;
     const validator = {
-      email: validEmail.test(formInput.email),
-      password: validPassword.test(formInput.password),
-      rePassword: formInput.rePassword === formInput.password,
+      name: isKeyValid(name),
+      id: isKeyValid(id),
+      email: validEmail.test(email),
+      password: validPassword.test(password),
+      rePassword: rePassword === password,
+      birth: isKeyValid(birth),
+      tel: isKeyValid(tel),
     };
 
     const findKey = () => {
@@ -43,9 +51,12 @@ const Register = () => {
     };
 
     const alertMessage = {
+      name: '이름이 입력되지 않았습니다.',
       email: '이메일이 올바르지 않습니다.',
       password: '비밀번호가 올바르지 않습니다.',
       rePassword: '비밀번호가 동일하지 않습니다.',
+      birth: '생년월일이 입력되지 않았습니다.',
+      tel: '휴대폰 번호가 입력되지 않았습니다.',
     };
 
     findKey() === null ? navigate('/login') : alert(alertMessage[findKey()]);
@@ -73,6 +84,8 @@ const Register = () => {
                   <th>이름</th>
                   <td>
                     <input
+                      onChange={handleLoginInput}
+                      name="name"
                       type="text"
                       placeholder="이름을 입력해주세요"
                       required="required"
@@ -83,6 +96,8 @@ const Register = () => {
                   <th>아이디</th>
                   <td>
                     <input
+                      onChange={handleLoginInput}
+                      name="id"
                       type="text"
                       placeholder="아이디를 입력해주세요"
                       required="required"
@@ -131,14 +146,21 @@ const Register = () => {
                 <tr>
                   <th>생년월일</th>
                   <td>
-                    <input type="date" required="required" />
+                    <input
+                      onChange={handleLoginInput}
+                      name="birth"
+                      type="date"
+                      required="required"
+                    />
                   </td>
                 </tr>
                 <tr>
                   <th>휴대폰</th>
                   <td>
                     <input
-                      type="number"
+                      onChange={handleLoginInput}
+                      name="tel"
+                      type="tel"
                       placeholder="숫자만 입력해주세요"
                       required="required"
                     />
