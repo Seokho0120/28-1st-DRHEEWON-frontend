@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { throttle } from 'lodash';
 
 import Main from './pages/Main/Main';
 import Nav from './components/Nav/Nav';
@@ -10,23 +11,23 @@ export default function Router() {
 
   useEffect(() => {
     function handleScroll() {
-      windowY > window.scrollY ? setVisibleValue(true) : setVisibleValue(false);
+      const isScrollUp = windowY > window.scrollY;
+      isScrollUp ? setVisibleValue(true) : setVisibleValue(false);
       setWindowY(window.scrollY);
     }
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', throttle(handleScroll, 10));
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [windowY, visibleValue]);
 
   return (
-    <div className="headContainer">
+    <BrowserRouter>
       <Nav visibleValue={visibleValue} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

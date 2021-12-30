@@ -26,11 +26,19 @@
   @include transition_4s;
   box-shadow: 0 3px 7px 0 rgb(0 0 0 / 10%);
 
+  &.hide {
+    opacity: 0;
+  }
+
   .navUpper {
     height: 40px;
     opacity: 1;
     background-color: $lightGrey;
     padding: 0 100px;
+
+    &.hide {
+      opacity: 0;
+    }
 
     .navUpperFixedWidth {
       @include navbarWidthSetting;
@@ -54,17 +62,17 @@
     }
   }
 
-  .navUpper.hide {
-    height: 0;
-    opacity: 0;
-  }
-
   .navBottom {
     height: 85px;
     opacity: 1;
     margin: 10px auto;
     padding: 0 100px;
     @include transition_4s;
+
+    &.hide {
+      height: 0;
+      opacity: 0;
+    }
 
     .navBottomFixedWidth {
       display: flex;
@@ -134,13 +142,4 @@
       }
     }
   }
-
-  .navBottom.hide {
-    height: 0;
-    opacity: 0;
-  }
-}
-
-.navHead.hide {
-  opacity: 0;
 }
