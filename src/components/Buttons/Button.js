@@ -65,6 +65,7 @@ export function MainBorderButton({
       padding: '10px 25px',
     },
   };
+
   return (
     <button
       name={btnName}
@@ -77,7 +78,7 @@ export function MainBorderButton({
           fontSize: borderBtnList[type].fontSize,
           color: borderBtnList[type].color,
           padding: borderBtnList[type].padding,
-          pointerEvents: 'none',
+          pointerEvents: !type.includes('goMore') ? 'none' : '',
         }}
       >
         <span>{borderBtnList[type].text}</span>

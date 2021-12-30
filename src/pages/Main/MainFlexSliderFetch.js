@@ -76,5 +76,5 @@ export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
         ]);
   }, [sectionArea]);
 
-  return <FlexibleSlider type={sectionArea} products={products} />;
+  return <FlexibleSlider sectionArea={sectionArea} products={products} />;
 }
