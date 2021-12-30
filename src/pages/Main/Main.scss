@@ -2,6 +2,99 @@
 @import '../../styles/baseStyle/size.scss';
 @import '../../styles/baseStyle/font.scss';
 
+@mixin flexibleSlider {
+  .flexibleSliderWrapper {
+    width: 1140px;
+    margin: 0 auto;
+    opacity: 0;
+    overflow: hidden;
+
+    &.active {
+      opacity: 1;
+    }
+
+    .flexibleSliderContainer {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 467px;
+      box-sizing: content-box;
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+      }
+
+      .flexibleSliderContentsEach {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: space-between;
+        width: 1140px;
+
+        .flexibleSliderContentsEachWrapper {
+          width: 530px;
+
+          .bestIconContentsEachDetail {
+            display: flex;
+            padding: 0 20px;
+            font-size: 20px;
+
+            .detailLeft {
+              display: flex;
+              flex-direction: column;
+              flex: 1 1 auto;
+
+              p {
+                margin-bottom: 10px;
+
+                &:nth-child(2) {
+                  color: $deepGrey;
+                }
+              }
+            }
+
+            .detailRight {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              text-align: center;
+            }
+          }
+
+          .mdRecommendDetail {
+            display: flex;
+            flex-direction: column;
+
+            p {
+              font-size: 26px;
+            }
+
+            .detailBox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+          }
+
+          img {
+            width: 265px;
+            height: 329px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .flexibleSliderBtn {
+      display: flex;
+      justify-content: space-between;
+
+      @include slideButton;
+      @include slideDots;
+    }
+  }
+}
+
 @mixin slideButton {
   button {
     width: 84px;
@@ -26,10 +119,10 @@
       background-color: black;
       box-sizing: border-box;
       margin-left: 18px;
-    }
 
-    span.active {
-      width: 42px;
+      &.active {
+        width: 42px;
+      }
     }
   }
 
@@ -47,14 +140,18 @@
     height: 80px;
   }
 
-  .sliderSection {
+  .fullSliderSection {
     height: 800px;
     list-style: none;
     overflow: hidden;
 
-    .sliderUl {
+    .fullSliderUl {
       display: flex;
       height: 100%;
+
+      &.stopTran {
+        transition: none;
+      }
 
       div {
         flex-shrink: 0;
@@ -68,11 +165,7 @@
       }
     }
 
-    .sliderUl.stopTran {
-      transition: none;
-    }
-
-    .slideBtnArea {
+    .fullSlideBtnArea {
       display: flex;
       justify-content: space-between;
       position: relative;
@@ -82,7 +175,7 @@
       @include slideButton;
     }
 
-    .slideDotsContainer {
+    .fullSlideDotsContainer {
       display: flex;
       justify-content: center;
       position: relative;
@@ -92,7 +185,7 @@
     }
   }
 
-  .bestIconSection {
+  .flexSliderSection {
     header {
       text-align: center;
 
@@ -154,80 +247,37 @@
       }
     }
 
-    .bestIconContentsWrapper {
-      width: 1140px;
-      margin: 0 auto;
-      opacity: 0;
-      overflow: hidden;
+    .recommendBtnsWrapper {
+      width: 100%;
 
-      .bestIconContentsContainer {
+      .recommendBtnsContainer {
         display: flex;
-        position: relative;
-        width: 100%;
-        height: 467px;
-        box-sizing: content-box;
+        justify-content: center;
+        width: 1140px;
+        height: 52px;
+        margin: 0 auto;
         opacity: 0;
 
-        .bestIconContentsEach {
-          display: flex;
-          flex-shrink: 0;
-          justify-content: space-between;
-          width: 1140px;
+        &.active {
+          opacity: 1;
+        }
+        button {
+          &:nth-child(n + 1) {
+            margin-left: 20px;
+          }
 
-          .bestIconContentsEachWrapper {
-            width: 530px;
+          &.active {
+            background-color: black;
+          }
 
-            .bestIconContentsEachDetail {
-              display: flex;
-              padding: 0 20px;
-              font-size: 20px;
-              font-weight: 700;
-
-              .detailLeft {
-                display: flex;
-                flex-direction: column;
-                flex: 1 1 auto;
-
-                p {
-                  margin-bottom: 10px;
-
-                  &:nth-child(2) {
-                    color: $deepGrey;
-                  }
-                }
-              }
-
-              .detailRight {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                text-align: center;
-              }
-            }
-
-            img {
-              width: 50%;
-            }
+          &.active div span {
+            color: white;
           }
         }
       }
-
-      .bestIconContentsContainer.active {
-        opacity: 1;
-      }
-
-      .bestIconContentsBtn {
-        display: flex;
-        justify-content: space-between;
-
-        @include slideButton;
-        @include slideDots;
-      }
     }
 
-    .bestIconContentsWrapper.active {
-      opacity: 1;
-    }
+    @include flexibleSlider;
   }
 
   .stickyWrapper {

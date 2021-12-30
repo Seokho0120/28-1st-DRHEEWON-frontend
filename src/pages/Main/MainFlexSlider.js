@@ -1,132 +1,129 @@
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { MainBorderButton } from '../../components/Buttons/Button';
 import { useScrollFadeIn } from '../../hooks/useScroll';
 
-import {
-  MainBorderButton,
-  MainSlideButton,
-} from '../../components/Buttons/Button';
+import MainFlexSliderFetch from './MainFlexSliderFetch';
 
-export default function MainBestIconPage({ selectedBestIcon }) {
-  const [products, setProducts] = useState([]);
-  const [sliderPosition, setSliderPosition] = useState(0);
-  const [delayRender, setDelayRender] = useState();
+export default function MainFlexArea({ sectionArea }) {
+  const [selectedIcon, setSelectedIcon] = useState(1);
+  const sectionName = {
+    bestIcon: '베스트 아이콘',
+    mdRecommend: 'MD 추천',
+  };
 
-  const bestIconContentsWrapper = useScrollFadeIn();
-  useEffect(() => {
-    setProducts([
-      {
-        id: 1,
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: 2,
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: 3,
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: 4,
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: 5,
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: 6,
-        imgPath: 'images/black_shoe.png',
-      },
-    ]);
-    setDelayRender(false);
-    setTimeout(() => {
-      setDelayRender(true);
-    }, 500);
-  }, []);
+  const flexSliderHeadText = useScrollFadeIn();
+  const flexSliderMenuWrapper = useScrollFadeIn();
 
-  const sliderClick = event => {
-    const { name } = event.target;
-    switch (name) {
-      case 'slidePrev':
-        sliderPosition > 0
-          ? setSliderPosition(sliderPosition - 1)
-          : setSliderPosition(Math.round(products.length / 2 - 1));
-        break;
-      case 'slideNext':
-        sliderPosition < Math.round(products.length / 2 - 1)
-          ? setSliderPosition(sliderPosition + 1)
-          : setSliderPosition(0);
-        break;
-      default:
-    }
+  const stateHandler = event => {
+    const name = event.target.getAttribute('name');
+    setSelectedIcon(parseInt(name));
+  };
+
+  const bestIconImgs = () => {
+    const bestIconImages = [
+      {
+        id: '1',
+        name: '이걸',
+        imgPath: 'images/black_shoe.png',
+      },
+      {
+        id: '2',
+        name: '누르면',
+        imgPath: 'images/black_shoe.png',
+      },
+      {
+        id: '3',
+        name: 'icon이 바뀌고',
+        imgPath: 'images/black_shoe.png',
+      },
+      {
+        id: '4',
+        name: '각기 다른',
+        imgPath: 'images/black_shoe.png',
+      },
+      {
+        id: '5',
+        name: '이미지가',
+        imgPath: 'images/black_shoe.png',
+      },
+      {
+        id: '6',
+        name: '들어온다',
+        imgPath: 'images/black_shoe.png',
+      },
+    ];
+    return (
+      <section className="iconImagesWrapper">
+        <div className="iconImagesContainer" {...flexSliderMenuWrapper}>
+          {bestIconImages.map((item, index) => (
+            <div
+              key={index}
+              className={`iconEach ${
+                selectedIcon === index + 1 ? 'active' : ''
+              }`}
+              onClick={stateHandler}
+              name={`${index + 1}`}
+            >
+              <div className="iconImage">
+                <img src={item.imgPath} alt="dummy" />
+              </div>
+              <h3 className={`${selectedIcon === index + 1 ? 'active' : ''}`}>
+                {item.name}
+              </h3>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  };
+
+  const mdRecommendBtns = () => {
+    return (
+      <section className="recommendBtnsWrapper">
+        <div className="recommendBtnsContainer" {...flexSliderMenuWrapper}>
+          <MainBorderButton
+            type="longBoots"
+            btnName="1"
+            selectedIcon={selectedIcon}
+            onClickMethod={stateHandler}
+          />
+          <MainBorderButton
+            type="collabo"
+            btnName="2"
+            selectedIcon={selectedIcon}
+            onClickMethod={stateHandler}
+          />
+          <MainBorderButton
+            type="furBoots"
+            btnName="3"
+            selectedIcon={selectedIcon}
+            onClickMethod={stateHandler}
+          />
+          <MainBorderButton
+            type="accGoods"
+            btnName="4"
+            selectedIcon={selectedIcon}
+            onClickMethod={stateHandler}
+          />
+        </div>
+      </section>
+    );
   };
 
   return (
-    <section className="bestIconContentsWrapper" {...bestIconContentsWrapper}>
-      <div
-        className={`bestIconContentsContainer  ${delayRender ? 'active' : ''}`}
-        style={{ transform: `translateX(-${sliderPosition * 1140}px)` }}
-      >
-        {products.length > 0
-          ? products.map((item, flexIndex) => {
-              if (flexIndex % 2 === 0) {
-                return (
-                  <div key={flexIndex} className="bestIconContentsEach">
-                    {products.map((item, index) => {
-                      if (index <= flexIndex + 1 && index >= flexIndex)
-                        return (
-                          <div
-                            key={index}
-                            className="bestIconContentsEachWrapper"
-                          >
-                            <img src={item.imgPath} alt="dummy" />
-                            <img src={item.imgPath} alt="dummy" />
-                            {/* <div className="bestIconContentsEachDetail">
-                              <div className="detailLeft">
-                                <p className="strong">1461 스무스</p>
-                                <p>오리지널 | 블랙</p>
-                                <span>
-                                  <FontAwesomeIcon icon={faHeart} />
-                                  5143
-                                </span>
-                              </div>
-                              <div className="detailRight strong">
-                                <p>₩ 190,000</p>
-                                <MainBorderButton type="putCart" />
-                              </div>
-                            </div> */}
-                          </div>
-                        );
-                      return '';
-                    })}
-                  </div>
-                );
-              }
-              return '';
-            })
-          : ''}
-      </div>
-      <div className="bestIconContentsBtn">
-        <MainSlideButton type="slidePrev" onClickMethod={sliderClick} />
-        <div className="slideDots">
-          {products.map((item, index) => {
-            if (index % 2 === 0)
-              return (
-                <span
-                  key={index}
-                  className={
-                    sliderPosition === Math.ceil(index / 2) ? 'active' : ''
-                  }
-                />
-              );
-            return '';
-          })}
-        </div>
-        <MainSlideButton type="slideNext" onClickMethod={sliderClick} />
-      </div>
+    <section className="flexSliderSection">
+      <header>
+        <h1 {...flexSliderHeadText}>{sectionName[sectionArea]}</h1>
+      </header>
+      <div className="sectionMargin" />
+      {sectionArea === 'bestIcon' ? bestIconImgs() : ''}
+      {sectionArea === 'mdRecommend' ? mdRecommendBtns() : ''}
+      <div className="sectionMargin" />
+      <MainFlexSliderFetch
+        sectionArea={sectionArea}
+        selectedIcon={selectedIcon}
+      />
+      <div className="sectionMargin" />
     </section>
   );
 }

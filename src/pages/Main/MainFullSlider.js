@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MainSlideButton } from '../../components/Buttons/Button';
 
-export default function MainSlider() {
+export default function MainFullSlider() {
   const [sliderPosition, setSliderPosition] = useState(1);
   const [stopTran, setStopTran] = useState(false);
   const [isWindowExtend, setIsWindowExtend] = useState(
@@ -63,12 +63,12 @@ export default function MainSlider() {
   };
 
   return (
-    <section className="sliderSection">
+    <section className="fullSliderSection">
       <div
-        className={`sliderUl ${stopTran ? 'stopTran' : ''}`}
+        className={`fullSliderUl ${stopTran ? 'stopTran' : ''}`}
         style={{
           transform: `translateX(-${
-            isWindowExtend ? sliderPosition * 2114 : sliderPosition * 1607
+            isWindowExtend ? sliderPosition * 1903 : sliderPosition * 1447
           }px)`,
         }}
       >
@@ -87,11 +87,11 @@ export default function MainSlider() {
           <img src={slideImgs[0].imgPath} alt="dummyDuplicate" />
         </div>
       </div>
-      <div className="slideBtnArea">
+      <div className="fullSlideBtnArea">
         <MainSlideButton type="slidePrev" onClickMethod={clickSliderBtn} />
         <MainSlideButton type="slideNext" onClickMethod={clickSliderBtn} />
       </div>
-      <div className="slideDotsContainer">
+      <div className="fullSlideDotsContainer">
         <div className="slideDots">
           {slideImgs.map((item, index) => (
             <span
