@@ -1,73 +1,97 @@
 @import '../../styles/baseStyle/colors.scss';
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-
-  display: flex;
-  justify-content: center;
-  // box-sizing: inherit;
-}
-
 .productList {
   box-sizing: border-box;
   margin-top: 150px;
+
   header {
+    width: 1140px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+
     .subHeadBottom {
       h1 {
-        // background-color: lightcoral;
         margin-top: 30px;
-      }
-      p {
       }
     }
   }
 
   main {
-    width: 1140px;
-    margin: 0 auto;
-    // justify-content: center;
-    section.headContainer {
-      position: relative;
+    .headContainer {
       border-bottom: 1px solid lightgrey;
+      position: relative;
+
       article.layoutWrapper {
-        .container {
-          margin-bottom: 35px;
-          padding-top: 40px;
-          button {
-            height: 55px;
-            margin: 0 3px 0 3px;
-            padding: 0 30px 0 30px;
-            border: 1px solid black;
-            font-size: 18px;
+        width: 100vw;
+        border-bottom: 1px solid lightgrey;
+
+        .layoutWrapperBorder {
+          width: 1140px;
+          margin: 0 auto;
+
+          .container {
+            margin-bottom: 30px;
+            padding-top: 40px;
+
+            button {
+              height: 55px;
+              margin: 0 3px 0 3px;
+              padding: 0 30px 0 30px;
+              border: 1px solid black;
+              font-size: 18px;
+            }
           }
         }
+
         .containerDetail {
+          margin-bottom: 20px;
         }
+
         .filterButtonWrapper {
+          align-items: center;
           text-align: right;
-          // background-color: lightgreen;
+
           .filterButton {
             margin-bottom: 20px;
-            span {
-              .filterButtonList {
-              }
-              .filterButtonTxt {
-              }
-              .filterButtonArrow {
-              }
+            font-weight: 700;
+            margin-left: 8px;
+            margin-right: 12px;
+            font-size: 18px;
+
+            .filterButtonList {
+              width: 20px;
+              height: 20px;
+            }
+
+            .filterButtonTxt {
+              margin-left: 8px;
+              margin-right: 12px;
+            }
+
+            .filterButtonArrow {
+              transform: rotate(180deg);
+              width: 14px;
+              height: 10px;
             }
           }
         }
       }
+
       article.filterContainer {
+        width: 1140px;
+        margin: 0 auto;
+        // position: absolute;
+        // z-index: 10;
+
         .filterLayoutWrapper {
-          form.filterListContainer {
+          form.filterListContainer_form {
+            background-color: cyan;
+
             div {
+              box-sizing: inherit;
             }
           }
+
           .filterListContainer_body {
             display: flex;
             justify-content: center;
@@ -75,6 +99,8 @@ body {
             width: 100%;
             padding-top: 20px;
             padding-bottom: 30px;
+            background-color: darkgoldenrod;
+
             button {
               width: 300px;
               height: 62px;
@@ -89,62 +115,104 @@ body {
         }
       }
     }
+
     section.mainContainer {
+      width: 1140px;
+      margin: 0 auto;
       padding-top: 80px;
-      // background-color: blue;
+
       article.mainContainerWrapper {
-        ul.productList {
+        ul {
           display: flex;
-          li.item {
+
+          li {
             width: 365px;
+
             .itemImage {
+              width: 365px;
+              height: 455px;
+
               img {
                 width: 100%;
                 height: 100%;
-                // border: 1px solid #dbdbdb;
-                // vertical-align: middle;
               }
             }
+
             .itemRow {
               display: flex;
               padding: 0 20px;
+
               .itemColumnLeft {
                 flex: 1 1 auto;
                 width: 100%;
                 margin-right: 10px;
+
                 h2 {
-                  margin: 15px 0;
-                  font-size: 25px;
+                  margin: 17px 0;
+                  font-size: 22px;
                   font-weight: 600;
                 }
+
                 .additionalInfo {
                   margin-bottom: 15px;
                   line-height: 1;
                   font-size: 15px;
+
                   p {
                     display: flex;
                     flex-wrap: wrap;
+
                     span {
+                      font-weight: 700;
+                      font-size: 16px;
+                      inline-height: 20px;
                     }
                   }
                 }
-                button.heartButton {
+
+                .likesButton {
+                  display: inline-flex;
+                  width: auto;
+                  align-items: center;
+                  padding: 0;
+
+                  .heartIcon {
+                    width: 24px;
+                    height: 20px;
+                    margin-right: 5px;
+                  }
+
+                  span {
+                    font-weight: 700;
+                    line-height: 20px;
+                    font-size: 20px;
+                  }
                 }
               }
+
               .itemColumnRight {
                 display: flex;
                 flex-direction: column;
                 flex: 0 0 auto;
-                width: 100px;
+                width: 140px;
+
                 .priceWrapper {
                   width: 100%;
-                  text-align: right;
                   margin: 15px 0;
+                  text-align: right;
+
+                  span {
+                    font-weight: 700;
+                  }
                 }
+
                 button.cartButton {
                   height: 50px;
+                  padding: 0 17px;
                   border: 1px solid black;
-                  span.cartButtonText {
+
+                  span {
+                    font-size: 18px;
                   }
                 }
               }
@@ -159,15 +227,18 @@ body {
     justify-content: inherit;
     margin-top: 150px;
     width: 1140px;
-    // background-color: lightblue;
-    section.popularKeyword {
+    margin: 0 auto;
+
+    section {
       padding-bottom: 100px;
-      article.keywordHead {
+
+      article {
         h2 {
           font-size: 48px;
           font-weight: 700;
           text-align: center;
         }
+
         p {
           margin-top: 10px;
           font-size: 18px;
@@ -175,13 +246,14 @@ body {
           color: #666;
         }
       }
-      ul.keywordList {
+      ul {
         display: flex;
         justify-content: center;
         background-size: cover;
         background-position: 50%;
         margin-top: 50px;
         flex-wrap: wrap;
+
         li {
           cursor: pointer;
           min-width: 207px;

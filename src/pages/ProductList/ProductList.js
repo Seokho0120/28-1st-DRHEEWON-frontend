@@ -7,12 +7,12 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 
-import dummyImg from '../../styles/dummyImg.JPG';
+// import dummyImg from '..';
 import './ProductList.scss';
 
 export default function ProductList() {
   return (
-    <body>
+    <div>
       <div className="productList">
         {/* <header /> */}
         <header>
@@ -27,27 +27,29 @@ export default function ProductList() {
           <section className="headContainer">
             <article className="layoutWrapper">
               {/* 변수명 수정 예정 */}
-              <div className="container">
-                <button id="firstCategory">슈즈</button>
-                <button id="secondCategory">부츠</button>
-                <button id="thirdCategory">전체 보기</button>
-              </div>
-              <div className="containerDetail">
-                남성 부츠 컬렉션입니다. 남성 부츠는 수십년 동안 자기 자신의 표현
-                수단으로서 자리잡았습니다. 클래식한 첼시 부츠부터 독보적인
-                오리지널 부츠, 얼터너티브한 디자인까지 다양한 스타일을
-                만나보세요.
-              </div>
-              <div className="filterButtonWrapper">
-                <button className="filterButton">
-                  <span className="filterButtonList">
-                    <FontAwesomeIcon icon={faList} />
-                  </span>
-                  <span className="filterButtonTxt">필터</span>
-                  <span className="filterButtonArrow">
-                    <FontAwesomeIcon icon={faChevronDown} />
-                  </span>
-                </button>
+              <div className="layoutWrapperBorder">
+                <div className="container">
+                  <button id="firstCategory">슈즈</button>
+                  <button id="secondCategory">부츠</button>
+                  <button id="thirdCategory">전체 보기</button>
+                </div>
+                <div className="containerDetail">
+                  남성 부츠 컬렉션입니다. 남성 부츠는 수십년 동안 자기 자신의
+                  표현 수단으로서 자리잡았습니다. 클래식한 첼시 부츠부터
+                  독보적인 오리지널 부츠, 얼터너티브한 디자인까지 다양한
+                  스타일을 만나보세요.
+                </div>
+                <div className="filterButtonWrapper">
+                  <button className="filterButton">
+                    <span className="filterButtonList">
+                      <FontAwesomeIcon icon={faList} />
+                    </span>
+                    <span className="filterButtonTxt">필터</span>
+                    <span className="filterButtonArrow">
+                      <FontAwesomeIcon icon={faChevronDown} />
+                    </span>
+                  </button>
+                </div>
               </div>
             </article>
             {/* 필터창 구현예정
@@ -73,7 +75,7 @@ export default function ProductList() {
               <ul className="productList">
                 <li className="item">
                   <div className="itemImage">
-                    <img src={dummyImg.JPG} alt="더미이미지" />
+                    <img src="/img/dummyImg.jpg" alt="더미이미지" />
                   </div>
                   <div className="itemRow">
                     <div className="itemColumnLeft">
@@ -83,15 +85,19 @@ export default function ProductList() {
                           <span>아이템 설명</span>
                         </p>
                       </div>
-                      <button className="heartButton">
-                        <FontAwesomeIcon icon={faHeart} />
-                        4444
+                      <button className="likesButton">
+                        <div className="heartIcon">
+                          <FontAwesomeIcon icon={faHeart} />
+                        </div>
+                        <span>1234</span>
                       </button>
                     </div>
                     <div className="itemColumnRight">
-                      <div className="priceWrapper">3000000원</div>
+                      <div className="priceWrapper">
+                        <span>₩ 300,000</span>
+                      </div>
                       <button className="cartButton">
-                        <span className="cartButtonText">장바구니담기</span>
+                        <span className="cartButtonText">장바구니 담기</span>
                       </button>
                     </div>
                   </div>
@@ -120,6 +126,6 @@ export default function ProductList() {
           </section>
         </footer>
       </div>
-    </body>
+    </div>
   );
 }
