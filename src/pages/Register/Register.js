@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Register.scss';
@@ -8,6 +9,7 @@ const validPassword = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
 const Register = () => {
   const [formInput, setFormInput] = useState({});
+  const navigate = useNavigate();
 
   const handleLoginInput = e => {
     const { value, name } = e.target;
@@ -46,7 +48,7 @@ const Register = () => {
       rePassword: '비밀번호가 동일하지 않습니다.',
     };
 
-    findKey() === null ? alert('성공') : alert(alertMessage[findKey()]);
+    findKey() === null ? navigate('/login') : alert(alertMessage[findKey()]);
   };
 
   return (
