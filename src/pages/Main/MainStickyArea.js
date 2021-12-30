@@ -1,22 +1,35 @@
 import { useState, useEffect } from 'react';
 import { MainBorderButton } from '../../components/Buttons/Button';
+import { throttle } from 'lodash';
 
 export default function MainStickyArea() {
   const [imageOpacity, setImageOpacity] = useState(1);
   const [imageScale, setImageScale] = useState(1);
 
-  useEffect(() => {
-    function handleScroll(event) {
-      if (window.scrollY > 2200 && window.scrollY < 2650) {
-        setImageOpacity(1 - (window.scrollY - 2200) / 1000);
-      }
+  const checkScrollPos = scrollPos => {
+    const divideScrollPos = {
+      [scrollPos > 2200 && scrollPos < 2850]: 2200,
+    };
 
-      if (window.scrollY > 2500 && window.scrollY < 3050) {
-        setImageScale(1 + (window.scrollY - 2500) / 1800);
-      }
+    return divideScrollPos.true;
+  };
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollPos = window.scrollY;
+      const firstBlind =
+        scrollPos - checkScrollPos(scrollPos) > 0 &&
+        scrollPos - checkScrollPos(scrollPos) < 450;
+
+      const firstScale =
+        scrollPos - checkScrollPos(scrollPos) > 300 &&
+        scrollPos - checkScrollPos(scrollPos) < 650;
+
+      if (firstBlind) setImageOpacity(1 - (scrollPos - 2200) / 1000);
+      if (firstScale) setImageScale(1 + (scrollPos - 2500) / 2500);
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', throttle(handleScroll, 10));
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -25,14 +38,17 @@ export default function MainStickyArea() {
 
   return (
     <section className="stickyWrapper">
-      <div
-        className="stickyImage"
-        style={{
-          transform: `scale(${imageScale})`,
-          backgroundImage: 'url(images/1.jpg)',
-          opacity: `${imageOpacity}`,
-        }}
-      />
+      <div className="stickyImageContainer">
+        <div
+          className="stickyImage"
+          style={{
+            transform: `scale(${imageScale})`,
+            backgroundImage: 'url(images/3.png)',
+            opacity: `${imageOpacity}`,
+          }}
+        />
+      </div>
+
       <div className="stickyContentWrapper">
         <div className="stickyContentContainer">
           <div className="stickyHeader">

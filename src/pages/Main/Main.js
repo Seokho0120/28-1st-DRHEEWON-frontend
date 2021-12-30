@@ -11,6 +11,7 @@ export default function Main() {
       <div className="sectionMargin" />
       <MainBestIcon />
       <MainStickyArea />
+      <div className="sectionMargin" />
     </div>
   );
 }
