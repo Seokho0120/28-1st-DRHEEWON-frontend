@@ -131,6 +131,77 @@
   }
 }
 
+@mixin underbarSpan {
+  .underbarSpan {
+    display: flex;
+
+    &::before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 450px;
+      height: 12px;
+      background: $white;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: relative;
+      left: 30px;
+      width: 80px;
+      height: 12px;
+      background: $white;
+    }
+
+    &.black::before {
+      background: $black;
+    }
+    &.black::after {
+      background: $black;
+    }
+  }
+}
+
+@mixin buttonFill {
+  button {
+    div {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background: $white;
+        transition: all 0.3s;
+      }
+
+      &.black::before {
+        background: $black;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+
+      span {
+        position: relative;
+      }
+
+      &:hover span {
+        color: black;
+      }
+
+      &.black:hover span {
+        color: white;
+      }
+    }
+  }
+}
+
 .mainWrapper {
   width: 100%;
   margin: 0 auto;
@@ -281,10 +352,9 @@
   }
 
   .stickyWrapper {
-    color: $white;
     background-color: $black;
 
-    .stickyImageContainer {
+    .stickyContainer {
       position: sticky;
       top: 0;
       height: 1100px;
@@ -296,6 +366,32 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50%;
+      }
+
+      .bg {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fafafa;
+        z-index: -1;
+      }
+
+      .stickyShoes {
+        img {
+          position: absolute;
+
+          &:nth-child(1) {
+            top: 350px;
+            left: 200px;
+          }
+
+          &:nth-child(2) {
+            top: 50px;
+            right: 200px;
+          }
+        }
       }
     }
 
@@ -323,28 +419,7 @@
           justify-content: center;
           margin-top: 80px;
 
-          .underbarSpan {
-            display: flex;
-
-            &::before {
-              content: '';
-              display: block;
-              position: relative;
-              width: 450px;
-              height: 12px;
-              background: $white;
-            }
-
-            &::after {
-              content: '';
-              display: block;
-              position: relative;
-              left: 30px;
-              width: 80px;
-              height: 12px;
-              background: $white;
-            }
-          }
+          @include underbarSpan;
 
           .stickyBodyText {
             position: relative;
@@ -356,34 +431,7 @@
               display: block;
               margin-top: 32px;
 
-              button {
-                div {
-                  position: relative;
-
-                  &::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 0%;
-                    height: 100%;
-                    background: $white;
-                    transition: all 0.3s;
-                  }
-
-                  &:hover::before {
-                    width: 100%;
-                  }
-
-                  span {
-                    position: relative;
-                  }
-
-                  &:hover span {
-                    color: black;
-                  }
-                }
-              }
+              @include buttonFill;
             }
           }
         }

@@ -74,6 +74,7 @@ export function MainBorderButton({
       onClick={onClickMethod}
     >
       <div
+        className={type.includes('goMoreBlack') ? 'black' : ''}
         style={{
           fontSize: borderBtnList[type].fontSize,
           color: borderBtnList[type].color,

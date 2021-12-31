@@ -1,7 +1,6 @@
 import MainFullSlider from './MainFullSlider';
-
-import MainStickyArea from './MainStickyArea';
 import MainFlexSlider from './MainFlexSlider';
+import MainStickyArea from './MainStickyArea';
 
 import './Main.scss';
 
@@ -11,9 +10,12 @@ export default function Main() {
       <MainFullSlider />
       <div className="sectionMargin" />
       <MainFlexSlider sectionArea="bestIcon" />
-      <MainStickyArea />
       <div className="sectionMargin" />
       <MainFlexSlider sectionArea="mdRecommend" />
+      <div className="sectionMargin" />
+      <MainStickyArea sectionArea="introduce" />
+      <MainStickyArea sectionArea="introShoe" />
+      <MainStickyArea sectionArea="vision" />
     </div>
   );
 }
