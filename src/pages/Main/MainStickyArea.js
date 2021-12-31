@@ -5,7 +5,7 @@ import { throttle } from 'lodash';
 export default function MainStickyArea({ sectionArea }) {
   const [introOpacity, setIntroOpacity] = useState(1);
   const [introScale, setIntroScale] = useState(1);
-  const [stickyPos, setStickyPos] = useState(100);
+  const [stickyPos, setStickyPos] = useState(0);
   const [visionOpacity, setVisionOpacity] = useState(1);
   const [visionScale, setVisionScale] = useState(1);
 
@@ -31,13 +31,13 @@ export default function MainStickyArea({ sectionArea }) {
 
       const introBlind = scrollPos > 3200 && scrollPos < 3850;
       const introScale = scrollPos > 3500 && scrollPos < 3850;
-      const stickyShoePos = scrollPos > 4800 && scrollPos < 6400;
+      const stickyShoePos = scrollPos > 5400 && scrollPos < 6400;
       const visionBlind = scrollPos > 7700 && scrollPos < 8300;
       const visionScale = scrollPos > 8000 && scrollPos < 8300;
 
       if (introBlind) setIntroOpacity(1 - (scrollPos - 3200) / 1000);
       if (introScale) setIntroScale(1 + (scrollPos - 3500) / 3500);
-      if (stickyShoePos) setStickyPos(100 + (scrollPos - 4800) / 10);
+      if (stickyShoePos) setStickyPos((scrollPos - 5400) / 5);
       if (visionBlind) setVisionOpacity(1 - (scrollPos - 7700) / 1000);
       if (visionScale) setVisionScale(1 + (scrollPos - 8000) / 8000);
     }
@@ -64,12 +64,12 @@ export default function MainStickyArea({ sectionArea }) {
         <img
           src="images/stickyLeftShoe.png"
           alt="left"
-          style={{ left: `${stickyPos}px` }}
+          style={{ transform: `translateX(${stickyPos}px)` }}
         />
         <img
           src="images/stickyRightShoe.png"
           alt="right"
-          style={{ right: `${stickyPos}px` }}
+          style={{ transform: `translateX(-${stickyPos}px)` }}
         />
       </div>
     ) : (
