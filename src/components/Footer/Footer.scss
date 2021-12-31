@@ -15,8 +15,15 @@
   letter-spacing: 1.5px;
 
   .footerWrapper {
-    width: 1140px;
     margin: 0 auto;
+
+    @media (min-width: 1600px) {
+      width: 1140px;
+    }
+
+    @media (min-width: 1627px) {
+      width: 1627px;
+    }
 
     .footerMain {
       display: flex;
