@@ -253,7 +253,7 @@
     height: 100%;
     background: rgb(25, 25, 25);
     color: $white;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid $deepGrey;
 
     .newJoinContainer {
       display: flex;
@@ -267,13 +267,15 @@
       .newJoinText {
         display: flex;
         flex-direction: column;
+
         span {
           &:nth-child(1) {
             font-size: $largeFont;
           }
+
           &:nth-child(2) {
             font-size: $mediumFont;
-            color: #999;
+            color: $grey;
           }
         }
       }
