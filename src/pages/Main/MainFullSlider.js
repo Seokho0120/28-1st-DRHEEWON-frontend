@@ -60,7 +60,7 @@ export default function MainFullSlider() {
   return (
     <section className="fullSliderSection">
       <div
-        className={`fullSliderUl ${stopTran && 'stopTran'}`}
+        className={`fullSliderUl ${stopTran ? 'stopTran' : ''}`}
         style={{
           transform: `translateX(-${
             isWindowExtend ? sliderPosition * 2114 : sliderPosition * 1607
@@ -91,7 +91,7 @@ export default function MainFullSlider() {
           {slideImgs.map((item, index) => (
             <span
               key={index}
-              className={index + 1 === sliderPosition && 'active'}
+              className={index + 1 === sliderPosition ? 'active' : ''}
               style={{ backgroundColor: 'yellow' }}
             />
           ))}

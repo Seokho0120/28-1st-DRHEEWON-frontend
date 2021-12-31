@@ -11,6 +11,10 @@ body {
   clear: both;
 }
 
-*.strong {
+.strong {
   font-weight: 700;
+}
+
+* {
+  scroll-behavior: smooth;
 }

@@ -87,7 +87,7 @@ export function FlexibleSlider({ sectionArea, products }) {
                 <div
                   key={flexIndex}
                   className={`flexibleSliderContentsEach ${
-                    sliderPosition === flexIndex / 2 && 'active'
+                    sliderPosition === flexIndex / 2 ? 'active' : ''
                   }`}
                 >
                   {products.map((item, index) => {
@@ -119,7 +119,7 @@ export function FlexibleSlider({ sectionArea, products }) {
                 <span
                   key={index}
                   className={
-                    sliderPosition === Math.ceil(index / 2) && 'active'
+                    sliderPosition === Math.ceil(index / 2) ? 'active' : ''
                   }
                 />
               )

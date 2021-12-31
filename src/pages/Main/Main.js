@@ -1,8 +1,10 @@
 import MainFullSlider from './MainFullSlider';
 import MainFlexSlider from './MainFlexSlider';
 import MainStickyArea from './MainStickyArea';
+import MainNewJoin from './MainNewJoin';
 
 import './Main.scss';
+import TopButton from '../../components/Buttons/TopButton';
 
 export default function Main() {
   return (
@@ -16,6 +18,8 @@ export default function Main() {
       <MainStickyArea sectionArea="introduce" />
       <MainStickyArea sectionArea="introShoe" />
       <MainStickyArea sectionArea="vision" />
+      <MainNewJoin />
+      <TopButton />
     </div>
   );
 }

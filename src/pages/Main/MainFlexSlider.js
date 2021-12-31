@@ -29,14 +29,16 @@ export default function MainFlexArea({ sectionArea }) {
           {bestIconImages.map((item, index) => (
             <div
               key={index}
-              className={`iconEach ${selectedIcon === index + 1 && 'active'}`}
+              className={`iconEach ${
+                selectedIcon === index + 1 ? 'active' : ''
+              }`}
               onClick={stateHandler}
               name={`${index + 1}`}
             >
               <div className="iconImage">
                 <img src={item.imgPath} alt="dummy" />
               </div>
-              <h3 className={`${selectedIcon === index + 1 && 'active'}`}>
+              <h3 className={`${selectedIcon === index + 1 ? 'active' : ''}`}>
                 {item.name}
               </h3>
             </div>

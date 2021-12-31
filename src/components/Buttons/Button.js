@@ -68,13 +68,24 @@ export function MainBorderButton({
       text: 'ACC용품',
       padding: '10px 25px',
     },
+    join: {
+      fontSize: '18px',
+      border: 'none',
+      color: '#191919',
+      text: '회원가입',
+      padding: '20px 60px',
+      background: 'yellow',
+    },
   };
 
   return (
     <button
       name={btnName}
       className={isBtnActive ? 'selected' : ''}
-      style={{ border: borderBtnList[type].border }}
+      style={{
+        border: borderBtnList[type].border,
+        background: borderBtnList[type].background,
+      }}
       onClick={onClickMethod}
       {...borderButtonScroll}
     >
@@ -87,7 +98,9 @@ export function MainBorderButton({
           pointerEvents: !type.includes('goMore') ? 'none' : '',
         }}
       >
-        <span>{borderBtnList[type].text}</span>
+        <span className={type === 'join' ? 'strong' : ''}>
+          {borderBtnList[type].text}
+        </span>
       </div>
     </button>
   );
