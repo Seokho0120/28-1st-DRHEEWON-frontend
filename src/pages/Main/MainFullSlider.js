@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+
 import { MainSlideButton } from '../../components/Buttons/Button';
+import { slideImgsData } from './MainMockData';
 
 export default function MainFullSlider() {
   const [sliderPosition, setSliderPosition] = useState(1);
@@ -8,20 +10,7 @@ export default function MainFullSlider() {
     window.innerWidth > 1626
   );
 
-  const slideImgs = [
-    {
-      id: 1,
-      imgPath: 'images/1.jpg',
-    },
-    {
-      id: 2,
-      imgPath: 'images/2.jpg',
-    },
-    {
-      id: 3,
-      imgPath: 'images/3.png',
-    },
-  ];
+  const slideImgs = slideImgsData;
 
   useEffect(() => {
     function handleResize(event) {
@@ -71,10 +60,10 @@ export default function MainFullSlider() {
   return (
     <section className="fullSliderSection">
       <div
-        className={`fullSliderUl ${stopTran ? 'stopTran' : ''}`}
+        className={`fullSliderUl ${stopTran && 'stopTran'}`}
         style={{
           transform: `translateX(-${
-            isWindowExtend ? sliderPosition * 1903 : sliderPosition * 1447
+            isWindowExtend ? sliderPosition * 2114 : sliderPosition * 1607
           }px)`,
         }}
       >
@@ -102,7 +91,7 @@ export default function MainFullSlider() {
           {slideImgs.map((item, index) => (
             <span
               key={index}
-              className={index + 1 === sliderPosition ? 'active' : ''}
+              className={index + 1 === sliderPosition && 'active'}
               style={{ backgroundColor: 'yellow' }}
             />
           ))}

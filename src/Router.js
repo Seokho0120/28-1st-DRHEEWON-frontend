@@ -20,13 +20,11 @@ export default function Router() {
   }, [windowY, visibleValue]);
 
   return (
-    <div className="headContainer">
+    <BrowserRouter>
       <Nav visibleValue={visibleValue} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

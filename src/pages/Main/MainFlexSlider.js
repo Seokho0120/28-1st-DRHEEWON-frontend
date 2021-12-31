@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { MainBorderButton } from '../../components/Buttons/Button';
 import { useScrollFadeIn } from '../../hooks/useScroll';
+
+import { MainBorderButton } from '../../components/Buttons/Button';
+import { bestIconImagesData } from './MainMockData';
 
 import MainFlexSliderFetch from './MainFlexSliderFetch';
 
@@ -20,54 +22,21 @@ export default function MainFlexArea({ sectionArea }) {
   };
 
   const bestIconImgs = () => {
-    const bestIconImages = [
-      {
-        id: '1',
-        name: '이걸',
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: '2',
-        name: '누르면',
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: '3',
-        name: 'icon이 바뀌고',
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: '4',
-        name: '각기 다른',
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: '5',
-        name: '이미지가',
-        imgPath: 'images/black_shoe.png',
-      },
-      {
-        id: '6',
-        name: '들어온다',
-        imgPath: 'images/black_shoe.png',
-      },
-    ];
+    const bestIconImages = bestIconImagesData;
     return (
       <section className="iconImagesWrapper">
         <div className="iconImagesContainer" {...flexSliderMenuWrapper}>
           {bestIconImages.map((item, index) => (
             <div
               key={index}
-              className={`iconEach ${
-                selectedIcon === index + 1 ? 'active' : ''
-              }`}
+              className={`iconEach ${selectedIcon === index + 1 && 'active'}`}
               onClick={stateHandler}
               name={`${index + 1}`}
             >
               <div className="iconImage">
                 <img src={item.imgPath} alt="dummy" />
               </div>
-              <h3 className={`${selectedIcon === index + 1 ? 'active' : ''}`}>
+              <h3 className={`${selectedIcon === index + 1 && 'active'}`}>
                 {item.name}
               </h3>
             </div>
@@ -116,8 +85,8 @@ export default function MainFlexArea({ sectionArea }) {
         <h1 {...flexSliderHeadText}>{sectionName[sectionArea]}</h1>
       </header>
       <div className="sectionMargin" />
-      {sectionArea === 'bestIcon' ? bestIconImgs() : ''}
-      {sectionArea === 'mdRecommend' ? mdRecommendBtns() : ''}
+      {sectionArea === 'bestIcon' && bestIconImgs()}
+      {sectionArea === 'mdRecommend' && mdRecommendBtns()}
       <div className="sectionMargin" />
       <MainFlexSliderFetch
         sectionArea={sectionArea}

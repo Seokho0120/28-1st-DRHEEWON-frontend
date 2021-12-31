@@ -80,54 +80,50 @@ export function FlexibleSlider({ sectionArea, products }) {
         className="flexibleSliderContainer"
         style={{ transform: `translateX(-${sliderPosition * 1140}px)` }}
       >
-        {products.length > 0
-          ? products.map((item, flexIndex) => {
-              if (flexIndex % 2 === 0) {
-                return (
-                  <div
-                    key={flexIndex}
-                    className={`flexibleSliderContentsEach ${
-                      sliderPosition === flexIndex / 2 ? 'active' : ''
-                    }`}
-                  >
-                    {products.map((item, index) => {
-                      if (index <= flexIndex + 1 && index >= flexIndex)
-                        return (
-                          <div
-                            key={index}
-                            className="flexibleSliderContentsEachWrapper"
-                          >
-                            {sectionArea === 'bestIcon'
-                              ? bestIconDetail(item)
-                              : ''}
-                            {sectionArea === 'mdRecommend'
-                              ? mdRecommendDetail(item)
-                              : ''}
-                          </div>
-                        );
-                      return '';
-                    })}
-                  </div>
-                );
-              }
-              return '';
-            })
-          : ''}
+        {products.length > 0 &&
+          products.map((item, flexIndex) => {
+            return (
+              flexIndex % 2 === 0 && (
+                <div
+                  key={flexIndex}
+                  className={`flexibleSliderContentsEach ${
+                    sliderPosition === flexIndex / 2 && 'active'
+                  }`}
+                >
+                  {products.map((item, index) => {
+                    return (
+                      index <= flexIndex + 1 &&
+                      index >= flexIndex && (
+                        <div
+                          key={index}
+                          className="flexibleSliderContentsEachWrapper"
+                        >
+                          {sectionArea === 'bestIcon' && bestIconDetail(item)}
+                          {sectionArea === 'mdRecommend' &&
+                            mdRecommendDetail(item)}
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+              )
+            );
+          })}
       </div>
       <div className="flexibleSliderBtn">
         <MainSlideButton type="slidePrev" onClickMethod={sliderClick} />
         <div className="slideDots">
           {products.map((item, index) => {
-            if (index % 2 === 0)
-              return (
+            return (
+              index % 2 === 0 && (
                 <span
                   key={index}
                   className={
-                    sliderPosition === Math.ceil(index / 2) ? 'active' : ''
+                    sliderPosition === Math.ceil(index / 2) && 'active'
                   }
                 />
-              );
-            return '';
+              )
+            );
           })}
         </div>
         <MainSlideButton type="slideNext" onClickMethod={sliderClick} />

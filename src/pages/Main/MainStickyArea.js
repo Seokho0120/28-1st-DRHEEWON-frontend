@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { MainBorderButton } from '../../components/Buttons/Button';
 import { throttle } from 'lodash';
+
+import { MainBorderButton } from '../../components/Buttons/Button';
 
 export default function MainStickyArea({ sectionArea }) {
   const [introOpacity, setIntroOpacity] = useState(1);
@@ -59,21 +60,21 @@ export default function MainStickyArea({ sectionArea }) {
           opacity: `${stickyStates[sectionArea].opacity}`,
         }}
       />
-    ) : sectionArea === 'introShoe' ? (
-      <div className="stickyShoes">
-        <img
-          src="images/stickyLeftShoe.png"
-          alt="left"
-          style={{ transform: `translateX(${stickyPos}px)` }}
-        />
-        <img
-          src="images/stickyRightShoe.png"
-          alt="right"
-          style={{ transform: `translateX(-${stickyPos}px)` }}
-        />
-      </div>
     ) : (
-      ''
+      sectionArea === 'introShoe' && (
+        <div className="stickyShoes">
+          <img
+            src="images/stickyLeftShoe.png"
+            alt="left"
+            style={{ transform: `translateX(${stickyPos}px)` }}
+          />
+          <img
+            src="images/stickyRightShoe.png"
+            alt="right"
+            style={{ transform: `translateX(-${stickyPos}px)` }}
+          />
+        </div>
+      )
     );
   };
 
@@ -89,16 +90,16 @@ export default function MainStickyArea({ sectionArea }) {
         <span className="strong">겁나 좋은</span>
         <span className="strong">신발</span>
       </div>
-    ) : sectionArea === 'vision' ? (
-      <div className="stickyHeader" style={{ color: 'white' }}>
-        <span className="strong" style={{ color: '#999' }}>
-          닥터희원
-        </span>
-        <span className="strong">반항적인</span>
-        <span className="strong">이름 표현의 역사</span>
-      </div>
     ) : (
-      ''
+      sectionArea === 'vision' && (
+        <div className="stickyHeader" style={{ color: 'white' }}>
+          <span className="strong" style={{ color: '#999' }}>
+            닥터희원
+          </span>
+          <span className="strong">반항적인</span>
+          <span className="strong">이름 표현의 역사</span>
+        </div>
+      )
     );
   };
 
@@ -152,44 +153,44 @@ export default function MainStickyArea({ sectionArea }) {
           </a>
         </div>
       </div>
-    ) : sectionArea === 'vision' ? (
-      <div className="stickyBody" style={{ color: 'white' }}>
-        <span className="underbarSpan" />
-        <div
-          className="stickyBodyText"
-          style={{ fontSize: '26px', lineHeight: '40px' }}
-        >
-          닥터희원은 세상에 없던 신발이라는 비전을 가지고
-          <br />
-          흔함을 거부하며 유니크함을 지향하는 사람들,
-          <br />
-          그리고 불협화음에 공감하는 사람들에게 어필합니다.
-          <br />
-          <br />
-          객관적인 관점에서 닥터희원의 색다른 네이밍은
-          <br />
-          소비자들로 하여금 표현의 자유를 느끼도록 만들었으며
-          <br />
-          평범함이 녹아있는 일상 속에
-          <br />
-          결이 다른 제품으로 자리잡았습니다.
-          <br />
-          끝으로 이성적인 측면에서 닥터희원은
-          <br />
-          다름을 인정하는 하나의 아이콘과 같습니다.
-          <a href="#!">
-            <MainBorderButton type="goMoreWhite" />
-          </a>
-        </div>
-      </div>
     ) : (
-      ''
+      sectionArea === 'vision' && (
+        <div className="stickyBody" style={{ color: 'white' }}>
+          <span className="underbarSpan" />
+          <div
+            className="stickyBodyText"
+            style={{ fontSize: '26px', lineHeight: '40px' }}
+          >
+            닥터희원은 세상에 없던 신발이라는 비전을 가지고
+            <br />
+            흔함을 거부하며 유니크함을 지향하는 사람들,
+            <br />
+            그리고 불협화음에 공감하는 사람들에게 어필합니다.
+            <br />
+            <br />
+            객관적인 관점에서 닥터희원의 색다른 네이밍은
+            <br />
+            소비자들로 하여금 표현의 자유를 느끼도록 만들었으며
+            <br />
+            평범함이 녹아있는 일상 속에
+            <br />
+            결이 다른 제품으로 자리잡았습니다.
+            <br />
+            끝으로 이성적인 측면에서 닥터희원은
+            <br />
+            다름을 인정하는 하나의 아이콘과 같습니다.
+            <a href="#!">
+              <MainBorderButton type="goMoreWhite" />
+            </a>
+          </div>
+        </div>
+      )
     );
   };
   return (
     <section className="stickyWrapper">
       <div className="stickyContainer">
-        {sectionArea === 'introShoe' ? <div className="bg" /> : ''}
+        {sectionArea === 'introShoe' && <div className="bg" />}
         {stickyImages()}
       </div>
 
