@@ -30,9 +30,15 @@ export default function MainFullSlider() {
         : setIsWindowExtend(false);
     }
     window.addEventListener('resize', handleResize);
+    const interval = setInterval(() => {
+      setSliderPosition(current => {
+        return current + 1;
+      });
+    }, 3000);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      clearInterval(interval);
     };
   }, []);
 
