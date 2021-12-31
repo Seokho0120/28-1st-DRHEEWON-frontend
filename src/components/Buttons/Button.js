@@ -1,3 +1,5 @@
+import { useScrollFadeIn } from '../../hooks/useScroll';
+
 export function MainSlideButton({ type, onClickMethod }) {
   return (
     <button name={type} onClick={onClickMethod}>
@@ -13,6 +15,8 @@ export function MainBorderButton({
   onClickMethod,
 }) {
   const isBtnActive = selectedIcon === parseInt(btnName);
+
+  const borderButtonScroll = useScrollFadeIn();
 
   const borderBtnList = {
     goMoreWhite: {
@@ -69,9 +73,10 @@ export function MainBorderButton({
   return (
     <button
       name={btnName}
-      className={isBtnActive ? 'active' : ''}
+      className={isBtnActive ? 'selected' : ''}
       style={{ border: borderBtnList[type].border }}
       onClick={onClickMethod}
+      {...borderButtonScroll}
     >
       <div
         className={type.includes('goMoreBlack') ? 'black' : ''}

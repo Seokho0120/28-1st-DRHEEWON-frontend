@@ -77,14 +77,19 @@ export function FlexibleSlider({ sectionArea, products }) {
   return (
     <section className="flexibleSliderWrapper" {...flexibleSliderWrapper}>
       <div
-        className="flexibleSliderContainer active"
+        className="flexibleSliderContainer"
         style={{ transform: `translateX(-${sliderPosition * 1140}px)` }}
       >
         {products.length > 0
           ? products.map((item, flexIndex) => {
               if (flexIndex % 2 === 0) {
                 return (
-                  <div key={flexIndex} className="flexibleSliderContentsEach">
+                  <div
+                    key={flexIndex}
+                    className={`flexibleSliderContentsEach ${
+                      sliderPosition === flexIndex / 2 ? 'active' : ''
+                    }`}
+                  >
                     {products.map((item, index) => {
                       if (index <= flexIndex + 1 && index >= flexIndex)
                         return (

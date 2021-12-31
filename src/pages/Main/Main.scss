@@ -19,17 +19,17 @@
       width: 100%;
       height: 467px;
       box-sizing: content-box;
-      opacity: 0;
-
-      &.active {
-        opacity: 1;
-      }
 
       .flexibleSliderContentsEach {
         display: flex;
         flex-shrink: 0;
         justify-content: space-between;
         width: 1140px;
+        opacity: 0;
+
+        &.active {
+          opacity: 1;
+        }
 
         .flexibleSliderContentsEachWrapper {
           width: 530px;
@@ -165,6 +165,12 @@
 
 @mixin buttonFill {
   button {
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
+
     div {
       position: relative;
 
@@ -337,11 +343,11 @@
             margin-left: 20px;
           }
 
-          &.active {
+          &.selected {
             background-color: black;
           }
 
-          &.active div span {
+          &.selected div span {
             color: white;
           }
         }
@@ -398,7 +404,7 @@
     .stickyContentWrapper {
       position: relative;
       width: $mainContentWidth;
-      min-height: 120vh;
+      min-height: 140vh;
       margin: 0 auto;
 
       .stickyContentContainer {
