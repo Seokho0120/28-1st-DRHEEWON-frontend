@@ -1,11 +1,24 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Login.scss';
 
+const validPassword = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+
 const Login = () => {
+  const [formInput, setFormInput] = useState({
+    id: '',
+    pw: '',
+  });
+  const isValidLogin = !(formInput.id && validPassword.test(formInput.pw));
+
+  const handleLoginInput = e => {
+    const { value, name } = e.target;
+    setFormInput({ ...formInput, [name]: value });
+  };
+
   return (
     <div className="registerContainer">
       <header className="infoPage">
@@ -24,13 +37,27 @@ const Login = () => {
             <h3>로그인</h3>
             <label className="inputWrap">
               <span>아이디</span>
-              <input type="text" />
+              <input
+                name="id"
+                onChange={handleLoginInput}
+                value={formInput.id}
+                type="text"
+              />
             </label>
             <label className="inputWrap">
               <span>비밀번호</span>
-              <input type="password" />
+              <input
+                name="pw"
+                onChange={handleLoginInput}
+                value={formInput.pw}
+                type="password"
+              />
             </label>
-            <button className="submitRegister" type="button">
+            <button
+              disabled={isValidLogin}
+              className="submitRegister"
+              type="button"
+            >
               로그인
             </button>
             <button className="goRegister" type="button">
