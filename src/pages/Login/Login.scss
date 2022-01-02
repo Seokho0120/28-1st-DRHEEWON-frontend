@@ -3,7 +3,7 @@
 @import './../../styles/baseStyle/font.scss';
 @import './../../styles/baseStyle/border.scss';
 
-.registerContainer {
+.registerContainer.LoginContainer {
   width: $mainContentWidth;
   margin: $navMarginTop auto 0;
 
@@ -45,10 +45,11 @@
         flex-direction: column;
         width: 436px;
 
-        h3 {
+        h3.loginTitle {
           font-weight: 700;
           margin-bottom: 20px;
           padding-bottom: 40px;
+          border: none;
           text-align: center;
           font-size: 24px;
         }

@@ -17,20 +17,13 @@ const Register = () => {
   };
 
   const checkFormValid = () => {
-    // 버튼을 클릭하면 무엇을?
-    // 유효성 검사: 이메일, 비밀번호, 비밀번호 확인
-    // 만약 이메일 형식이 아니야? => alert('이메일이 올바르지 않습니다.')
-    // 만약 비밀번호 형식이 틀려? => alert('비밀번호가 올바르지 않습니다.')
-    // 만약 비밀번호와 비밀번호 확인의 value값이 달라? => alert('비밀번호가 동일하지 않습니다.')
-    // 그러나 2개 이상이 틀려? => 첫번째 value의 key값만 말해서 alert창은 1개만 띄워
-
-    // 값이 없을때: value 값이 존재하지 않음
-    // => 어떤 값이 비어있을때: `${가장 최상단에 위치한 값}이 입력되지 않았습니다.`
+    const { name, id, email, password, rePassword, birth, tel } = formInput;
 
     if (!Object.keys(formInput).length) return alert('내용을 입력해주세요.');
-    const { name, id, email, password, rePassword, birth, tel } = formInput;
+
     const isKeyValid = input =>
       typeof input !== 'undefined' ? input.length : false;
+
     const validator = {
       name: isKeyValid(name),
       id: isKeyValid(id),
@@ -52,6 +45,7 @@ const Register = () => {
 
     const alertMessage = {
       name: '이름이 입력되지 않았습니다.',
+      id: '아이디가 입력되지 않았습니다.',
       email: '이메일이 올바르지 않습니다.',
       password: '비밀번호가 올바르지 않습니다.',
       rePassword: '비밀번호가 동일하지 않습니다.',
@@ -59,7 +53,12 @@ const Register = () => {
       tel: '휴대폰 번호가 입력되지 않았습니다.',
     };
 
-    findKey() === null ? navigate('/login') : alert(alertMessage[findKey()]);
+    if (findKey() === null) {
+      navigate('/login');
+      alert('환영합니다. 로그인을 해주세요.');
+    } else {
+      alert(alertMessage[findKey()]);
+    }
   };
 
   return (
@@ -170,7 +169,6 @@ const Register = () => {
             </table>
             <button
               onClick={checkFormValid}
-              // disabled={isFormValidAll === true or false}
               type="button"
               className="submitRegister"
             >

@@ -94,9 +94,10 @@
               display: inline-block;
               padding: 20px 24px;
               margin-left: 20px;
-              background-color: $white;
-              border: 2px solid $yellow;
+              background-color: $deepBlack;
+              // border: 2px solid $yellow;
               border-radius: 4px;
+              color: $white;
               font-size: $mediumFont;
               font-weight: $bold;
               text-align: center;
@@ -111,6 +112,7 @@
           margin: 80px auto 50px;
           border-radius: 4px;
           background-color: $yellow;
+          color: $deepBlack;
           font-size: 22px;
           font-weight: $extraBold;
           text-align: center;
