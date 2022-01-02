@@ -16,13 +16,17 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
   width: size.$mainContentWidth;
   margin-top: size.$navMarginTop;
 
+  /* slideShow */
   .slideShow {
     width: 560px;
     height: 700px;
+    margin-right: 60px;
     position: relative;
     overflow: hidden;
 
@@ -64,11 +68,11 @@
     }
   }
 
+  /* productDetail */
   .productDetail {
     display: flex;
     flex-direction: column;
     width: 520px;
-    // background-color: lightgrey;
 
     .detailTop {
       display: flex;
@@ -145,6 +149,11 @@
           background-color: color.$white;
           border: 1px solid #999;
 
+          &.black {
+            background-color: black;
+            color: white;
+          }
+
           p {
             font-size: font.$mediumFont;
             padding-right: 80px;
@@ -155,28 +164,26 @@
       .centerColorDetail {
         display: flex;
         align-content: center;
+        margin-top: 20px;
 
-        .btnBlack,
-        .btnWhite,
-        .btnBrown {
-          width: 40px;
-          height: 40px;
-          margin-top: 36px;
-          margin-right: 20px;
-          border: 1px solid black;
+        .centerColor {
+          width: 42px;
+          height: 42px;
           border-radius: 50%;
-        }
+          margin-right: 18px;
 
-        .btnBlack {
-          background-color: black;
-        }
+          &.black {
+            background-color: black;
+          }
 
-        .btnWhite {
-          background-color: white;
-        }
+          &.white {
+            border: 1px solid black;
+            background-color: white;
+          }
 
-        .btnBrown {
-          background-color: rgb(178, 23, 15);
+          &.brown {
+            background-color: brown;
+          }
         }
       }
 
@@ -199,6 +206,11 @@
             text-align: center;
             font-size: 18px;
             font-weight: 700;
+          }
+
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
           }
 
           button {
@@ -243,5 +255,110 @@
         background-color: black;
       }
     }
+  }
+
+  /* productExplain */
+  .productExplain {
+    display: flex;
+    flex-direction: column;
+
+    .explainText {
+      text-align: center;
+      margin: 120px 0;
+      padding-bottom: 120px;
+      border-bottom: border.$btnBorderBlack;
+
+      &Title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      &Detail {
+        font-size: 26px;
+      }
+    }
+
+    .explainDetail {
+      display: flex;
+      padding-bottom: 120px;
+      border-bottom: border.$btnBorderBlack;
+
+      .explainSize {
+        width: 50%;
+
+        h2 {
+          font-size: 26px;
+          margin-bottom: 20px;
+          padding-left: 8px;
+        }
+
+        .table {
+          margin-bottom: 32px;
+          border-top: 3px solid black;
+
+          .tableTitle {
+            width: 100px;
+            height: 56px;
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: color.$deepGrey;
+            border-bottom: 1px solid color.$grey;
+          }
+
+          .tableBody {
+            height: 112px;
+            letter-spacing: 1px;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            border-bottom: 1px solid color.$grey;
+          }
+        }
+      }
+
+      .explainContents {
+        width: 50%;
+
+        .ContentsList {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 50px;
+
+          div {
+            font-size: 20px;
+            margin-bottom: 5px;
+          }
+
+          p {
+            font-size: 30px;
+            font-weight: 700;
+          }
+        }
+
+        .ContentsDesk {
+          margin-top: 32px;
+
+          li {
+            position: relative;
+            width: 100%;
+            margin-top: 16px;
+            padding-left: 12px;
+            line-height: 1.5;
+            font-size: 24px;
+
+            svg {
+              margin-right: 10px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .test {
+    width: 100%;
+    font-size: 150px;
   }
 }
