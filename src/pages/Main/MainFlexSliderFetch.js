@@ -4,8 +4,10 @@ import { FlexibleSlider } from '../../components/FlexibleSlider/FlexibleSlider';
 
 export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
   const [products, setProducts] = useState([]);
+  const [isProductFetched, setIsProductFetched] = useState(false);
 
   useEffect(() => {
+    setIsProductFetched(false);
     switch (sectionArea) {
       case 'bestIcon':
         fetch(`http://localhost:3000/data/bestIcon${selectedIcon}.json`)
@@ -21,5 +23,15 @@ export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
     }
   }, [sectionArea, selectedIcon]);
 
-  return <FlexibleSlider sectionArea={sectionArea} products={products} />;
+  useEffect(() => {
+    products.length > 0 && setIsProductFetched(true);
+  }, [products]);
+
+  return (
+    <FlexibleSlider
+      sectionArea={sectionArea}
+      products={products}
+      isLoad={isProductFetched}
+    />
+  );
 }

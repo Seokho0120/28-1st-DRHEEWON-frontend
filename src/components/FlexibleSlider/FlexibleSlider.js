@@ -9,9 +9,8 @@ import {
   MainBorderButton,
 } from '../../components/Buttons/Button';
 
-export function FlexibleSlider({ sectionArea, products }) {
+export function FlexibleSlider({ sectionArea, products, isLoad }) {
   const [sliderPosition, setSliderPosition] = useState(0);
-
   const flexibleSliderWrapper = useScrollFadeIn();
 
   const sliderClick = event => {
@@ -90,21 +89,25 @@ export function FlexibleSlider({ sectionArea, products }) {
                     sliderPosition === flexIndex / 2 ? 'active' : ''
                   }`}
                 >
-                  {products.map((item, index) => {
-                    return (
-                      index <= flexIndex + 1 &&
-                      index >= flexIndex && (
-                        <div
-                          key={index}
-                          className="flexibleSliderContentsEachWrapper"
-                        >
-                          {sectionArea === 'bestIcon' && bestIconDetail(item)}
-                          {sectionArea === 'mdRecommend' &&
-                            mdRecommendDetail(item)}
-                        </div>
-                      )
-                    );
-                  })}
+                  {isLoad ? (
+                    products.map((item, index) => {
+                      return (
+                        index <= flexIndex + 1 &&
+                        index >= flexIndex && (
+                          <div
+                            key={index}
+                            className="flexibleSliderContentsEachWrapper"
+                          >
+                            {sectionArea === 'bestIcon' && bestIconDetail(item)}
+                            {sectionArea === 'mdRecommend' &&
+                              mdRecommendDetail(item)}
+                          </div>
+                        )
+                      );
+                    })
+                  ) : (
+                    <p>loading</p>
+                  )}
                 </div>
               )
             );
