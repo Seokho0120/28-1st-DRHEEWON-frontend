@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 import { FlexibleSlider } from '../../components/FlexibleSlider/FlexibleSlider';
-// import { bestIconContentsData, mdRecommendContentsData } from './MainMockData';
 
 export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
   const [products, setProducts] = useState([]);
