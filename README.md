@@ -8,8 +8,8 @@
 
 ## 팀원
 
-- 강희원, 김용선, 김재엽, 김정현 (Frontend)
-- 이석호, 이지엽 (Backend)
+- 강희원, 김용선, 김정현, 이석호 (Frontend)
+- 김재엽, 이지엽 (Backend)
 
 ## Project
 
