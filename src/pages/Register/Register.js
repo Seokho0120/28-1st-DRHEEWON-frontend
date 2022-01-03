@@ -54,9 +54,30 @@ const Register = () => {
       tel: '휴대폰 번호가 입력되지 않았습니다.',
     };
 
+    const goToMain = () => {
+      fetch('http://b9b1-14-38-21-133.ngrok.io/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          username: formInput.name,
+          user_id: formInput.id,
+          email: formInput.email,
+          password: formInput.password,
+          birth: formInput.birth,
+          mobile_number: formInput.tel,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.message === 'SUCCESS') {
+            localStorage.setItem('user', result.token);
+            alert('환영합니다. 로그인을 해주세요.');
+            navigate('/login');
+          }
+        });
+    };
+
     if (findKey() === null) {
-      navigate('/login');
-      alert('환영합니다. 로그인을 해주세요.');
+      goToMain();
     } else {
       alert(alertMessage[findKey()]);
     }
