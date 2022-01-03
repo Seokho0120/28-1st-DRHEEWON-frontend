@@ -2,8 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { throttle } from 'lodash';
 
-import Main from './pages/Main/Main';
 import Nav from './components/Nav/Nav';
+import Main from './pages/Main/Main';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 export default function Router() {
   const [windowY, setWindowY] = useState();
@@ -27,6 +29,8 @@ export default function Router() {
       <Nav visibleValue={visibleValue} />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
