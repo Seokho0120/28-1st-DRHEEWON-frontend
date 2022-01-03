@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { throttle } from 'lodash';
 
 import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
@@ -18,7 +17,7 @@ export default function Router() {
       setWindowY(window.scrollY);
     }
 
-    window.addEventListener('scroll', throttle(handleScroll, 10));
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

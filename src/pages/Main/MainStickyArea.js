@@ -34,13 +34,13 @@ export default function MainStickyArea({ sectionArea }) {
       const introScale = scrollPos > 3500 && scrollPos < 3850;
       const stickyShoePos = scrollPos > 5400 && scrollPos < 6400;
       const visionBlind = scrollPos > 7700 && scrollPos < 8300;
-      const visionScale = scrollPos > 8000 && scrollPos < 8300;
+      const visionScale = scrollPos > 8300 && scrollPos < 8900;
 
       if (introBlind) setIntroOpacity(1 - (scrollPos - 3200) / 1000);
       if (introScale) setIntroScale(1 + (scrollPos - 3500) / 3500);
       if (stickyShoePos) setStickyPos((scrollPos - 5400) / 5);
       if (visionBlind) setVisionOpacity(1 - (scrollPos - 7700) / 1000);
-      if (visionScale) setVisionScale(1 + (scrollPos - 8000) / 8000);
+      if (visionScale) setVisionScale(1 + (scrollPos - 8300) / 8300);
     }
 
     window.addEventListener('scroll', throttle(handleScroll, 10));
@@ -80,22 +80,20 @@ export default function MainStickyArea({ sectionArea }) {
 
   const stickyHeader = () => {
     return sectionArea === 'introduce' ? (
-      <div className="stickyHeader" style={{ color: 'white' }}>
+      <div className="stickyHeader white">
         <span className="strong">WELCOME TO</span>
         <span className="strong">DRHW MEMBERS</span>
       </div>
     ) : sectionArea === 'introShoe' ? (
-      <div className="stickyHeader" style={{ paddingLeft: '600px' }}>
-        <span style={{ fontSize: '36px', color: '#999' }}>오리지널</span>
+      <div className="stickyHeader padding600">
+        <span>오리지널</span>
         <span className="strong">겁나 좋은</span>
         <span className="strong">신발</span>
       </div>
     ) : (
       sectionArea === 'vision' && (
-        <div className="stickyHeader" style={{ color: 'white' }}>
-          <span className="strong" style={{ color: '#999' }}>
-            닥터희원
-          </span>
+        <div className="stickyHeader white">
+          <span className="grey strong">닥터희원</span>
           <span className="strong">반항적인</span>
           <span className="strong">이름 표현의 역사</span>
         </div>
@@ -105,7 +103,7 @@ export default function MainStickyArea({ sectionArea }) {
 
   const stickyBodyText = () => {
     return sectionArea === 'introduce' ? (
-      <div className="stickyBody" style={{ color: 'white' }}>
+      <div className="stickyBody white">
         <span className="underbarSpan" />
         <div className="stickyBodyText">
           For Your Unique Identity
@@ -117,15 +115,9 @@ export default function MainStickyArea({ sectionArea }) {
         </div>
       </div>
     ) : sectionArea === 'introShoe' ? (
-      <div
-        className="stickyBody"
-        style={{ paddingLeft: '600px', color: '#666' }}
-      >
+      <div className="stickyBody deepGray">
         <span className="underbarSpan black" />
-        <div
-          className="stickyBodyText"
-          style={{ fontSize: '26px', lineHeight: '40px' }}
-        >
+        <div className="stickyBodyText longText">
           2021년 12월 31일
           <br />
           닥터희원이 가장 처음 선보인
@@ -155,12 +147,9 @@ export default function MainStickyArea({ sectionArea }) {
       </div>
     ) : (
       sectionArea === 'vision' && (
-        <div className="stickyBody" style={{ color: 'white' }}>
+        <div className="stickyBody white">
           <span className="underbarSpan" />
-          <div
-            className="stickyBodyText"
-            style={{ fontSize: '26px', lineHeight: '40px' }}
-          >
+          <div className="stickyBodyText longText">
             닥터희원은 세상에 없던 신발이라는 비전을 가지고
             <br />
             흔함을 거부하며 유니크함을 지향하는 사람들,

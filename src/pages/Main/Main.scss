@@ -218,6 +218,27 @@
         .stickyHeader {
           display: flex;
           flex-direction: column;
+
+          &.padding600 {
+            padding-left: 600px;
+
+            span {
+              &:nth-child(1) {
+                font-size: 36px;
+                color: #999;
+              }
+            }
+          }
+
+          &.white {
+            color: $white;
+
+            span {
+              &.grey {
+                color: $grey;
+              }
+            }
+          }
         }
 
         .stickyBody {
@@ -226,6 +247,15 @@
           justify-content: center;
           margin-top: 80px;
 
+          &.white {
+            color: white;
+          }
+
+          &.deepGray {
+            color: #666;
+            padding-left: 600px;
+          }
+
           @include underbarSpan;
 
           .stickyBodyText {
@@ -233,6 +263,11 @@
             top: 30px;
             font-size: $largeFont;
             line-height: 60px;
+
+            &.longText {
+              font-size: 26px;
+              line-height: 40px;
+            }
 
             a {
               display: block;
