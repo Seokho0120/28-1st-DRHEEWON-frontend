@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "고급진 신발",
+    "imgPath": "images/black_shoe.png",
+    "amount": 290000,
+    "like": 1007
+  },
+  {
+    "id": 2,
+    "name": "싼 신발 mk.2",
+    "imgPath": "images/black_shoe.png",
+    "amount": 130000,
+    "like": 1558
+  },
+  {
+    "id": 3,
+    "name": "애매한 신발",
+    "imgPath": "images/black_shoe.png",
+    "amount": 155000,
+    "like": 55
+  }
+]

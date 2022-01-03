@@ -1,0 +1,234 @@
+@import '../../styles/baseStyle/colors.scss';
+
+@mixin topBtn {
+  .topBtn {
+    position: fixed;
+    top: 84%;
+    left: 90%;
+    background: #ccc;
+    color: $black;
+    border-radius: 50%;
+    font-size: $largeFont;
+    padding: 5px 15px;
+    opacity: 0;
+    transition: all 0.3s;
+    box-shadow: 0px 0px 10px 0px #bbb;
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin flexibleSlider {
+  .flexibleSliderWrapper {
+    width: 1140px;
+    margin: 0 auto;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.5s;
+
+    &.active {
+      opacity: 1;
+    }
+
+    .flexibleSliderContainer {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 467px;
+      box-sizing: content-box;
+      transition: transform 0.5s;
+
+      .flexibleSliderContentsEach {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: space-between;
+        width: 1140px;
+        opacity: 0;
+        transition: opacity 0.5s;
+
+        &.active {
+          opacity: 1;
+        }
+
+        .flexibleSliderContentsEachWrapper {
+          width: 530px;
+
+          .bestIconContentsEachDetail {
+            display: flex;
+            padding: 0 20px;
+            font-size: 20px;
+
+            .detailLeft {
+              display: flex;
+              flex-direction: column;
+              flex: 1 1 auto;
+
+              p {
+                margin-bottom: 10px;
+
+                &:nth-child(2) {
+                  color: $deepGrey;
+                }
+              }
+            }
+
+            .detailRight {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              text-align: center;
+            }
+          }
+
+          .mdRecommendDetail {
+            display: flex;
+            flex-direction: column;
+
+            p {
+              font-size: 26px;
+            }
+
+            .detailBox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+          }
+
+          img {
+            width: 265px;
+            height: 329px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .flexibleSliderBtn {
+      display: flex;
+      justify-content: space-between;
+
+      @include slideButton;
+      @include slideDots;
+    }
+  }
+}
+
+@mixin slideButton {
+  button {
+    width: 84px;
+    background-color: black;
+
+    span {
+      font-size: 50px;
+      color: $white;
+      pointer-events: none;
+    }
+  }
+}
+
+@mixin slideDots {
+  .slideDots {
+    display: flex;
+    align-items: center;
+
+    span {
+      width: 12px;
+      height: 12px;
+      background-color: $black;
+      box-sizing: border-box;
+      margin-left: 18px;
+      transition: width 0.3s;
+
+      &.active {
+        width: 42px;
+      }
+
+      &.yellow {
+        background-color: yellow;
+      }
+    }
+  }
+
+  .slideDots.active {
+    opacity: 1;
+  }
+}
+
+@mixin underbarSpan {
+  .underbarSpan {
+    display: flex;
+
+    &::before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 450px;
+      height: 12px;
+      background: $white;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: relative;
+      left: 30px;
+      width: 80px;
+      height: 12px;
+      background: $white;
+    }
+
+    &.black::before {
+      background: $black;
+    }
+    &.black::after {
+      background: $black;
+    }
+  }
+}
+
+@mixin buttonFill {
+  button {
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
+
+    div {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background: $white;
+        transition: all 0.3s;
+      }
+
+      &.black::before {
+        background: $black;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+
+      span {
+        position: relative;
+      }
+
+      &:hover span {
+        color: black;
+      }
+
+      &.black:hover span {
+        color: white;
+      }
+    }
+  }
+}
