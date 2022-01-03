@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+import ContentHeader from './../../components/RegisterLogin/ContentHeader';
+import Welcome from './../../components/RegisterLogin/Welcome';
+
+import './../../components/RegisterLogin/RegisterLogin.scss';
 import './Register.scss';
 
 const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
@@ -85,17 +88,9 @@ const Register = () => {
 
   return (
     <div className="registerContainer">
-      <header className="infoPage">
-        <span>
-          <FontAwesomeIcon icon={faArrowLeft} size="3x" className="backArrow" />
-        </span>
-        <h1>회원가입</h1>
-      </header>
+      <ContentHeader pageInfo="회원가입" />
       <main className="RegisterMainWrap">
-        <header className="welcomeWrap">
-          <h2>어서오세요</h2>
-          <p>닥터마틴에 오신걸 환영합니다</p>
-        </header>
+        <Welcome />
         <article className="registerWrap">
           <form action="POST">
             <h3>회원가입</h3>
