@@ -231,9 +231,9 @@
           }
 
           &.white {
-            color: $white;
-
             span {
+              color: $white;
+
               &.grey {
                 color: $grey;
               }
@@ -247,13 +247,11 @@
           justify-content: center;
           margin-top: 80px;
 
-          &.white {
-            color: white;
-          }
-
           &.deepGray {
-            color: #666;
             padding-left: 600px;
+            div {
+              color: $deepGrey;
+            }
           }
 
           @include underbarSpan;
@@ -263,6 +261,10 @@
             top: 30px;
             font-size: $largeFont;
             line-height: 60px;
+
+            &.white {
+              color: white;
+            }
 
             &.longText {
               font-size: 26px;
@@ -303,6 +305,7 @@
         flex-direction: column;
 
         span {
+          color: $white;
           &:nth-child(1) {
             font-size: $largeFont;
           }

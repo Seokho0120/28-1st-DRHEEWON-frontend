@@ -37,6 +37,7 @@
 
         h3 {
           margin-bottom: 10px;
+          color: $white;
         }
 
         p {
@@ -46,6 +47,8 @@
           }
 
           span {
+            color: $grey;
+
             &.footerWhite {
               color: $white;
               margin-right: 5px;
@@ -61,8 +64,13 @@
         line-height: 30px;
 
         h3 {
+          color: $white;
           margin-bottom: 10px;
           font-weight: 200;
+        }
+
+        p {
+          color: $white;
         }
       }
 
@@ -72,8 +80,13 @@
         line-height: 30px;
 
         h3 {
+          color: $white;
           margin-bottom: 10px;
           font-weight: 200;
+        }
+
+        p {
+          color: $white;
         }
       }
     }
@@ -87,6 +100,7 @@
       .footerATags {
         flex: auto;
         font-size: $mediumFont;
+        color: $white;
 
         a:nth-child(n + 2) {
           margin-left: 20px;
@@ -111,6 +125,12 @@
 
           a {
             align-self: center;
+
+            svg {
+              path {
+                color: $white;
+              }
+            }
           }
         }
       }
