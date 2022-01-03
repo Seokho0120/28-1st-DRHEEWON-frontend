@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 
-import { MainSlideButton } from '../../components/Buttons/Button';
+import { SliderButton } from '../../components/Buttons/SliderButton';
 import { slideImgsData } from './MainMockData';
+
+const laptopSize = 1626;
 
 export default function MainFullSlider() {
   const [sliderPosition, setSliderPosition] = useState(1);
   const [stopTran, setStopTran] = useState(false);
   const [isWindowExtend, setIsWindowExtend] = useState(
-    window.innerWidth > 1626
+    window.innerWidth > laptopSize
   );
 
   const slideImgs = slideImgsData;
@@ -83,16 +85,17 @@ export default function MainFullSlider() {
         </div>
       </div>
       <div className="fullSlideBtnArea">
-        <MainSlideButton type="slidePrev" onClickMethod={clickSliderBtn} />
-        <MainSlideButton type="slideNext" onClickMethod={clickSliderBtn} />
+        <SliderButton type="slidePrev" onClickMethod={clickSliderBtn} />
+        <SliderButton type="slideNext" onClickMethod={clickSliderBtn} />
       </div>
       <div className="fullSlideDotsContainer">
         <div className="slideDots">
           {slideImgs.map((item, index) => (
             <span
               key={index}
-              className={index + 1 === sliderPosition ? 'active' : ''}
-              style={{ backgroundColor: 'yellow' }}
+              className={`yellow ${
+                index + 1 === sliderPosition ? 'active' : ''
+              }`}
             />
           ))}
         </div>

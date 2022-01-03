@@ -3,35 +3,35 @@
     "id": 1,
     "name": "고급진 신발",
     "imgPath": "images/black_shoe.png",
-    "amount": "₩ 290,000",
+    "amount": 290000,
     "like": 1007
   },
   {
     "id": 2,
     "name": "싼 신발 mk.2",
     "imgPath": "images/black_shoe.png",
-    "amount": "₩ 130,000",
+    "amount": 130000,
     "like": 1558
   },
   {
     "id": 3,
     "name": "애매한 신발",
     "imgPath": "images/black_shoe.png",
-    "amount": "₩ 155,000",
+    "amount": 155000,
     "like": 55
   },
   {
     "id": 4,
     "name": "비싼 신발",
     "imgPath": "images/black_shoe.png",
-    "amount": "₩ 430,000",
+    "amount": 430000,
     "like": 587
   },
   {
     "id": 5,
     "name": "만원의 행복",
     "imgPath": "images/black_shoe.png",
-    "amount": "₩ 10,000",
+    "amount": 10000,
     "like": 9999
   }
 ]

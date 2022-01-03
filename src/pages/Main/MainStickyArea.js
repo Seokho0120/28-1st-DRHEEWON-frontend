@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
-import { throttle } from 'lodash';
+import throttle from '../../customlib/throttle';
 
-import { MainBorderButton } from '../../components/Buttons/Button';
+import { BorderButton } from '../../components/Buttons/BorderButton';
+
+const stickyImgs = {
+  introduce: 'images/3.png',
+  vision: 'images/visionImg.jpg',
+};
 
 export default function MainStickyArea({ sectionArea }) {
   const [introOpacity, setIntroOpacity] = useState(1);
@@ -19,11 +24,6 @@ export default function MainStickyArea({ sectionArea }) {
       opacity: visionOpacity,
       scale: visionScale,
     },
-  };
-
-  const stickyImgs = {
-    introduce: 'images/3.png',
-    vision: 'images/visionImg.jpg',
   };
 
   useEffect(() => {
@@ -112,7 +112,7 @@ export default function MainStickyArea({ sectionArea }) {
           <br />
           신규 가입시 10% 쿠폰 즉시 지급
           <a href="#!">
-            <MainBorderButton type="goMoreWhite" />
+            <BorderButton type="goMoreWhite" />
           </a>
         </div>
       </div>
@@ -149,7 +149,7 @@ export default function MainStickyArea({ sectionArea }) {
           아래 버튼을 클릭해 확인해보세요.
           <br />
           <a href="#!">
-            <MainBorderButton type="goMoreBlack" />
+            <BorderButton type="goMoreBlack" />
           </a>
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function MainStickyArea({ sectionArea }) {
             <br />
             다름을 인정하는 하나의 아이콘과 같습니다.
             <a href="#!">
-              <MainBorderButton type="goMoreWhite" />
+              <BorderButton type="goMoreWhite" />
             </a>
           </div>
         </div>

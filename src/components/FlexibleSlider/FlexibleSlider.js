@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { useState, useEffect } from 'react';
 
 import { useScrollFadeIn } from '../../hooks/useScroll';
 
-import {
-  MainSlideButton,
-  MainBorderButton,
-} from '../../components/Buttons/Button';
+import { SliderButton } from '../../components/Buttons/SliderButton';
+import MainBestIconDetail from '../../pages/Main/FlexibleSliderDetails/MainBestIconDetail';
+import MainMdRecommendDetail from '../../pages/Main/FlexibleSliderDetails/MainMdRecommendDetail';
 
 export function FlexibleSlider({ sectionArea, products, isLoad }) {
   const [sliderPosition, setSliderPosition] = useState(0);
   const flexibleSliderWrapper = useScrollFadeIn();
+
+  useEffect(() => {
+    setSliderPosition(0);
+  }, [products]);
 
   const sliderClick = event => {
     const { name } = event.target;
@@ -28,49 +29,6 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
         break;
       default:
     }
-  };
-
-  const bestIconDetail = item => {
-    return (
-      <>
-        <img src={item.imgPath} alt="dummy" />
-        <img src={item.imgPath} alt="dummy" />
-        <div className="bestIconContentsEachDetail strong">
-          <div className="detailLeft">
-            <p>{item.name}</p>
-            <p>오리지널 | 블랙</p>
-            <span>
-              <FontAwesomeIcon icon={faHeart} />
-              {item.like}
-            </span>
-          </div>
-          <div className="detailRight">
-            <p>{item.amount}</p>
-            <MainBorderButton type="putCart" />
-          </div>
-        </div>
-      </>
-    );
-  };
-
-  const mdRecommendDetail = item => {
-    return (
-      <div className="mdRecommendDetail strong">
-        <p>{item.name}</p>
-        <span>
-          <FontAwesomeIcon icon={faHeart} />
-          {item.like}
-        </span>
-        <div className="flexSliderImages">
-          <img src={item.imgPath} alt="dummy" />
-          <img src={item.imgPath} alt="dummy" />
-        </div>
-        <div className="detailBox">
-          <p>{item.amount}</p>
-          <MainBorderButton type="putCart" />
-        </div>
-      </div>
-    );
   };
 
   return (
@@ -98,9 +56,12 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
                             key={index}
                             className="flexibleSliderContentsEachWrapper"
                           >
-                            {sectionArea === 'bestIcon' && bestIconDetail(item)}
-                            {sectionArea === 'mdRecommend' &&
-                              mdRecommendDetail(item)}
+                            {sectionArea === 'bestIcon' && (
+                              <MainBestIconDetail item={item} />
+                            )}
+                            {sectionArea === 'mdRecommend' && (
+                              <MainMdRecommendDetail item={item} />
+                            )}
                           </div>
                         )
                       );
@@ -114,7 +75,7 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
           })}
       </div>
       <div className="flexibleSliderBtn">
-        <MainSlideButton type="slidePrev" onClickMethod={sliderClick} />
+        <SliderButton type="slidePrev" onClickMethod={sliderClick} />
         <div className="slideDots">
           {products.map((item, index) => {
             return (
@@ -129,7 +90,7 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
             );
           })}
         </div>
-        <MainSlideButton type="slideNext" onClickMethod={sliderClick} />
+        <SliderButton type="slideNext" onClickMethod={sliderClick} />
       </div>
     </section>
   );

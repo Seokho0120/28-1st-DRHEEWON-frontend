@@ -1,4 +1,4 @@
-import { MainBorderButton } from '../../components/Buttons/Button';
+import { BorderButton } from '../../components/Buttons/BorderButton';
 
 export default function MainNewJoin() {
   return (
@@ -10,7 +10,7 @@ export default function MainNewJoin() {
           <span>신규 회원으로 가입하고 10% 쿠폰과 최신 소식을 받아보세요.</span>
         </div>
         <a href="#!">
-          <MainBorderButton type="join" />
+          <BorderButton type="join" />
         </a>
       </div>
     </section>

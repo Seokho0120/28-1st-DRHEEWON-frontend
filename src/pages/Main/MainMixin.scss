@@ -134,13 +134,17 @@
     span {
       width: 12px;
       height: 12px;
-      background-color: black;
+      background-color: $black;
       box-sizing: border-box;
       margin-left: 18px;
       transition: width 0.3s;
 
       &.active {
         width: 42px;
+      }
+
+      &.yellow {
+        background-color: yellow;
       }
     }
   }
