@@ -5,7 +5,8 @@ import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
 import './Login.scss';
 
-const validPassword = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+const validPassword =
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 const Login = () => {
   const [formInput, setFormInput] = useState({
@@ -20,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div className="registerContainer">
+    <div className="registerContainer LoginContainer">
       <ContentHeader pageInfo="로그인" />
       <main className="RegisterMainWrap">
         <Welcome />
