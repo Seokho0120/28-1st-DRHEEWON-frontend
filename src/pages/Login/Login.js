@@ -20,6 +20,31 @@ const Login = () => {
     setFormInput({ ...formInput, [name]: value });
   };
 
+  const goToMain = () => {
+    fetch('http://24d4-221-151-120-163.ngrok.io/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        user_id: formInput.id,
+        password: formInput.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        // if (result.message === 'SUCCESS') {
+        //   alert(`${id}님 반갑습니다!`);
+        //   localStorage.setItem('user', result.token);
+        //   navigate('/Main-won');
+        // }
+        // if (result.message === 'USER_DOES_NOT_EXIST') {
+        //   alert('아이디가 틀렸거나 존재하지 않는 회원입니다.');
+        // }
+        // if (result.message === 'PASSWORD_ERROR') {
+        //   alert('비밀번호가 틀렸어요.');
+        // }
+      });
+  };
+
   return (
     <div className="registerContainer LoginContainer">
       <ContentHeader pageInfo="로그인" />
@@ -49,6 +74,7 @@ const Login = () => {
             <button
               disabled={!isValidLogin}
               className="submitRegister"
+              onClick={goToMain}
               type="button"
             >
               로그인
