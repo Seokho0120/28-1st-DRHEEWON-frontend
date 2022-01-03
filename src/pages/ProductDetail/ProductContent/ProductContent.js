@@ -6,7 +6,7 @@ export default function ProductDetail({
   detailData,
   sizeBtnColorChange,
   sizeColor,
-  number,
+  qunatity,
   minusNumber,
   faMinus,
   plusNumber,
@@ -50,7 +50,7 @@ export default function ProductDetail({
             detailData.centerSize.map((ele, idx) => {
               return (
                 <button
-                  onClick={sizeBtnColorChange}
+                  onClick={() => sizeBtnColorChange(idx)}
                   className={`centerSize ${sizeColor}`}
                   key={idx}
                 >
@@ -73,7 +73,7 @@ export default function ProductDetail({
         <div className="centerOption">
           <div className="set">
             <p className="count">수량</p>
-            <input type="number" min="1" max="100" value={number} />
+            <input type="number" min="1" max="100" value={qunatity} />
             <button onClick={minusNumber} className="minus">
               <FontAwesomeIcon icon={faMinus} />
             </button>
@@ -83,7 +83,8 @@ export default function ProductDetail({
           </div>
           <div className="price">
             <FontAwesomeIcon icon={faWonSign} />
-            <span>{detailData.price}</span>
+            <span>{(qunatity * (detailData.price ?? 0)).toLocaleString()}</span>
+            {/* <span>{detailData.price}</span> */}
           </div>
         </div>
       </div>

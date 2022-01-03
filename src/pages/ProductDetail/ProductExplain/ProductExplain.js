@@ -6,7 +6,7 @@ export default function ProductExplain({
   return (
     <div className="productExplain">
       <div className="explainText">
-        <p className="explainTextTitle">PRODUCT & MATRIAL DETAILS</p>
+        <p className="explainTextTitle">PRODUCT & MATERIAL DETAILS</p>
         <p className="explainTextDetail">
           닥터마틴의 반항정신을 담은 1460 부츠의 업데이트로 청키한
           콰드(Quad)아웃솔이 특징입니다. <br />

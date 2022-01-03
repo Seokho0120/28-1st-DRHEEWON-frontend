@@ -18,9 +18,9 @@ export default function ProductDetail() {
   const [slidePosition, setSlidePosition] = useState(0);
   const [detailData, setDetailData] = useState({});
   const [sizeColor, setsizeColor] = useState('white');
-  const [number, setNumber] = useState(1);
-  const [price, setPrice] = useState(detailData.price);
-  // console.log(detailData.price * 2);
+  const [qunatity, setQunatity] = useState(1);
+  // console.log(typeof number);
+  // console.log(typeof detailData.price);
 
   const movePrev = () => {
     slidePosition > 0
@@ -34,20 +34,16 @@ export default function ProductDetail() {
       : setSlidePosition(0);
   };
 
-  const sizeBtnColorChange = () => {
+  const sizeBtnColorChange = idx => {
     sizeColor === 'white' ? setsizeColor('black') : setsizeColor('white');
   };
 
   const minusNumber = () => {
-    number === 1 ? setNumber(1) : setNumber(number - 1);
+    qunatity === 1 ? setQunatity(1) : setQunatity(qunatity - 1);
   };
 
   const plusNumber = () => {
-    setNumber(number + 1);
-    // {detailData.price}의 값을 받아서 같은 값을 계속 더해줌
-    // state에 {detailData.price}의 값을 어떻게 담아야할지 모르겠음
-    // mock data에서 가격이 문자열인데 숫자로 받아야할지? parseInt..?
-    // setPrice(price * 2);
+    setQunatity(qunatity + 1);
   };
 
   useEffect(() => {
@@ -71,7 +67,7 @@ export default function ProductDetail() {
         detailData={detailData}
         sizeBtnColorChange={sizeBtnColorChange}
         sizeColor={sizeColor}
-        number={number}
+        qunatity={qunatity}
         minusNumber={minusNumber}
         faMinus={faMinus}
         plusNumber={plusNumber}
