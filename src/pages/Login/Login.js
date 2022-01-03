@@ -7,7 +7,7 @@ import './Login.scss';
 
 const Login = () => {
   return (
-    <div className="registerContainer">
+    <div className="registerContainer LoginContainer">
       <header className="infoPage">
         <span>
           <FontAwesomeIcon icon={faArrowLeft} size="3x" className="backArrow" />
@@ -21,7 +21,7 @@ const Login = () => {
         </header>
         <article className="registerWrap">
           <form action="POST">
-            <h3>로그인</h3>
+            <h3 className="loginTitle">로그인</h3>
             <label className="inputWrap">
               <span>아이디</span>
               <input type="text" />
