@@ -26,7 +26,7 @@ const Login = () => {
         <Welcome />
         <article className="registerWrap">
           <form action="POST">
-            <h3>로그인</h3>
+            <h3 className="loginTitle">로그인</h3>
             <label className="inputWrap">
               <span>아이디</span>
               <input
