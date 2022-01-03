@@ -16,9 +16,12 @@
     }
   }
 
+  // input {
+  //   display: none;
+  // }
+
   main {
     .headContainer {
-      border-bottom: 1px solid lightgrey;
       position: relative;
 
       article.layoutWrapper {
@@ -47,16 +50,17 @@
           margin-bottom: 20px;
         }
 
+        // 필터버튼
         .filterButtonWrapper {
           align-items: center;
           text-align: right;
 
           .filterButton {
             margin-bottom: 20px;
+            font-size: 20px;
             font-weight: 700;
             margin-left: 8px;
             margin-right: 12px;
-            font-size: 18px;
 
             .filterButtonList {
               width: 20px;
@@ -77,15 +81,98 @@
         }
       }
 
-      article.filterContainer {
+      // 필터창
+      article.filterLayoutWrapper {
+        position: relative;
+        justify-content: center;
         width: 1140px;
         margin: 0 auto;
-        // position: absolute;
-        // z-index: 10;
+        z-index: 100;
 
-        .filterLayoutWrapper {
+        .filterContainer {
+          position: absolute;
+          top: 0;
+          background-color: white;
+
           form.filterListContainer_form {
-            background-color: cyan;
+            div:nth-child(4) {
+              border: none;
+            }
+
+            .containerField {
+              display: flex;
+              width: 120%;
+              min-height: 70px;
+              border-bottom: 1px solid #ddd;
+
+              .containerFieldTitle {
+                display: flex;
+                align-items: center;
+                min-width: 90px;
+                height: 80px;
+                max-width: 80px;
+                font-size: 18px;
+                font-weight: 700;
+              }
+
+              ul {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: 10px 0;
+
+                li {
+                  margin: 10px 40px 10px 0;
+
+                  .sizeBox {
+                    input {
+                      width: 22px;
+                      height: 19px;
+                      margin-right: 10px;
+                      cursor: pointer;
+                    }
+                    span {
+                      font-size: 20px;
+                    }
+                  }
+                }
+
+                .itemArray {
+                  margin: 10px 40px 10px 0;
+
+                  .itemArrayWrap {
+                    display: flex;
+
+                    input {
+                      width: 15px;
+                      height: 15px;
+                      border: 1px solid black;
+                    }
+
+                    span {
+                      line-height: 22px;
+                      font-size: 18px;
+                      padding-left: 10px;
+                    }
+                  }
+                }
+              }
+
+              .containerFieldTitle_colors {
+                li {
+                  margin: 10px;
+
+                  input {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    border: none;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
 
             div {
               box-sizing: inherit;
@@ -99,7 +186,7 @@
             width: 100%;
             padding-top: 20px;
             padding-bottom: 30px;
-            background-color: darkgoldenrod;
+            // background-color: darkgoldenrod;
 
             button {
               width: 300px;
@@ -125,8 +212,12 @@
         ul {
           display: flex;
 
-          li {
+          li.item {
+            background-color: red;
+            display: inline;
+
             width: 365px;
+            height: 455px;
 
             .itemImage {
               width: 365px;
@@ -165,7 +256,6 @@
                     span {
                       font-weight: 700;
                       font-size: 16px;
-                      inline-height: 20px;
                     }
                   }
                 }
@@ -223,13 +313,12 @@
     }
   }
 
-  footer {
-    justify-content: inherit;
-    margin-top: 150px;
-    width: 1140px;
-    margin: 0 auto;
-
-    section {
+  section {
+    .popularKeyword {
+      justify-content: inherit;
+      padding-top: 100px;
+      width: 1140px;
+      margin: 0 auto;
       padding-bottom: 100px;
 
       article {
@@ -246,6 +335,7 @@
           color: #666;
         }
       }
+
       ul {
         display: flex;
         justify-content: center;
