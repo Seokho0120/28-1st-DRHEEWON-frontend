@@ -3,21 +3,45 @@
 @import '../../styles/baseStyle/colors.scss';
 @import '../../styles/baseStyle/z-index.scss';
 
+@mixin navbarWidthSetting {
+  min-width: $mainContentWidth;
+  max-width: 2120px;
+}
+
+@mixin transition_4s {
+  transition: all 0.4s ease;
+}
+
+@mixin hamburgerBtnEach {
+  width: 27px;
+  height: 3px;
+  background-color: $black;
+}
+
 .navHead {
-  box-shadow: 0 3px 7px 0 rgb(0 0 0 / 10%);
   position: fixed;
   width: 100%;
   background-color: $white;
-  transition: all 0.4s ease;
-  z-index: 100;
+  z-index: $largeZindex;
+  @include transition_4s;
+  box-shadow: 0 3px 7px 0 rgb(0 0 0 / 10%);
+
+  &.hide {
+    opacity: 0;
+  }
+
   .navUpper {
     height: 40px;
     opacity: 1;
     background-color: $lightGrey;
+    padding: 0 100px;
+
+    &.hide {
+      opacity: 0;
+    }
 
     .navUpperFixedWidth {
-      position: relative;
-      width: $mainContentWidth;
+      @include navbarWidthSetting;
       height: 100%;
       margin: 0 auto;
 
@@ -25,9 +49,11 @@
         display: flex;
         justify-content: flex-end;
         line-height: 40px;
+
         a {
           font-size: 12px;
           color: $black;
+
           &:nth-child(n + 2) {
             margin-left: 20px;
           }
@@ -36,31 +62,27 @@
     }
   }
 
-  .navUpper.hide {
-    height: 0;
-    opacity: 0;
-  }
-
   .navBottom {
     height: 85px;
     opacity: 1;
     margin: 10px auto;
-    transition: all 0.4s ease;
+    padding: 0 100px;
+    @include transition_4s;
+
+    &.hide {
+      height: 0;
+      opacity: 0;
+    }
 
     .navBottomFixedWidth {
-      position: relative;
       display: flex;
-      flex-direction: row;
       align-items: center;
-      max-width: $mainContentWidth;
-      width: 100%;
+      @include navbarWidthSetting;
       height: 100%;
       margin: 0 auto;
 
       button {
-        position: relative;
         display: flex;
-        flex: 0 0 auto;
         align-items: center;
         width: 47px;
         height: 45px;
@@ -68,40 +90,33 @@
         transform: translate(0);
 
         .hamburgerBtnLine {
-          display: block;
-          width: 27px;
-          height: 3px;
-          background-color: $black;
+          @include hamburgerBtnEach;
 
           &::before {
             top: 10px;
             position: absolute;
             display: block;
-            width: 27px;
-            height: 3px;
-            background-color: $black;
             content: '';
+            @include hamburgerBtnEach;
           }
 
           &::after {
             bottom: 10px;
             position: absolute;
             display: block;
-            width: 27px;
-            height: 3px;
-            background-color: $black;
             content: '';
+            @include hamburgerBtnEach;
           }
         }
       }
 
       .beautifulMargin {
-        width: 100%;
-        flex: 1 1 auto;
+        flex: auto;
       }
 
       .navInput {
         position: relative;
+        flex: auto;
 
         .inputWrapper {
           display: flex;
@@ -127,13 +142,4 @@
       }
     }
   }
-
-  .navBottom.hide {
-    height: 0px;
-    opacity: 0;
-  }
-}
-
-.navHead.hide {
-  opacity: 0;
 }
