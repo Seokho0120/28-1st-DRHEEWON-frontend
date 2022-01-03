@@ -5,7 +5,8 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Register.scss';
 
 const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
-const validPassword = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+const validPassword =
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 const Register = () => {
   const [formInput, setFormInput] = useState({});
@@ -125,7 +126,7 @@ const Register = () => {
                       onChange={handleLoginInput}
                       name="password"
                       type="password"
-                      placeholder="특수 문자와 숫자를 포함한 8자 이상"
+                      placeholder="문자와 특수 문자, 숫자를 포함한 8자 이상"
                       required="required"
                     />
                   </td>
