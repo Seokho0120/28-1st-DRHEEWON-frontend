@@ -103,9 +103,9 @@ export default function MainStickyArea({ sectionArea }) {
 
   const stickyBodyText = () => {
     return sectionArea === 'introduce' ? (
-      <div className="stickyBody white">
+      <div className="stickyBody">
         <span className="underbarSpan" />
-        <div className="stickyBodyText">
+        <div className="stickyBodyText white">
           For Your Unique Identity
           <br />
           신규 가입시 10% 쿠폰 즉시 지급
@@ -147,9 +147,9 @@ export default function MainStickyArea({ sectionArea }) {
       </div>
     ) : (
       sectionArea === 'vision' && (
-        <div className="stickyBody white">
+        <div className="stickyBody">
           <span className="underbarSpan" />
-          <div className="stickyBodyText longText">
+          <div className="stickyBodyText white longText">
             닥터희원은 세상에 없던 신발이라는 비전을 가지고
             <br />
             흔함을 거부하며 유니크함을 지향하는 사람들,

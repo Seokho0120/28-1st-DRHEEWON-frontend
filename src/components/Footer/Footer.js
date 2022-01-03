@@ -16,12 +16,12 @@ export default function Footer() {
           <div className="footerLeft">
             <h3>닥터희원위코드코리아(주)</h3>
             <p>
-              서울특별시 강남구 테헤란로 위워크 10층 닥터희원{' '}
+              서울특별시 강남구 테헤란로 위워크 10층 닥터희원
               <span className="marginVerticalBar">|</span> 사업자번호 :
-              999-99-99999{' '}
+              999-99-99999
             </p>
             <p>
-              개인정보관리책임자 : 누구세요?
+              개인정보관리책임자 : 닥터희원
               <span className="marginVerticalBar">|</span>대표이사 : 강희원
             </p>
             <p>
@@ -69,7 +69,7 @@ export default function Footer() {
           <div className="socialIcons">
             <div>
               <a href="#!">
-                <FontAwesomeIcon icon={faTwitter} />
+                <FontAwesomeIcon className="socialIconsBtn" icon={faTwitter} />
               </a>
             </div>
             <div>

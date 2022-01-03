@@ -45,7 +45,6 @@ export default function MainFullSlider() {
       }, 100);
     }
   }, [sliderPosition]);
-
   const clickSliderBtn = event => {
     const { name } = event.target;
     switch (name) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { throttle } from 'lodash';
+import throttle from '../../customlib/throttle';
 
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

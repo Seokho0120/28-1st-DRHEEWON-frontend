@@ -210,20 +210,24 @@
         transition: all 0.3s;
       }
 
-      &.black::before {
-        background: $black;
-      }
-
       &:hover::before {
         width: 100%;
       }
 
-      span {
-        position: relative;
+      &.black::before {
+        background: $black;
       }
 
+      span {
+        position: relative;
+        color: $white;
+      }
       &:hover span {
         color: black;
+      }
+
+      &.black span {
+        color: $black;
       }
 
       &.black:hover span {
