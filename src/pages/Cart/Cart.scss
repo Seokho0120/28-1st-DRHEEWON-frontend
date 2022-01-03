@@ -1,0 +1,10 @@
+@import './../../styles/baseStyle/colors.scss';
+@import './../../styles/baseStyle/size.scss';
+@import './../../styles/baseStyle/font.scss';
+@import './../../styles/baseStyle/border.scss';
+
+.cartContainer {
+  width: $mainContentWidth;
+  margin: 0 auto;
+  padding-top: $navPaddingTop;
+}

@@ -5,6 +5,7 @@ import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Cart from './pages/Cart/Cart';
 
 export default function Router() {
   const [windowY, setWindowY] = useState();
@@ -30,6 +31,7 @@ export default function Router() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
