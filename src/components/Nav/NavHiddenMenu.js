@@ -6,10 +6,22 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import './NavHiddenMenu.scss';
+import useScrollHidden from '../../hooks/useScrollHidden';
+import { useEffect, useState } from 'react';
 
 export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
+  useScrollHidden();
+
+  const [delayRender, setDelayRender] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDelayRender(true);
+    }, 10);
+  }, [isShow]);
+
   return (
-    <section className={`hiddenMenu ${isShow ? 'active' : ''}`}>
+    <section className={`hiddenMenu ${delayRender ? 'active' : ''}`}>
       <div className="menuHeaderWrapper">
         <div className="menuHeader">
           <a href="#!">

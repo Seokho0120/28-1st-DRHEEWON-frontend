@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faEye, faUser } from '@fortawesome/free-regular-svg-icons';
@@ -13,11 +13,11 @@ export default function Nav({ visibleValue }) {
     setIsShow(!isShow);
   };
 
-  useEffect(() => {
-    isShow
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'unset');
-  }, [isShow]);
+  // useEffect(() => {
+  //   isShow
+  //     ? (document.body.style.overflow = 'hidden')
+  //     : (document.body.style.overflow = 'unset');
+  // }, [isShow]);
 
   return (
     <>
@@ -63,7 +63,11 @@ export default function Nav({ visibleValue }) {
           </div>
         </section>
       </header>
-      <NavHiddenMenu isShow={isShow} toggleHiddenMenu={toggleHiddenMenu} />
+      {isShow ? (
+        <NavHiddenMenu isShow={isShow} toggleHiddenMenu={toggleHiddenMenu} />
+      ) : (
+        ''
+      )}
     </>
   );
 }
