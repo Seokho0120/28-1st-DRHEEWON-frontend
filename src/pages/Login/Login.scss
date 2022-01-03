@@ -102,6 +102,11 @@
           font-size: 22px;
           font-weight: $extraBold;
           text-align: center;
+          opacity: 1;
+
+          &:disabled {
+            opacity: 0.3;
+          }
         }
 
         .goRegister {

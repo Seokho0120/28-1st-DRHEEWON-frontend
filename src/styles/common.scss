@@ -7,9 +7,18 @@ body {
   color: $black;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 // float 초기화
 .clear::after {
   content: '';
   display: block;
   clear: both;
+}
+
+.strong {
+  font-weight: 700;
 }

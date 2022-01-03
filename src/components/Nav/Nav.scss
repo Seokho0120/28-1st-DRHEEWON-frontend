@@ -1,0 +1,145 @@
+@import '../../styles/baseStyle/font.scss';
+@import '../../styles/baseStyle/size.scss';
+@import '../../styles/baseStyle/colors.scss';
+@import '../../styles/baseStyle/z-index.scss';
+
+@mixin navbarWidthSetting {
+  min-width: $mainContentWidth;
+  max-width: 2120px;
+}
+
+@mixin transition_4s {
+  transition: all 0.4s ease;
+}
+
+@mixin hamburgerBtnEach {
+  width: 27px;
+  height: 3px;
+  background-color: $black;
+}
+
+.navHead {
+  position: fixed;
+  width: 100%;
+  background-color: $white;
+  z-index: $largeZindex;
+  @include transition_4s;
+  box-shadow: 0 3px 7px 0 rgb(0 0 0 / 10%);
+
+  &.hide {
+    opacity: 0;
+  }
+
+  .navUpper {
+    height: 40px;
+    opacity: 1;
+    background-color: $lightGrey;
+    padding: 0 100px;
+
+    &.hide {
+      opacity: 0;
+    }
+
+    .navUpperFixedWidth {
+      @include navbarWidthSetting;
+      height: 100%;
+      margin: 0 auto;
+
+      .navUpperBtns {
+        display: flex;
+        justify-content: flex-end;
+        line-height: 40px;
+
+        a {
+          font-size: 12px;
+          color: $black;
+
+          &:nth-child(n + 2) {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .navBottom {
+    height: 85px;
+    opacity: 1;
+    margin: 10px auto;
+    padding: 0 100px;
+    @include transition_4s;
+
+    &.hide {
+      height: 0;
+      opacity: 0;
+    }
+
+    .navBottomFixedWidth {
+      display: flex;
+      align-items: center;
+      @include navbarWidthSetting;
+      height: 100%;
+      margin: 0 auto;
+
+      button {
+        display: flex;
+        align-items: center;
+        width: 47px;
+        height: 45px;
+        padding: 8px;
+        transform: translate(0);
+
+        .hamburgerBtnLine {
+          @include hamburgerBtnEach;
+
+          &::before {
+            top: 10px;
+            position: absolute;
+            display: block;
+            content: '';
+            @include hamburgerBtnEach;
+          }
+
+          &::after {
+            bottom: 10px;
+            position: absolute;
+            display: block;
+            content: '';
+            @include hamburgerBtnEach;
+          }
+        }
+      }
+
+      .beautifulMargin {
+        flex: auto;
+      }
+
+      .navInput {
+        position: relative;
+        flex: auto;
+
+        .inputWrapper {
+          display: flex;
+          align-items: center;
+          width: 490px;
+
+          input {
+            width: calc(100% - 50px);
+            font-size: 20px;
+            background-color: transparent;
+          }
+        }
+      }
+
+      .fontAwesomeIcon {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+
+        &:nth-child(n + 2) {
+          margin-left: 32px;
+        }
+      }
+    }
+  }
+}
