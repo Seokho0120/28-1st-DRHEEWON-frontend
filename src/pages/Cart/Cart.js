@@ -35,15 +35,15 @@ const Cart = () => {
         <div className="cartPriceListWrap">
           <ul className="cartListWrap">
             <li>
-              <input type="checkbox" />
-              <button className="deleteProduct">
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  size="2x"
-                  className="delProductIcon"
-                />
-              </button>
               <div className="productContent">
+                <input type="checkbox" />
+                <button className="deleteProduct">
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    size="2x"
+                    className="delProductIcon"
+                  />
+                </button>
                 <section className="productImg">
                   <img
                     alt="product1"
@@ -73,23 +73,19 @@ const Cart = () => {
           </ul>
           <aside className="orderPrice">
             <article>
-              <h3>주문 예정 금액</h3>
-              <ul>
-                <li>
-                  <span>총 상품 금액</span>
-                  <em>₩0</em>
-                </li>
-                <li>
-                  <span>할인 금액</span>
-                  <em>₩(-)0</em>
-                </li>
-                <li>
-                  <span>총 결제 예정 금액</span>
-                  <em>₩0</em>
-                </li>
-              </ul>
+              <header>
+                <h3>주문 예정 금액</h3>
+              </header>
+              <dl>
+                <dt>총 상품 금액</dt>
+                <dd>0</dd>
+                <dt>할인 금액</dt>
+                <dd>(-)0</dd>
+                <dt>총 결제 예정 금액</dt>
+                <dd>0</dd>
+              </dl>
             </article>
-            <button>구매하기</button>
+            <button className="buyProductBtn">구매하기</button>
           </aside>
         </div>
       </main>
