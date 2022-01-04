@@ -2,6 +2,8 @@ import Filter from '../../components/ProductList/Filter';
 import MainContainer from '../../components/ProductList/MainContainer';
 import FilterButton from '../../components/ProductList/FilterButton';
 
+import React, { useState } from 'react';
+
 import {
   // faHeart,
   // faList,

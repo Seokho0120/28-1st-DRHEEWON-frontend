@@ -158,8 +158,7 @@
                   }
                 }
               }
-
-              .containerFieldTitle_colors {
+              filterLayoutWrapper .containerFieldTitle_colors {
                 li {
                   margin: 10px;
 
@@ -199,6 +198,15 @@
               border: 1px solid #111;
             }
           }
+        }
+        .hide {
+          position: relative;
+          justify-content: center;
+          width: 1140px;
+          margin: 0 auto;
+          z-index: 100;
+          top: -376px;
+          transition: 1s;
         }
       }
     }

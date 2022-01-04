@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faList, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const FilterButton = props => {
   return (
     <div>
-      <button className="filterButton">
+      <button className="filterButton" onClick={() => toggleMenu()}>
         <span className="filterButtonList">
           <FontAwesomeIcon icon={faList} />
         </span>
