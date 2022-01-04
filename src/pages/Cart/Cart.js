@@ -1,9 +1,9 @@
-// import { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ContentHeader from '../../components/RegisterLogin/ContentHeader';
 
 import './Cart.scss';
-import './../../components/RegisterLogin/RegisterLogin.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,21 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = () => {
+  // 전체 상품 선택
+  const checkedAllProduct = () => {};
+
+  // 선택 삭제
+  const deleteProductSelection = () => {};
+
+  // 제품 수량 추가 및 삭제
+  const handlerQuantity = () => {};
+
+  // 상품 직접 클릭하여 삭제 (delete btn)
+  const deleteProduct = () => {};
+
+  // 구매하기 버튼
+  const buyProduct = () => {};
+
   return (
     <div className="cartContainer">
       <ContentHeader pageInfo="장바구니" />
@@ -20,7 +35,7 @@ const Cart = () => {
           <div className="choiceHandler">
             <label>
               <input type="checkbox" />
-              <span>전체 선택</span>
+              <span onClick={checkedAllProduct}>전체 선택</span>
             </label>
             <button type="button">
               <FontAwesomeIcon
@@ -28,7 +43,7 @@ const Cart = () => {
                 size="2x"
                 className="trashAlt"
               />
-              <span>선택 삭제 (1)</span>
+              <span onClick={deleteProductSelection}>선택 삭제 (1)</span>
             </button>
           </div>
         </section>
@@ -37,7 +52,7 @@ const Cart = () => {
             <li>
               <div className="productContent">
                 <input type="checkbox" />
-                <button className="deleteProduct">
+                <button onClick={deleteProduct} className="deleteProduct">
                   <FontAwesomeIcon
                     icon={faTimes}
                     size="2x"
@@ -60,11 +75,11 @@ const Cart = () => {
                   <div className="countProduct">
                     <span>수량</span>
                     <em>1</em>
-                    <button>
-                      <FontAwesomeIcon icon={faPlus} className="trashAlt" />
+                    <button onClick={handlerQuantity}>
+                      <FontAwesomeIcon icon={faPlus} />
                     </button>
-                    <button>
-                      <FontAwesomeIcon icon={faMinus} className="trashAlt" />
+                    <button onClick={handlerQuantity}>
+                      <FontAwesomeIcon icon={faMinus} />
                     </button>
                   </div>
                 </section>
@@ -85,7 +100,9 @@ const Cart = () => {
                 <dd>0</dd>
               </dl>
             </article>
-            <button className="buyProductBtn">구매하기</button>
+            <button onClick={buyProduct} className="buyProductBtn">
+              구매하기
+            </button>
           </aside>
         </div>
       </main>
