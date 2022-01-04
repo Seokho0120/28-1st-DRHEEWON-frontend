@@ -3,9 +3,9 @@ import MainContainer from '../../components/ProductList/MainContainer';
 import FilterButton from '../../components/ProductList/FilterButton';
 
 import {
-  faHeart,
-  faList,
-  faChevronDown,
+  // faHeart,
+  // faList,
+  // faChevronDown,
   faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -67,7 +67,7 @@ export default function ProductList() {
               {KEYWORDLIST.map((list, idx) => {
                 return (
                   <li key={idx}>
-                    <div className={'keywordListArr'}>{list}</div>
+                    <div className="keywordListArr">{list}</div>
                   </li>
                 );
               })}

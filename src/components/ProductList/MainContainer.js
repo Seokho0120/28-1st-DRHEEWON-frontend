@@ -20,35 +20,37 @@ export default function MainContainer(props) {
       <article className="mainContainerWrapper">
         <ul className="mainContainerWrapper">
           {product.map(item => {
-            <li className="item" key={item.id}>
-              <div className="itemImage">
-                <img src="#" alt="더미이미지" />
-              </div>
-              <div className="itemRow">
-                <div className="itemColumnLeft">
-                  <h2 className="title">{item.productName}</h2>
-                  <div className="additionalInfo">
-                    <p>
-                      <span>{item.centerColor}</span>
-                    </p>
-                  </div>
-                  <button className="likesButton">
-                    <div className="heartIcon">
-                      <FontAwesomeIcon icon={faHeart} />
+            return (
+              <li className="item" key={item.id}>
+                <div className="itemImage">
+                  <img src="#" alt="더미이미지" />
+                </div>
+                <div className="itemRow">
+                  <div className="itemColumnLeft">
+                    <h2 className="title">{item.productName}</h2>
+                    <div className="additionalInfo">
+                      <p>
+                        <span>{item.centerColor}</span>
+                      </p>
                     </div>
-                    <span>99999</span>
-                  </button>
-                </div>
-                <div className="itemColumnRight">
-                  <div className="priceWrapper">
-                    <span>{item.price}</span>
+                    <button className="likesButton">
+                      <div className="heartIcon">
+                        <FontAwesomeIcon icon={faHeart} />
+                      </div>
+                      <span>99999</span>
+                    </button>
                   </div>
-                  <button className="cartButton">
-                    <span className="cartButtonText">장바구니 담기</span>
-                  </button>
+                  <div className="itemColumnRight">
+                    <div className="priceWrapper">
+                      <span>{item.price}</span>
+                    </div>
+                    <button className="cartButton">
+                      <span className="cartButtonText">장바구니 담기</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </li>;
+              </li>
+            );
           })}
           ;
         </ul>
