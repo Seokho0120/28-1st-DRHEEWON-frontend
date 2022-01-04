@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-export default function NavHiddenVertical({ item, index, verticalPos }) {
+export default function VerticalItems({ item, index }) {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleSelected = () => {
