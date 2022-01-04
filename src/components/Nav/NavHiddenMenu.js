@@ -103,7 +103,7 @@ export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
       verticalRef.current.removeEventListener('mousewheel', handleVertical);
       horizontalRef.current.removeEventListener('mousewheel', handleHorizontal);
     };
-  }, [verticalRef.current, horizontalRef.current]);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
