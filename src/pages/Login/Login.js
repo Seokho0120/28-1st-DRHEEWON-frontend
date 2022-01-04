@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
@@ -13,6 +13,7 @@ const Login = () => {
     id: '',
     pw: '',
   });
+  const navigate = useNavigate();
   const isValidLogin = formInput.id && validPassword.test(formInput.pw);
 
   const handleLoginInput = e => {
@@ -21,27 +22,25 @@ const Login = () => {
   };
 
   const goToMain = () => {
-    fetch('http://24d4-221-151-120-163.ngrok.io/users/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        user_id: formInput.id,
-        password: formInput.pw,
-      }),
-    })
+    fetch(
+      'http://4e28-2001-2d8-68ae-f75f-69a9-efc2-5be1-6eec.ngrok.io/users/signin',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: formInput.id,
+          password: formInput.pw,
+        }),
+      }
+    )
       .then(response => response.json())
       .then(result => {
-        console.log(result);
-        // if (result.message === 'SUCCESS') {
-        //   alert(`${id}님 반갑습니다!`);
-        //   localStorage.setItem('user', result.token);
-        //   navigate('/Main-won');
-        // }
-        // if (result.message === 'USER_DOES_NOT_EXIST') {
-        //   alert('아이디가 틀렸거나 존재하지 않는 회원입니다.');
-        // }
-        // if (result.message === 'PASSWORD_ERROR') {
-        //   alert('비밀번호가 틀렸어요.');
-        // }
+        if (result.status === 200) {
+          localStorage.setItem('user', result.token);
+          navigate('/');
+        }
+        if (result.status >= 400) {
+          alert('존재하지 않는 회원입니다.');
+        }
       });
   };
 
