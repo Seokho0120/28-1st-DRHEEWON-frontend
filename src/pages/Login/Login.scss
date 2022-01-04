@@ -5,35 +5,10 @@
 
 .registerContainer.LoginContainer {
   width: $mainContentWidth;
-  margin: $navMarginTop auto 0;
-
-  .infoPage {
-    h1 {
-      padding-top: 37px;
-      padding-bottom: 20px;
-      color: $deepBlack;
-      font-size: $largeFont;
-      font-weight: 700;
-      letter-spacing: -0.36px;
-    }
-  }
+  margin: 0 auto;
+  padding-top: $navPaddingTop;
 
   .RegisterMainWrap {
-    .welcomeWrap {
-      text-align: center;
-
-      h2 {
-        font-size: $largeFont;
-        font-weight: 700;
-      }
-
-      p {
-        margin-top: 18px;
-        color: $deepGrey;
-        font-size: $mediumFont;
-      }
-    }
-
     .registerWrap {
       display: flex;
       justify-content: center;

@@ -1,0 +1,32 @@
+@import './../../styles/baseStyle/colors.scss';
+@import './../../styles/baseStyle/font.scss';
+
+// 페이지 안내
+.infoPage {
+  padding-top: 40px;
+
+  h1 {
+    padding-top: 37px;
+    padding-bottom: 20px;
+    color: $deepBlack;
+    font-size: $largeFont;
+    font-weight: 700;
+    letter-spacing: -0.36px;
+  }
+}
+
+// 환영 안내 텍스트
+.welcomeWrap {
+  text-align: center;
+
+  h2 {
+    font-size: $largeFont;
+    font-weight: 700;
+  }
+
+  p {
+    margin-top: 18px;
+    color: $deepGrey;
+    font-size: $mediumFont;
+  }
+}
