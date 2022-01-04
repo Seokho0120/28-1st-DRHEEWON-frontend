@@ -33,14 +33,14 @@ export default function MainStickyArea({ sectionArea }) {
       const introBlind = scrollPos > 3200 && scrollPos < 3850;
       const introScale = scrollPos > 3500 && scrollPos < 3850;
       const stickyShoePos = scrollPos > 5400 && scrollPos < 6400;
-      const visionBlind = scrollPos > 7700 && scrollPos < 8300;
-      const visionScale = scrollPos > 8300 && scrollPos < 8900;
+      const visionBlind = scrollPos > 8000 && scrollPos < 8600;
+      const visionScale = scrollPos > 8500 && scrollPos < 9100;
 
       if (introBlind) setIntroOpacity(1 - (scrollPos - 3200) / 1000);
       if (introScale) setIntroScale(1 + (scrollPos - 3500) / 3500);
-      if (stickyShoePos) setStickyPos((scrollPos - 5400) / 5);
-      if (visionBlind) setVisionOpacity(1 - (scrollPos - 7700) / 1000);
-      if (visionScale) setVisionScale(1 + (scrollPos - 8300) / 8300);
+      if (stickyShoePos) setStickyPos((scrollPos - 5400) / 100);
+      if (visionBlind) setVisionOpacity(1 - (scrollPos - 8000) / 1000);
+      if (visionScale) setVisionScale(1 + (scrollPos - 8500) / 2000);
     }
 
     window.addEventListener('scroll', throttle(handleScroll, 10));
@@ -66,12 +66,12 @@ export default function MainStickyArea({ sectionArea }) {
           <img
             src="images/stickyLeftShoe.png"
             alt="left"
-            style={{ transform: `translateX(${stickyPos}px)` }}
+            style={{ transform: `translateX(${stickyPos}vw)` }}
           />
           <img
             src="images/stickyRightShoe.png"
             alt="right"
-            style={{ transform: `translateX(-${stickyPos}px)` }}
+            style={{ transform: `translateX(-${stickyPos}vw)` }}
           />
         </div>
       )

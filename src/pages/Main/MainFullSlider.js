@@ -3,32 +3,20 @@ import { useState, useEffect } from 'react';
 import { SliderButton } from '../../components/Buttons/SliderButton';
 import { slideImgsData } from './MainMockData';
 
-const laptopSize = 1626;
-
 export default function MainFullSlider() {
   const [sliderPosition, setSliderPosition] = useState(1);
   const [stopTran, setStopTran] = useState(false);
-  const [isWindowExtend, setIsWindowExtend] = useState(
-    window.innerWidth > laptopSize
-  );
 
   const slideImgs = slideImgsData;
 
   useEffect(() => {
-    function handleResize(event) {
-      event.target.innerWidth > 1626
-        ? setIsWindowExtend(true)
-        : setIsWindowExtend(false);
-    }
-    window.addEventListener('resize', handleResize);
     const interval = setInterval(() => {
       setSliderPosition(current => {
         return current + 1;
       });
-    }, 3000);
+    }, 5000);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       clearInterval(interval);
     };
   }, []);
@@ -63,9 +51,7 @@ export default function MainFullSlider() {
       <div
         className={`fullSliderUl ${stopTran ? 'stopTran' : ''}`}
         style={{
-          transform: `translateX(-${
-            isWindowExtend ? sliderPosition * 2114 : sliderPosition * 1607
-          }px)`,
+          transform: `translateX(-${sliderPosition * 98.87}vw)`,
         }}
       >
         <div>
