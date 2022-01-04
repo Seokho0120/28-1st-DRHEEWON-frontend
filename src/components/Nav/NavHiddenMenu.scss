@@ -1,4 +1,5 @@
 @import '../../styles/baseStyle/colors.scss';
+@import '../../styles/baseStyle/font.scss';
 
 @mixin fontAwesomeIcon {
   .fontAwesomeIcon {
@@ -21,6 +22,16 @@
   }
 }
 
+@mixin fontAwesomeIconDisabled {
+  svg {
+    pointer-events: none;
+
+    path {
+      pointer-events: none;
+    }
+  }
+}
+
 .hiddenMenu {
   position: fixed;
   top: 0;
@@ -29,8 +40,7 @@
   height: 0;
   opacity: 0;
   transition: width 0.5s, height 0.5s, opacity 0.3s;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   background-color: $white;
   z-index: 101;
 
@@ -87,6 +97,136 @@
 
       button {
         @include fontAwesomeIcon;
+      }
+    }
+  }
+
+  .menuContentWrapper {
+    width: 100%;
+    height: calc(100% - 230px);
+    margin-top: 40px;
+
+    .menuContent {
+      display: flex;
+      width: 1250px;
+      height: 100%;
+      margin: 0 auto;
+
+      .verticalContent {
+        display: flex;
+        height: 80%;
+        overflow: hidden;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          padding: 0 24px;
+          margin: 0;
+          font-size: 48px;
+          transition: transform 0.5s;
+          line-height: 60px;
+
+          li {
+            display: flex;
+            flex-direction: column;
+
+            .verticalEachHead {
+              display: flex;
+              justify-content: space-between;
+
+              button {
+                position: relative;
+                margin-left: 20px;
+                font-size: 24px;
+
+                @include fontAwesomeIconDisabled;
+              }
+            }
+
+            ul {
+              display: none;
+              height: auto;
+              margin: 0;
+              padding: 0 0 0 10px;
+              font-size: $mediumFont;
+              line-height: 30px;
+              &.active {
+                display: block;
+              }
+            }
+          }
+        }
+
+        .verticalScrollBar {
+          width: 10px;
+          height: 60px;
+          border-radius: 25px;
+          background-color: #999;
+          transition: transform 0.5s, opacity 0.5s;
+          opacity: 0;
+        }
+
+        &:hover {
+          .verticalScrollBar {
+            opacity: 1;
+          }
+        }
+      }
+
+      .horizontalContent {
+        width: 40vw;
+        height: 58.8vh;
+        margin-left: 250px;
+        overflow: hidden;
+
+        ul {
+          display: flex;
+          height: 90%;
+          transition: transform 0.5s;
+
+          li {
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+            opacity: 1;
+            transition: opacity 1s;
+
+            &.hide {
+              opacity: 0;
+            }
+
+            &:nth-child(n + 2) {
+              margin-left: 20px;
+            }
+
+            p {
+              font-size: $largeFont;
+              text-align: right;
+              height: 10%;
+            }
+
+            img {
+              margin-top: 10%;
+              height: 80%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .horizontalScrollBar {
+          width: 60px;
+          height: 10px;
+          border-radius: 25px;
+          background-color: #999;
+          transition: transform 0.5s, opacity 0.5s;
+          opacity: 0;
+        }
+
+        &:hover {
+          .horizontalScrollBar {
+            opacity: 1;
+          }
+        }
       }
     }
   }

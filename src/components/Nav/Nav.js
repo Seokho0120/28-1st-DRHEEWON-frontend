@@ -13,12 +13,6 @@ export default function Nav({ visibleValue }) {
     setIsShow(!isShow);
   };
 
-  // useEffect(() => {
-  //   isShow
-  //     ? (document.body.style.overflow = 'hidden')
-  //     : (document.body.style.overflow = 'unset');
-  // }, [isShow]);
-
   return (
     <>
       <header className={`navHead ${visibleValue ? '' : 'hide'}`}>
