@@ -83,13 +83,12 @@
 
       // 필터창
       article.filterLayoutWrapper {
-        position: relative;
         justify-content: center;
-        width: 1140px;
+        position: relative;
         margin: 0 auto;
         z-index: 100;
-
         .filterContainer {
+          background-color: red;
           position: absolute;
           top: 0;
           background-color: white;
@@ -101,7 +100,7 @@
 
             .containerField {
               display: flex;
-              width: 120%;
+              width: 100%;
               min-height: 70px;
               border-bottom: 1px solid #ddd;
 

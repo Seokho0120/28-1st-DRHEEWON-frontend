@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -52,7 +52,6 @@ export default function MainContainer(props) {
               </li>
             );
           })}
-          ;
         </ul>
       </article>
     </section>

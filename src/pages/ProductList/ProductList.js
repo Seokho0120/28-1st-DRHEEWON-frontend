@@ -2,14 +2,9 @@ import Filter from '../../components/ProductList/Filter';
 import MainContainer from '../../components/ProductList/MainContainer';
 import FilterButton from '../../components/ProductList/FilterButton';
 
-import React, { useState } from 'react';
+import React from 'react';
 
-import {
-  // faHeart,
-  // faList,
-  // faChevronDown,
-  faArrowLeft,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './ProductList.scss';
