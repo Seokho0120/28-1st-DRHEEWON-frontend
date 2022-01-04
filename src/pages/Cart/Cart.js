@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import ContentHeader from '../../components/RegisterLogin/ContentHeader';
 
 import './Cart.scss';
