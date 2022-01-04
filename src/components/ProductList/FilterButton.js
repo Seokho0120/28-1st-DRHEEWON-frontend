@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const FilterButton = props => {
   return (
     <div>
-      <button className="filterButton">
+      <button
+        className="filterButton"
+        // onClick={() => toggleMenu()}
+      >
         <span className="filterButtonList">
           <FontAwesomeIcon icon={faList} />
         </span>

@@ -1,21 +1,44 @@
 import Filter from '../../components/ProductList/Filter';
 import MainContainer from '../../components/ProductList/MainContainer';
 import FilterButton from '../../components/ProductList/FilterButton';
+import CategoryButton from '../../components/ProductList/CategoryButton';
 
-import React from 'react';
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './ProductList.scss';
 
 export default function ProductList() {
-  const KEYWORDLIST = ['1', '2', '3', '4', '5', '6', '7'];
+  const KEYWORDLIST = [
+    '롱부츠',
+    '베스트셀러',
+    '콜라보레이션',
+    '첼시부츠',
+    '슈폴리시 사용법',
+    '스웨이드 클리너 사용법',
+    '슬리퍼',
+  ];
+  const navigate = useNavigate();
+
+  const [isOpen, setMenu] = useState(false);
+
+  // const toggleMenu = () => {
+  //   setMenu(isOpen => !isOpen);
+  // };
+
+  const updateOffset = buttonIndex => {
+    const limit = 8;
+    const offset = buttonIndex * limit;
+    const queryString = `limit=${limit}&offset=${offset}`;
+
+    navigate(`?${queryString}`);
+  };
 
   return (
     <div>
       <div className="productList">
-        {/* <header /> */}
         <header>
           <div className="headerWrap">
             <button>
@@ -28,15 +51,10 @@ export default function ProductList() {
           </div>
         </header>
         <main>
-          {/* <headContainer /> */}
           <section className="headContainer">
             <article className="layoutWrapper">
               <div className="layoutWrapperBorder">
-                <div className="container">
-                  <button id="firstCategory">슈즈</button>
-                  <button id="secondCategory">부츠</button>
-                  <button id="thirdCategory">전체 보기</button>
-                </div>
+                <CategoryButton updateOffset={updateOffset} />
                 <div className="containerDetail">
                   남성 부츠 컬렉션입니다. 남성 부츠는 수십년 동안 자기 자신의
                   표현 수단으로서 자리잡았습니다. 클래식한 첼시 부츠부터

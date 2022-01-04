@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
 
 export default function MainContainer() {
-  const [product, setProduct] = useState([]);
+  const [data, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/itemData.json')
+    fetch('http://ba73-211-106-114-186.ngrok.io/products')
       .then(res => res.json())
-      .then(res => setProduct(res));
+      .then(res => setProducts(res));
   }, []);
 
   return (
     <section className="mainContainer">
       <article className="mainContainerWrapper">
         <ul className="mainContainerWrapper">
-          {product?.map(item => {
+          {data.result?.map(item => {
             return (
               <li className="item" key={item.id}>
                 <div className="itemImage">
-                  <img src="/img/dummyImg.jpg" alt="더미이미지" />
+                  <img src={item.thumbNailImage} alt="이미지" />
                 </div>
                 <div className="itemRow">
                   <div className="itemColumnLeft">

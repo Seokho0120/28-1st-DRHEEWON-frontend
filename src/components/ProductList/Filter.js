@@ -1,15 +1,9 @@
-import { useState } from 'react';
+import React from 'react';
 
 const Filter = props => {
-  const [isOpen, setMenu] = useState(false);
-
-  const toggleMenu = () => {
-    setMenu(isOpen => !isOpen);
-  };
-
   return (
-    <article className="filterLayoutWrapper" onClick={() => toggleMenu()}>
-      <div className={isOpen ? 'filterContainer' : 'filterContainer'}>
+    <article className="filterLayoutWrapper">
+      <div className="filterContainer">
         <form action="#!" className="filterListContainer_form">
           <div className="containerField">
             <div className="containerFieldTitle">정렬</div>
