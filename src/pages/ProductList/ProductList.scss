@@ -1,4 +1,4 @@
-@import '../../styles/baseStyle/colors.scss';
+// @import '../../styles/baseStyle/colors.scss';
 
 .productList {
   box-sizing: border-box;
@@ -88,8 +88,8 @@
         margin: 0 auto;
         z-index: 100;
         .filterContainer {
-          background-color: red;
           position: absolute;
+          justify-content: center;
           top: 0;
           background-color: white;
 
