@@ -6,6 +6,7 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Cart from './pages/Cart/Cart';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
 
 export default function Router() {
   const [windowY, setWindowY] = useState();
@@ -32,6 +33,7 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/productDetail" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
   );

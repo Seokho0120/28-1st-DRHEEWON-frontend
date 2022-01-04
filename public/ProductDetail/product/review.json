@@ -1,0 +1,24 @@
+{}
+
+// 후기 파트 데이터
+// nReview: 159
+// starPoint: 4.9
+// manRatio: 9
+// womanRatio: 91
+// gen10: 4
+// gen20: 53
+// gen30: 35
+// gen40: 8
+// gen50: 0
+// sizeInformation: 0.5
+// colorInformation: 0
+// qualityInformation: 1
+// 레인지는 -1~1
+// 예시
+// {
+//  name
+//  amount
+//  sizes{
+//   quantity
+//  }
+// }
