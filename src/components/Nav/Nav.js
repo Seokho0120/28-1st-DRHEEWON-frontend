@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faEye, faUser } from '@fortawesome/free-regular-svg-icons';
@@ -8,9 +10,18 @@ import NavHiddenMenu from './NavHiddenMenu';
 
 export default function Nav({ visibleValue }) {
   const [isShow, setIsShow] = useState(false);
+  const isValidUser = localStorage.getItem('token');
+
+  const navigate = useNavigate();
 
   const toggleHiddenMenu = () => {
     setIsShow(!isShow);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    alert('로그아웃 되었습니다!');
+    navigate('/');
   };
 
   return (
@@ -19,10 +30,23 @@ export default function Nav({ visibleValue }) {
         <section className={`navUpper ${visibleValue ? '' : 'hide'}`}>
           <div className="navUpperFixedWidth">
             <div className="navUpperBtns">
-              <a href="#!">로그인</a>
-              <a href="#!" className="strong">
-                회원가입
-              </a>
+              {isValidUser === null ? (
+                <>
+                  <a href="/login">로그인</a>
+                  <a href="/register" className="strong">
+                    회원가입
+                  </a>
+                </>
+              ) : (
+                <>
+                  <span>
+                    <span className="strong">{isValidUser.name}</span>님
+                    환영합니다!
+                  </span>
+                  <span onClick={logout}>로그아웃</span>
+                </>
+              )}
+
               <a href="#!">매장찾기</a>
               <a href="#!">브랜드헤리티지</a>
               <a href="#!">고객센터</a>

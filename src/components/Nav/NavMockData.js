@@ -13,8 +13,8 @@ export const verticalListMockData = [
     name: '여성',
     selectContent: [
       { id: 1, name: '신제품' },
-      { id: 2, name: '구두' },
-      { id: 3, name: '악세서리' },
+      { id: 2, name: '워커' },
+      { id: 3, name: '운동화' },
     ],
   },
   {

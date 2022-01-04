@@ -17,12 +17,13 @@ export default function VerticalContent() {
 
     function handleVertical(event) {
       const childrenLength = verticalVariable.children.length;
+
       const targetHeight =
         Array.from(verticalVariable.childNodes)
           .map(item => item.offsetHeight)
           .reduce((accum, item) => accum + item) - 300;
       const scrollRange = 300;
-      const scrollEach = targetHeight / (childrenLength - 6);
+      const scrollEach = Math.abs(targetHeight / (childrenLength - 6));
 
       const moveUp = () => {
         setVerticalPos(current => {
@@ -40,13 +41,13 @@ export default function VerticalContent() {
             : targetHeight;
         });
         setVerticalScrollPos(current => {
-          return current + scrollEach <= scrollRange
+          return current + scrollEach < scrollRange
             ? current + scrollEach
             : scrollRange;
         });
       };
 
-      event.deltaY > 0 && childrenLength > 6 ? moveDown() : moveUp();
+      targetHeight >= 120 && (event.deltaY > 0 ? moveDown() : moveUp());
     }
     verticalVariable.addEventListener('mousewheel', handleVertical);
 
