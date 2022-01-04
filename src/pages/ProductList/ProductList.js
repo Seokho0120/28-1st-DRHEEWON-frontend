@@ -17,12 +17,14 @@ export default function ProductList() {
       <div className="productList">
         {/* <header /> */}
         <header>
-          <button>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
-          <div className="subHeadBottom">
-            <h1>전체 보기</h1>
-            <p>100개의 남성 전체 보기 상품이 있습니다.</p>
+          <div className="headerWrap">
+            <button>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+            <div className="subHeadBottom">
+              <h1>전체 보기</h1>
+              <p>100개의 남성 전체 보기 상품이 있습니다.</p>
+            </div>
           </div>
         </header>
         <main>
