@@ -28,10 +28,13 @@ export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
   useScrollHidden();
 
   useEffect(() => {
+    const verticalVariable = verticalRef.current;
+    const horizontalVariable = horizontalRef.current;
+
     function handleVertical(event) {
-      const childrenLength = verticalRef.current.children.length;
+      const childrenLength = verticalVariable.children.length;
       const targetHeight =
-        Array.from(verticalRef.current.childNodes)
+        Array.from(verticalVariable.childNodes)
           .map(item => item.offsetHeight)
           .reduce((accum, item) => accum + item) - 300;
       const scrollRange = 300;
@@ -63,8 +66,8 @@ export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
     }
 
     function handleHorizontal(event) {
-      const childrenOffset = horizontalRef.current.childNodes[0].offsetWidth;
-      const childrenLength = horizontalRef.current.children.length;
+      const childrenOffset = horizontalVariable.childNodes[0].offsetWidth;
+      const childrenLength = horizontalVariable.children.length;
       const targetWidth = childrenOffset * childrenLength;
       const scrollRange = childrenOffset * 2 - 180;
 
@@ -96,12 +99,12 @@ export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
       event.deltaY > 0 ? moveRight() : moveLeft();
     }
 
-    verticalRef.current.addEventListener('mousewheel', handleVertical);
-    horizontalRef.current.addEventListener('mousewheel', handleHorizontal);
+    verticalVariable.addEventListener('mousewheel', handleVertical);
+    horizontalVariable.addEventListener('mousewheel', handleHorizontal);
 
     return () => {
-      verticalRef.current.removeEventListener('mousewheel', handleVertical);
-      horizontalRef.current.removeEventListener('mousewheel', handleHorizontal);
+      verticalVariable.removeEventListener('mousewheel', handleVertical);
+      horizontalVariable.removeEventListener('mousewheel', handleHorizontal);
     };
   }, []);
 
