@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
 
-import './../../components/RegisterLogin/RegisterLogin.scss';
 import './Login.scss';
 
 const validPassword = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;

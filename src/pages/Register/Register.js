@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
 
-import './../../components/RegisterLogin/RegisterLogin.scss';
 import './Register.scss';
 
 const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
