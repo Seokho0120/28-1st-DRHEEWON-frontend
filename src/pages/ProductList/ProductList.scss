@@ -1,4 +1,4 @@
-// @import '../../styles/baseStyle/colors.scss';
+@import '../../styles/baseStyle/colors.scss';
 
 .productList {
   box-sizing: border-box;
@@ -15,10 +15,6 @@
       }
     }
   }
-
-  // input {
-  //   display: none;
-  // }
 
   main {
     .headContainer {
