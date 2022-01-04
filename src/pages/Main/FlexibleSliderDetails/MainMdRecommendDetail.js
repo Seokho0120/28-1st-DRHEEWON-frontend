@@ -6,17 +6,17 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 export default function MainMdRecommendDetail({ item }) {
   return (
     <div className="mdRecommendDetail strong">
-      <p>{item.name}</p>
+      <p>{item.productName}</p>
       <span>
         <FontAwesomeIcon icon={faHeart} />
-        {item.like}
+        {1234}
       </span>
       <div className="flexSliderImages">
-        <img src={item.imgPath} alt="dummy" />
-        <img src={item.imgPath} alt="dummy" />
+        <img src={item.thumbnailImage} alt="dummy" />
+        <img src={item.thumbnailImage} alt="dummy" />
       </div>
       <div className="detailBox">
-        <p>{`₩ ${item.amount
+        <p>{`₩ ${item.price
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</p>
         <BorderButton type="putCart" />
