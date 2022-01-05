@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faEye, faUser } from '@fortawesome/free-regular-svg-icons';
 
-import './Nav.scss';
+import SetClassCondition from '../customlib/SetClassCondition';
+
 import NavHiddenMenu from './NavHiddenMenu';
+import './Nav.scss';
 
 export default function Nav({ visibleValue }) {
   const [isShow, setIsShow] = useState(false);
@@ -26,11 +28,13 @@ export default function Nav({ visibleValue }) {
 
   return (
     <>
-      <header className={`navHead ${visibleValue ? '' : 'hide'}`}>
-        <section className={`navUpper ${visibleValue ? '' : 'hide'}`}>
+      <header className={SetClassCondition('navHead', visibleValue, 'hide', 0)}>
+        <section
+          className={SetClassCondition('navUpper', visibleValue, 'hide', 0)}
+        >
           <div className="navUpperFixedWidth">
             <div className="navUpperBtns">
-              {isValidUser === null ? (
+              {!isValidUser ? (
                 <>
                   <a href="/login">로그인</a>
                   <a href="/register" className="strong">
@@ -53,7 +57,9 @@ export default function Nav({ visibleValue }) {
             </div>
           </div>
         </section>
-        <section className={`navBottom ${visibleValue ? '' : 'hide'}`}>
+        <section
+          className={SetClassCondition('navBottom', visibleValue, 'hide', 0)}
+        >
           <div className="navBottomFixedWidth">
             <button
               type="button"

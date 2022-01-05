@@ -4,9 +4,6 @@ import VerticalItems from './VerticalItems';
 import { verticalListMockData } from '../NavMockData';
 
 import './VerticalContent.scss';
-
-const verticalListObject = verticalListMockData;
-
 export default function VerticalContent() {
   const [verticalPos, setVerticalPos] = useState(0);
   const [verticalScrollPos, setVerticalScrollPos] = useState(0);
@@ -27,10 +24,12 @@ export default function VerticalContent() {
 
       const moveUp = () => {
         setVerticalPos(current => {
-          return current - scrollEach > 0 ? current - scrollEach : 0;
+          const scrollUp = current - scrollEach;
+          return scrollUp > 0 ? scrollUp : 0;
         });
         setVerticalScrollPos(current => {
-          return current - scrollEach > 0 ? current - scrollEach : 0;
+          const scrollUp = current - scrollEach;
+          return scrollUp > 0 ? scrollUp : 0;
         });
       };
 
@@ -62,7 +61,7 @@ export default function VerticalContent() {
         style={{ transform: `translateY(-${verticalPos}px)` }}
         ref={verticalRef}
       >
-        {verticalListObject.map((item, index) => (
+        {verticalListMockData.map((item, index) => (
           <VerticalItems key={index} item={item} index={index} />
         ))}
       </ul>

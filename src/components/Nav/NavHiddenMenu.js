@@ -7,10 +7,12 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
+import SetClassCondition from '../customlib/SetClassCondition';
+
 import VerticalContent from './NavHiddenVertical/VerticalContent';
+import HorizontalContent from './NavHiddenHorizontal/HorizontalContent';
 
 import './NavHiddenMenu.scss';
-import HorizontalContent from './NavHiddenHorizontal/HorizontalContent';
 
 export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
   const [delayRender, setDelayRender] = useState(false);
@@ -24,7 +26,7 @@ export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
   }, [isShow]);
 
   return (
-    <section className={`hiddenMenu ${delayRender ? 'active' : ''}`}>
+    <section className={SetClassCondition('hiddenMenu', delayRender, 'active')}>
       <div className="menuHeaderWrapper">
         <div className="menuHeader">
           <a href="#!">

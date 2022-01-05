@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
+import SetClassCondition from '../../customlib/SetClassCondition';
+
 export default function VerticalItems({ item, index }) {
   const [isSelected, setIsSelected] = useState(false);
 
@@ -14,11 +16,12 @@ export default function VerticalItems({ item, index }) {
   };
 
   const goToList = event => {
-    const clickedInfo = event.target.getAttribute('name').split('_');
+    const [detailCategory, listId] = event.target
+      .getAttribute('name')
+      .split('_');
 
     const listCategory = item.name;
-    const detailCategory = clickedInfo[0];
-    const listId = clickedInfo[1];
+
     const queryString = `?listCategory=${listCategory}&name=${detailCategory}&id=${listId}`;
 
     navigate(`/productList${queryString}`);
@@ -34,7 +37,7 @@ export default function VerticalItems({ item, index }) {
         </button>
       </div>
 
-      <ul className={isSelected ? 'active' : ''}>
+      <ul className={SetClassCondition('', isSelected, 'active')}>
         {item.selectContent.map((item, index) => (
           <li key={index} name={`${item.name}_${index}`} onClick={goToList}>
             {item.name}
