@@ -6,7 +6,7 @@ export default function ProductContent({
   faHeart,
   faStar,
   detailData,
-  qunatity,
+  quantity,
   minusNumber,
   faMinus,
   plusNumber,
@@ -87,7 +87,7 @@ export default function ProductContent({
         <div className="centerOption">
           <div className="set">
             <p className="count">수량</p>
-            <input type="number" min="1" max="100" value={qunatity} />
+            <input type="number" min="1" max="100" value={quantity} readOnly />
             <button onClick={minusNumber} className="minus">
               <FontAwesomeIcon icon={faMinus} />
             </button>
@@ -97,7 +97,7 @@ export default function ProductContent({
           </div>
           <div className="price">
             <FontAwesomeIcon icon={faWonSign} />
-            <span>{(qunatity * (detailData.price ?? 0)).toLocaleString()}</span>
+            <span>{(quantity * (detailData.price ?? 0)).toLocaleString()}</span>
             {/* <span>{detailData.price}</span> */}
           </div>
         </div>

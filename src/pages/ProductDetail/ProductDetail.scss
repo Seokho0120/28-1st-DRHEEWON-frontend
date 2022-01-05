@@ -33,7 +33,7 @@
       align-items: center;
       border-bottom: border.$btnBorderBlack;
 
-      .rivewTopHeader {
+      .reviewTopHeader {
         font-size: 36px;
         font-weight: 700;
       }
@@ -152,10 +152,8 @@
                 .fillingBar {
                   position: absolute;
                   bottom: 0;
-                  left: 0;
                   width: 14px;
                   background: #ffe716;
-                  transition: all 0.3s;
                 }
 
                 .ageItemGraphic {
@@ -264,5 +262,6 @@
     font-weight: 700;
     background-color: black;
     color: white;
+    cursor: pointer;
   }
 }

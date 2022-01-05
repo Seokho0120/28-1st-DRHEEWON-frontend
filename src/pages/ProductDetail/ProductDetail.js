@@ -23,9 +23,11 @@ import './ProductExplain/ProductExplain.scss';
 export default function ProductDetail() {
   const [slidePosition, setSlidePosition] = useState(0);
   const [detailData, setDetailData] = useState({});
-  const [qunatity, setQunatity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const [prefer, setPrefer] = useState([]);
-  const [comment, setComment] = useState([]);
+  const [remainLength, setRemainLength] = useState();
+  const [comments, setComments] = useState([]);
+  console.log(comments);
 
   const movePrev = () => {
     slidePosition > 0
@@ -40,11 +42,11 @@ export default function ProductDetail() {
   };
 
   const minusNumber = () => {
-    qunatity === 1 ? setQunatity(1) : setQunatity(qunatity - 1);
+    quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1);
   };
 
   const plusNumber = () => {
-    setQunatity(qunatity + 1);
+    setQuantity(quantity + 1);
   };
 
   useEffect(() => {
@@ -60,10 +62,30 @@ export default function ProductDetail() {
   }, []);
 
   useEffect(() => {
-    fetch('/ProductDetail/review/userReview.json', { method: 'GET' })
-      .then(user => user.json())
-      .then(user => setComment(user));
+    fetch('http://8ec5-211-106-114-186.ngrok.io/review/2/comments?offset=0')
+      .then(res => res.json())
+      .then(data => {
+        setRemainLength(data.result.shift());
+        setComments(current => {
+          const newList = [...current, ...data.result];
+          return newList;
+        });
+      });
   }, []);
+
+  const requestMoreBtn = () => {
+    fetch(
+      `http://8ec5-211-106-114-186.ngrok.io/review/2/comments?offset=${comments.length}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        setRemainLength(data.result.shift());
+        setComments(current => {
+          const newList = [...current, ...data.result];
+          return newList;
+        });
+      });
+  };
 
   return (
     <div className="container">
@@ -78,7 +100,7 @@ export default function ProductDetail() {
         faHeart={faHeart}
         faStar={faStar}
         detailData={detailData}
-        qunatity={qunatity}
+        quantity={quantity}
         minusNumber={minusNumber}
         faMinus={faMinus}
         plusNumber={plusNumber}
@@ -92,7 +114,7 @@ export default function ProductDetail() {
       />
       <section className="reviewStats">
         <div className="reviewTop">
-          <h2 className="rivewTopHeader">상품후기</h2>
+          <h2 className="reviewTopHeaderTopHeader">상품후기</h2>
           <button className="reviewTopWrite">
             <FontAwesomeIcon icon={faPen} />
             <span>글쓰기</span>
@@ -194,17 +216,21 @@ export default function ProductDetail() {
         </div>
       </section>
       <section className="UserReview">
-        {comment &&
-          comment.map((item, idx) => {
+        {comments &&
+          comments.map((item, idx) => {
             return (
               <ul key={idx} className="UserItems">
                 <li className="UserReviewHeader">
-                  <img src="/ProductDetail/avatar1.jpeg" alt="" />
+                  <img
+                    src="https://raw.githubusercontent.com/kimjy-par/DRHEEWON_img/main/avatar/avatar3.jpeg"
+                    alt=""
+                  />
                   {item.userName}
                 </li>
                 <li className="UserReviewBody">
-                  <div className="UserReviewTitle">{item.content}</div>
+                  <div className="UserReviewTitle">{item.title}</div>
                   <div className="UserReviewRating">
+                    {/* {item.ratingStar} */}
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
@@ -217,7 +243,12 @@ export default function ProductDetail() {
             );
           })}
       </section>
-      <div className="ReviewMoreBtn">더 많은 후기 보기(+156개)</div>
+      <div onClick={requestMoreBtn} className="ReviewMoreBtn">
+        더 많은 후기 보기(+{remainLength}개)
+      </div>
     </div>
   );
 }
+
+// [...state, ...state]
+// offset = 0 / limit = 3;
