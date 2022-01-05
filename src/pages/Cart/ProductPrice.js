@@ -1,9 +1,7 @@
 // 구매하기 버튼
 const buyProduct = () => {};
 
-const ProductPrice = ({ priceAll }) => {
-  priceAll = priceAll.toLocaleString();
-
+const ProductPrice = ({ totalPrice }) => {
   return (
     <aside className="orderPrice">
       <article>
@@ -12,11 +10,11 @@ const ProductPrice = ({ priceAll }) => {
         </header>
         <dl>
           <dt>총 상품 금액</dt>
-          <dd>{priceAll}</dd>
+          <dd>{totalPrice.toLocaleString()}</dd>
           <dt>할인 금액</dt>
           <dd>(-)0</dd>
           <dt>총 결제 예정 금액</dt>
-          <dd>{priceAll}</dd>
+          <dd>{totalPrice.toLocaleString()}</dd>
         </dl>
       </article>
       <button onClick={buyProduct} className="buyProductBtn">
