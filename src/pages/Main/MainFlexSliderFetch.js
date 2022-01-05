@@ -20,14 +20,14 @@ export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
     switch (sectionArea) {
       case 'bestIcon':
         fetch(
-          `https://ba73-211-106-114-186.ngrok.io/products?limit=${selectedIcon}&subcategory=${selectedCategory[selectedIcon]}&sort=launch`
+          `http://37b9-211-106-114-186.ngrok.io/products?limit=${selectedIcon}&subcategory=${selectedCategory[selectedIcon]}&sort=launch`
         )
           .then(res => res.json())
           .then(data => setProducts(data.result));
         break;
       case 'mdRecommend':
         fetch(
-          `https://ba73-211-106-114-186.ngrok.io/products?limit=${selectedIcon}&subcategory=${selectedCategory[selectedIcon]}&sort=price`
+          `http://37b9-211-106-114-186.ngrok.io/products?limit=${selectedIcon}&subcategory=${selectedCategory[selectedIcon]}&sort=price`
         )
           .then(res => res.json())
           .then(data => setProducts(data.result));

@@ -15,7 +15,7 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
 
   useEffect(() => {
     setSliderPosition(0);
-  }, [products]);
+  }, [isLoad]);
 
   const sliderClick = event => {
     const { name } = event.target;
@@ -74,7 +74,7 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
           })
         ) : (
           <>
-            {sectionArea === 'bestIcon' && <BestIconSkeleton />}{' '}
+            {sectionArea === 'bestIcon' && <BestIconSkeleton />}
             {sectionArea === 'mdRecommend' && <MdRecommendSkeleton />}
           </>
         )}
