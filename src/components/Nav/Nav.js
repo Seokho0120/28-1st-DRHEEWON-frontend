@@ -9,12 +9,14 @@ import SetClassCondition from '../customlib/SetClassCondition';
 
 import NavHiddenMenu from './NavHiddenMenu';
 import './Nav.scss';
+import useToggleNav from '../../hooks/useToggleNav';
 
-export default function Nav({ visibleValue }) {
+export default function Nav() {
   const [isShow, setIsShow] = useState(false);
-  const isValidUser = localStorage.getItem('token');
-
+  const { visibleValue } = useToggleNav();
   const navigate = useNavigate();
+
+  const isValidUser = localStorage.getItem('token');
 
   const toggleHiddenMenu = () => {
     setIsShow(!isShow);

@@ -1,56 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
+import useHorizontalScroll from '../../../hooks/useHorizontalScroll';
 
 import './HorizontalContent.scss';
 
 export default function HorizontalContent() {
-  const [horizontalPos, setHorizontalPos] = useState(0);
-  const [horizontalScrollPos, setHorizontalScrollPos] = useState(0);
-
   const horizontalRef = useRef();
 
-  useEffect(() => {
-    const horizontalVariable = horizontalRef.current;
-
-    function handleHorizontal(event) {
-      const childrenOffset = horizontalVariable.childNodes[0].offsetWidth;
-      const childrenLength = horizontalVariable.children.length;
-      const targetWidth = childrenOffset * childrenLength;
-      const scrollRange = childrenOffset * 2 - 180;
-
-      const moveRight = () => {
-        setHorizontalPos(current => {
-          return current + childrenOffset < targetWidth - childrenOffset * 1.3
-            ? current + childrenOffset
-            : targetWidth - childrenOffset * 1.3;
-        });
-
-        setHorizontalScrollPos(current => {
-          return current + scrollRange / childrenLength < scrollRange
-            ? current + scrollRange / childrenLength
-            : scrollRange;
-        });
-      };
-
-      const moveLeft = () => {
-        setHorizontalPos(current => {
-          return current - childrenOffset > 0 ? current - childrenOffset : 0;
-        });
-        setHorizontalScrollPos(current => {
-          return current - scrollRange / childrenLength > 0
-            ? current - scrollRange / childrenLength
-            : 0;
-        });
-      };
-
-      event.deltaY > 0 ? moveRight() : moveLeft();
-    }
-
-    horizontalVariable.addEventListener('mousewheel', handleHorizontal);
-
-    return () => {
-      horizontalVariable.removeEventListener('mousewheel', handleHorizontal);
-    };
-  }, []);
+  const { horizontalPos, horizontalScrollPos } =
+    useHorizontalScroll(horizontalRef);
 
   return (
     <section className="horizontalContent">
