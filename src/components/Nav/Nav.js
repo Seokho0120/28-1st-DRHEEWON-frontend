@@ -21,7 +21,7 @@ export default function Nav({ visibleValue }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     alert('로그아웃 되었습니다!');
     navigate('/');
   };
@@ -43,10 +43,7 @@ export default function Nav({ visibleValue }) {
                 </>
               ) : (
                 <>
-                  <span>
-                    <span className="strong">{isValidUser.name}</span>님
-                    환영합니다!
-                  </span>
+                  <span className="strong">환영합니다!</span>
                   <span onClick={logout}>로그아웃</span>
                 </>
               )}
