@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
+import { Navigate } from 'react-router';
 
 export default function MainContainer() {
   const [data, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://ba73-211-106-114-186.ngrok.io/products')
+    fetch('http://8ec5-211-106-114-186.ngrok.io/products')
       .then(res => res.json())
-      .then(res => setProducts(res));
+      .then(data => {
+        setProducts(data.result);
+      });
   }, []);
 
   return (
     <section className="mainContainer">
       <article className="mainContainerWrapper">
         <ul className="mainContainerWrapper">
-          {data.result?.map(item => {
+          {data.map(item => {
             return (
               <li className="item" key={item.id}>
                 <div className="itemImage">
-                  <img src={item.thumbNailImage} alt="이미지" />
+                  <img src={item.thumbnailImage} alt="이미지" />
                 </div>
                 <div className="itemRow">
                   <div className="itemColumnLeft">

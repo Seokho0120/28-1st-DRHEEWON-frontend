@@ -1,37 +1,55 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+// import queryString from 'querystring';
+
 import Filter from '../../components/ProductList/Filter';
 import MainContainer from '../../components/ProductList/MainContainer';
 import FilterButton from '../../components/ProductList/FilterButton';
 import CategoryButton from '../../components/ProductList/CategoryButton';
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './ProductList.scss';
 
-export default function ProductList() {
-  const KEYWORDLIST = [
-    '롱부츠',
-    '베스트셀러',
-    '콜라보레이션',
-    '첼시부츠',
-    '슈폴리시 사용법',
-    '스웨이드 클리너 사용법',
-    '슬리퍼',
-  ];
-  const navigate = useNavigate();
+const API = 'http://8ec5-211-106-114-186.ngrok.io/products?subcategory';
+// const { search } = this.props.location;
+// const queryObj = queryString.parse(search);
 
-  const [isOpen, setMenu] = useState(false);
+const KEYWORDLIST = [
+  '롱부츠',
+  '베스트셀러',
+  '콜라보레이션',
+  '첼시부츠',
+  '슈폴리시 사용법',
+  '스웨이드 클리너 사용법',
+  '슬리퍼',
+];
+
+const objArr = [updateOffset(1), updateOffset(2), updateOffset(3)];
+
+export default function ProductList() {
+  const [category, setCategory] = useState([]);
+  const navigate = useNavigate(objArr);
+  const location = useLocation();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   // const toggleMenu = () => {
   //   setMenu(isOpen => !isOpen);
   // };
+  useEffect(() => {
+    fetch(`${API}${location.search}`)
+      .then(res => res.json())
+      .then(data => setCategory(data.results));
+  }, []);
 
   const updateOffset = buttonIndex => {
-    const limit = 8;
-    const offset = buttonIndex * limit;
-    const queryString = `limit=${limit}&offset=${offset}`;
+    // const LIMIT = 8;
+    // const offset = buttonIndex * LIMIT;
+    // const queryString = `limit=${LIMIT}&offset=${offset}`;
+    const queryString = useNavigate;
+    console.log(queryString);
 
     navigate(`?${queryString}`);
   };
