@@ -15,16 +15,8 @@ export default function VerticalItems({ item, index }) {
     setIsSelected(!isSelected);
   };
 
-  const goToList = event => {
-    const [detailCategory, listId] = event.target
-      .getAttribute('name')
-      .split('_');
-
-    const listCategory = item.name;
-
-    const queryString = `?listCategory=${listCategory}&name=${detailCategory}&id=${listId}`;
-
-    navigate(`/productList${queryString}`);
+  const goToList = () => {
+    navigate('/productList');
   };
 
   return (
