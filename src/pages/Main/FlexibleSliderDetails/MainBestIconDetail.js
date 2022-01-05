@@ -6,19 +6,19 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 export default function MainBestIconDetail({ item }) {
   return (
     <>
-      <img src={item.imgPath} alt="dummy" />
-      <img src={item.imgPath} alt="dummy" />
+      <img src={item.thumbnailImage} alt="dummy" />
+      <img src={item.thumbnailImage} alt="dummy" />
       <div className="bestIconContentsEachDetail strong">
         <div className="detailLeft">
-          <p>{item.name}</p>
-          <p>오리지널 | 블랙</p>
+          <p>{item.productName}</p>
+          <p>{item.centerColor}</p>
           <span>
             <FontAwesomeIcon icon={faHeart} />
-            {item.like}
+            1234
           </span>
         </div>
         <div className="detailRight">
-          <p>{`₩ ${item.amount
+          <p>{`₩ ${item.price
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</p>
           <BorderButton type="putCart" />
