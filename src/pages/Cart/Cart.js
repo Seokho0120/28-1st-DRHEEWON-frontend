@@ -10,29 +10,31 @@ import './Cart.scss';
 
 const Cart = () => {
   const [productData, setProductData] = useState([]);
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [isCheckedAll, setIsCheckedAll] = useState(false);
 
-  const productExist = productData.length;
-  const isCheckedAll = checkedItems.length === productExist;
-
-  const totalPrice = productData.filter(item => item.isChecked);
-  // .reduce((acc, cur) => {
-  //   return acc.price + cur.price * cur.quantity;
-  // });
-  console.log(totalPrice);
+  const totalPrice = productData
+    .filter(item => item.isChecked)
+    .reduce((acc, cur) => {
+      return acc + cur.price * cur.quantity;
+    }, 0);
 
   // 전체 상품 선택
-  const checkProductAll = () => {
-    if (isCheckedAll) {
-      setCheckedItems([]);
-    } else {
-      const allList = [];
-      productData.forEach(item => {
-        allList.push(item.id);
+  const checkProductAll = e => {
+    setProductData(current => {
+      const newList = [...current];
+      newList.forEach(item => {
+        item.isChecked = !isCheckedAll;
+        // isCheckedAll ? (item.isChecked = false) : (item.isChecked = true);
       });
-      setCheckedItems(allList);
-    }
+      return newList;
+    });
+    setIsCheckedAll(!isCheckedAll);
   };
+  // console.log(productData);
+
+  useEffect(() => {
+    console.log(productData);
+  }, [productData]);
 
   // 선택 삭제
   const deleteProductSelection = () => {
@@ -57,7 +59,7 @@ const Cart = () => {
       <main>
         <section className="choiceHandlerWrap">
           <div className="choiceHandler">
-            <label onClick={checkProductAll}>
+            <label>
               <input
                 onChange={checkProductAll}
                 type="checkbox"
@@ -71,24 +73,23 @@ const Cart = () => {
                 size="2x"
                 className="trashAlt"
               />
-              <span onClick={deleteProductSelection}>
-                선택 삭제 ({checkedItems.length})
-              </span>
+              <span onClick={deleteProductSelection}>선택 삭제 ({1})</span>
             </button>
           </div>
         </section>
         <div className="cartPriceListWrap">
           <ul className="cartListWrap">
-            {productData.map((product, idx) => (
+            {productData.map(product => (
               <CartList
-                key={idx}
+                key={product.id}
                 product={product}
-                checkedItems={checkedItems}
-                setCheckedItems={setCheckedItems}
+                productData={productData}
+                setProductData={setProductData}
+                setIsCheckedAll={setIsCheckedAll}
               />
             ))}
           </ul>
-          <ProductPrice totalPrice={productData ? totalPrice : 0} />
+          <ProductPrice totalPrice={totalPrice} />
         </div>
       </main>
     </div>
