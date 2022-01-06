@@ -3,6 +3,11 @@ import { BorderButton } from '../../../components/Buttons/BorderButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
+const colorName = {
+  black: '블랙',
+  brown: '브라운',
+  white: '화이트',
+};
 export default function MainBestIconDetail({ item }) {
   return (
     <>
@@ -11,7 +16,7 @@ export default function MainBestIconDetail({ item }) {
       <div className="bestIconContentsEachDetail strong">
         <div className="detailLeft">
           <p>{item.productName}</p>
-          <p>{item.centerColor}</p>
+          <p>{colorName[item.centerColor]}</p>
           <span>
             <FontAwesomeIcon icon={faHeart} />
             1234
