@@ -16,7 +16,7 @@ export default function VerticalItems({ item, index }) {
   };
 
   const goToList = () => {
-    navigate('/productList');
+    navigate('/ProductList');
   };
 
   return (
