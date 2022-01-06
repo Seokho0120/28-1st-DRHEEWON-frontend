@@ -29,6 +29,7 @@
     li {
       display: flex;
       flex-direction: column;
+      cursor: pointer;
 
       .verticalEachHead {
         display: flex;
@@ -50,8 +51,13 @@
         padding: 0 0 0 10px;
         font-size: $mediumFont;
         line-height: 30px;
+
         &.active {
           display: block;
+        }
+
+        li {
+          width: 50%;
         }
       }
     }
