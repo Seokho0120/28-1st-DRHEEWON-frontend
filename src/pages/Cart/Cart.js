@@ -18,6 +18,21 @@ const Cart = () => {
       return acc + cur.price * cur.quantity;
     }, 0);
 
+  useEffect(() => {
+    // fetch('https://062c-211-106-114-186.ngrok.io/carts', {
+    //   method: 'POST',
+    //   headers: {
+    //     Authorization:
+    //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+    //   },
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     // setProductData(data);
+    //     console.log(data);
+    //   });
+  }, []);
+
   // 전체 상품 선택
   const checkProductAll = e => {
     setProductData(current => {
@@ -30,28 +45,24 @@ const Cart = () => {
     });
     setIsCheckedAll(!isCheckedAll);
   };
-  // console.log(productData);
-
-  useEffect(() => {
-    console.log(productData);
-  }, [productData]);
 
   // 선택 삭제
   const deleteProductSelection = () => {
-    // fetch(url,{method:'post', body:{
-    //   checkedItems:checkedItems
-    // }})
-    // .then(res=>res.json())
-    // .then(data=>setProductData(data))
+    // const checkedDeleteItem = productData.filter(item => item.isChecked);
+    // const countDeleteItemId = checkedDeleteItem.map(item => item.id);
+    // fetch('https://062c-211-106-114-186.ngrok.io/carts', {
+    //   method: 'POST',
+    //   headers: {
+    //     Authorization:
+    //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+    //   },
+    //   body: {
+    //     user_id: countDeleteItemId,
+    //   },
+    // })
+    //   .then(res => res.json())
+    //   .then(data => setProductData(data));
   };
-
-  useEffect(() => {
-    fetch('http://localhost:3000/data/cartList/cartList.json')
-      .then(res => res.json())
-      .then(data => {
-        setProductData(data);
-      });
-  }, []);
 
   return (
     <div className="cartContainer">
@@ -89,7 +100,11 @@ const Cart = () => {
               />
             ))}
           </ul>
-          <ProductPrice totalPrice={totalPrice} />
+          <ProductPrice
+            totalPrice={totalPrice}
+            productData={productData}
+            setProductData={setProductData}
+          />
         </div>
       </main>
     </div>
