@@ -6,7 +6,8 @@
     "centeColor": "블랙",
     "size": "240",
     "price": 190000,
-    "quantity": 1
+    "quantity": 1,
+    "isChecked": false
   },
   {
     "id": 2,
@@ -15,6 +16,7 @@
     "centeColor": "화이트",
     "size": "250",
     "price": 160000,
-    "quantity": 2
+    "quantity": 2,
+    "isChecked": false
   }
 ]
