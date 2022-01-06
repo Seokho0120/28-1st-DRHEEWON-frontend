@@ -9,7 +9,7 @@ export default function MainNewJoin() {
 
           <span>신규 회원으로 가입하고 10% 쿠폰과 최신 소식을 받아보세요.</span>
         </div>
-        <a href="#!">
+        <a href="/register">
           <BorderButton type="join" />
         </a>
       </div>

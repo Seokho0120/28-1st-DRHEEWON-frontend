@@ -16,32 +16,32 @@ export const slideImgsData = [
 export const bestIconImagesData = [
   {
     id: '1',
-    name: '이걸',
+    name: '워커 1',
     imgPath: 'images/black_shoe.png',
   },
   {
     id: '2',
-    name: '누르면',
+    name: '운동화 2',
     imgPath: 'images/black_shoe.png',
   },
   {
     id: '3',
-    name: 'icon이 바뀌고',
+    name: '워커 3',
     imgPath: 'images/black_shoe.png',
   },
   {
     id: '4',
-    name: '각기 다른',
+    name: '운동화 4',
     imgPath: 'images/black_shoe.png',
   },
   {
     id: '5',
-    name: '이미지가',
+    name: '워커 5',
     imgPath: 'images/black_shoe.png',
   },
   {
     id: '6',
-    name: '들어온다',
+    name: '운동화 6',
     imgPath: 'images/black_shoe.png',
   },
 ];

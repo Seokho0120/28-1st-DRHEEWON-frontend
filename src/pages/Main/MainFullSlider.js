@@ -33,6 +33,7 @@ export default function MainFullSlider() {
       }, 100);
     }
   }, [sliderPosition]);
+
   const clickSliderBtn = event => {
     const { name } = event.target;
     switch (name) {
@@ -51,7 +52,7 @@ export default function MainFullSlider() {
       <div
         className={`fullSliderUl ${stopTran ? 'stopTran' : ''}`}
         style={{
-          transform: `translateX(-${sliderPosition * 98.87}vw)`,
+          transform: `translateX(-${sliderPosition * 100}vw)`,
         }}
       >
         <div>

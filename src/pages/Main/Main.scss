@@ -11,6 +11,7 @@
   }
 
   .fullSliderSection {
+    width: 100vw;
     height: 800px;
     list-style: none;
     overflow: hidden;
@@ -163,6 +164,7 @@
     .stickyContainer {
       position: sticky;
       top: 0;
+      width: 100vw;
       height: 161.7vh;
       overflow: hidden;
 
@@ -175,11 +177,11 @@
       }
 
       .bg {
-        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        height: 100%;
         background-color: #fafafa;
         z-index: -1;
       }

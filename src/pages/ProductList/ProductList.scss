@@ -1,0 +1,386 @@
+@import '../../styles/baseStyle/colors.scss';
+
+.productList {
+  box-sizing: border-box;
+
+  header {
+    width: 100%;
+    padding-bottom: 30px;
+    padding-top: 220px;
+
+    .headerWrap {
+      width: 1140px;
+      margin: 0 auto;
+
+      .subHeadBottom {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      h1 {
+        justify-content: center;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  main {
+    .headContainer {
+      position: relative;
+
+      article.layoutWrapper {
+        width: 100vw;
+        border-bottom: 1px solid lightgrey;
+
+        .layoutWrapperBorder {
+          width: 1140px;
+          margin: 0 auto;
+
+          .container {
+            justify-content: left;
+            margin-bottom: 30px;
+            padding-top: 40px;
+
+            button {
+              height: 55px;
+              margin: 0 3px 0 3px;
+              padding: 0 30px 0 30px;
+              border: 1px solid black;
+              font-size: 18px;
+            }
+
+            button.active {
+              background-color: black;
+              color: white;
+            }
+          }
+        }
+
+        .containerDetail {
+          margin-bottom: 20px;
+        }
+
+        // 필터버튼
+        .filterButtonWrapper {
+          align-items: center;
+          text-align: right;
+
+          .filterButton {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-left: 8px;
+            margin-right: 12px;
+
+            .filterButtonList {
+              width: 20px;
+              height: 20px;
+            }
+
+            .filterButtonTxt {
+              margin-left: 8px;
+              margin-right: 12px;
+            }
+
+            .filterButtonArrow {
+              transform: rotate(180deg);
+              width: 14px;
+              height: 10px;
+            }
+          }
+        }
+      }
+
+      // 필터창
+      article.filterLayoutWrapper {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        z-index: 90;
+        border-bottom: 1px solid #ddd;
+
+        .filterContainer {
+          width: 1140px;
+          top: 0;
+          margin: 0 auto;
+          background-color: white;
+
+          form.filterListContainer_form {
+            div:nth-child(4) {
+              border: none;
+            }
+
+            .containerField {
+              display: flex;
+              width: 100%;
+              min-height: 70px;
+              border-bottom: 1px solid #ddd;
+
+              .containerFieldTitle {
+                display: flex;
+                align-items: center;
+                min-width: 90px;
+                height: 80px;
+                max-width: 80px;
+                font-size: 18px;
+                font-weight: 700;
+              }
+
+              ul {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: 10px 0;
+
+                li {
+                  margin: 10px 40px 10px 0;
+
+                  .sizeBox {
+                    input {
+                      width: 22px;
+                      height: 19px;
+                      margin-right: 10px;
+                      cursor: pointer;
+                    }
+                    span {
+                      font-size: 20px;
+                    }
+                  }
+                }
+
+                .itemArray {
+                  margin: 10px 40px 10px 0;
+
+                  .itemArrayWrap {
+                    display: flex;
+
+                    input {
+                      width: 15px;
+                      height: 15px;
+                      border: 1px solid black;
+                    }
+
+                    span {
+                      line-height: 22px;
+                      font-size: 18px;
+                      padding-left: 10px;
+                    }
+                  }
+                }
+              }
+              .containerFieldTitle_colors {
+                li {
+                  margin: 10px;
+
+                  input {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    border: none;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+
+            div {
+              box-sizing: inherit;
+            }
+          }
+
+          .filterListContainer_body {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 30px;
+
+            button {
+              width: 300px;
+              height: 62px;
+              font-weight: 700;
+              font-size: 22px;
+              letter-spacing: -0.22px;
+              margin-right: 10px;
+              background-color: #fff;
+              border: 1px solid #111;
+            }
+          }
+        }
+        .hide {
+          position: relative;
+          justify-content: center;
+          width: 1140px;
+          margin: 0 auto;
+          z-index: 100;
+          top: -376px;
+          transition: 1s;
+        }
+      }
+    }
+
+    section.mainContainer {
+      width: 1140px;
+      margin: 0 auto;
+      padding-top: 80px;
+      padding-bottom: 120px;
+      flex: 0;
+
+      article.mainContainerWrapper {
+        ul {
+          display: flex;
+
+          li.item {
+            display: inline;
+
+            width: 365px;
+            height: 455px;
+
+            .itemImage {
+              width: 365px;
+              height: 455px;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .itemRow {
+              display: flex;
+              padding: 0 20px;
+
+              .itemColumnLeft {
+                flex: 1 1 auto;
+                width: 100%;
+                margin-right: 10px;
+
+                h2 {
+                  margin: 17px 0;
+                  font-size: 22px;
+                  font-weight: 600;
+                }
+
+                .additionalInfo {
+                  margin-bottom: 15px;
+                  line-height: 1;
+                  font-size: 15px;
+
+                  p {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    span {
+                      font-weight: 700;
+                      font-size: 16px;
+                    }
+                  }
+                }
+
+                .likesButton {
+                  display: inline-flex;
+                  width: auto;
+                  align-items: center;
+                  padding: 0;
+
+                  .heartIcon {
+                    width: 24px;
+                    height: 20px;
+                    margin-right: 5px;
+                  }
+
+                  span {
+                    font-weight: 700;
+                    line-height: 20px;
+                    font-size: 20px;
+                  }
+                }
+              }
+
+              .itemColumnRight {
+                display: flex;
+                flex-direction: column;
+                flex: 0 0 auto;
+                width: 140px;
+
+                .priceWrapper {
+                  width: 100%;
+                  margin: 15px 0;
+                  text-align: right;
+
+                  span {
+                    font-weight: 700;
+                  }
+                }
+
+                button.cartButton {
+                  height: 50px;
+                  padding: 0 17px;
+                  border: 1px solid black;
+
+                  span {
+                    font-size: 18px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  section {
+    .popularKeyword {
+      justify-content: inherit;
+      padding-top: 100px;
+      width: 1140px;
+      margin: 0 auto;
+      padding-bottom: 100px;
+
+      article {
+        h2 {
+          font-size: 48px;
+          font-weight: 700;
+          text-align: center;
+        }
+
+        p {
+          margin-top: 10px;
+          font-size: 18px;
+          text-align: center;
+          color: #666;
+        }
+      }
+
+      ul {
+        display: flex;
+        justify-content: center;
+        background-size: cover;
+        background-position: 50%;
+        margin-top: 50px;
+        flex-wrap: wrap;
+
+        li {
+          cursor: pointer;
+          min-width: 207px;
+          height: 67px;
+          line-height: 67px;
+          text-align: center;
+          box-shadow: 0 10px 10px 0 rgb(0 0 0 / 25%);
+          margin: auto 10px 40px;
+          background-color: black;
+          font-size: 20px;
+          font-weight: 700;
+
+          div {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

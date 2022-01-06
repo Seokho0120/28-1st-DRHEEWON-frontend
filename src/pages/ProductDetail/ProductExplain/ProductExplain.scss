@@ -1,0 +1,104 @@
+@use '../../../styles/baseStyle/colors.scss' as color;
+@use '../../../styles/baseStyle/font.scss' as font;
+@use '../../../styles/baseStyle/size.scss' as size;
+@use '../../../styles/baseStyle/border.scss' as border;
+
+/* productExplain */
+.productExplain {
+  display: flex;
+  flex-direction: column;
+
+  .explainText {
+    text-align: center;
+    margin: 120px 0;
+    padding-bottom: 120px;
+    border-bottom: border.$btnBorderBlack;
+
+    &Title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    &Detail {
+      font-size: 26px;
+      line-height: 30px;
+    }
+  }
+
+  .explainDetail {
+    display: flex;
+    padding-bottom: 120px;
+
+    .explainSize {
+      width: 50%;
+
+      h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        padding-left: 8px;
+      }
+
+      .table {
+        margin-bottom: 32px;
+        border-top: 3px solid black;
+
+        .tableTitle {
+          width: 100px;
+          height: 56px;
+          font-size: 20px;
+          letter-spacing: 1px;
+          color: color.$deepGrey;
+          border-bottom: 1px solid color.$grey;
+        }
+
+        .tableBody {
+          height: 112px;
+          letter-spacing: 1px;
+          font-size: 36px;
+          font-weight: 700;
+          text-align: center;
+          border-bottom: 1px solid color.$grey;
+        }
+      }
+    }
+
+    .explainContents {
+      width: 50%;
+
+      .ContentsList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+
+        div {
+          font-size: 20px;
+          margin-bottom: 5px;
+        }
+
+        p {
+          font-size: 30px;
+          font-weight: 700;
+        }
+      }
+
+      .ContentsDesk {
+        margin-top: 32px;
+
+        li {
+          position: relative;
+          width: 100%;
+          margin-top: 16px;
+          padding-left: 12px;
+          line-height: 1.5;
+          font-size: 24px;
+
+          svg {
+            margin-right: 10px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

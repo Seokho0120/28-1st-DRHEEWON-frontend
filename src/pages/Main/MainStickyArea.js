@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
 import throttle from '../../customlib/throttle';
 
 import { BorderButton } from '../../components/Buttons/BorderButton';
@@ -11,7 +12,7 @@ const stickyImgs = {
 export default function MainStickyArea({ sectionArea }) {
   const [introOpacity, setIntroOpacity] = useState(1);
   const [introScale, setIntroScale] = useState(1);
-  const [stickyPos, setStickyPos] = useState(0);
+  const [shoePos, setShoePos] = useState(0);
   const [visionOpacity, setVisionOpacity] = useState(1);
   const [visionScale, setVisionScale] = useState(1);
 
@@ -26,21 +27,55 @@ export default function MainStickyArea({ sectionArea }) {
     },
   };
 
+  const introRef = useRef();
+  const introShoeRef = useRef();
+  const visionRef = useRef();
+
   useEffect(() => {
+    const enterSection = getAreaTop(sectionArea) - 1000;
+
+    function getAreaTop(sectionArea) {
+      switch (sectionArea) {
+        case 'introduce':
+          return introRef.current.getBoundingClientRect().top;
+        case 'introShoe':
+          return introShoeRef.current.getBoundingClientRect().top;
+        case 'vision':
+          return visionRef.current.getBoundingClientRect().top;
+        default:
+      }
+    }
+
+    function setSectionAnimate(sectionArea, enterSection, scrollPos) {
+      switch (sectionArea) {
+        case 'introduce':
+          scrollPos > enterSection &&
+            scrollPos < enterSection + 650 &&
+            setIntroOpacity(1 - (scrollPos - enterSection) / 1000);
+          scrollPos > enterSection + 300 &&
+            scrollPos < enterSection + 650 &&
+            setIntroScale(1 + (scrollPos - enterSection) / enterSection);
+          break;
+        case 'introShoe':
+          scrollPos > enterSection &&
+            scrollPos < enterSection + 1000 &&
+            setShoePos((scrollPos - enterSection) / 100);
+          break;
+        case 'vision':
+          scrollPos > enterSection &&
+            scrollPos < enterSection + 600 &&
+            setVisionOpacity(1 - (scrollPos - enterSection) / 1000);
+          scrollPos > enterSection + 600 &&
+            scrollPos < enterSection + 1100 &&
+            setVisionScale(1 + (scrollPos - enterSection + 500) / 2000);
+          break;
+        default:
+      }
+    }
+
     function handleScroll() {
       const scrollPos = window.scrollY;
-
-      const introBlind = scrollPos > 3200 && scrollPos < 3850;
-      const introScale = scrollPos > 3500 && scrollPos < 3850;
-      const stickyShoePos = scrollPos > 5400 && scrollPos < 6400;
-      const visionBlind = scrollPos > 8000 && scrollPos < 8600;
-      const visionScale = scrollPos > 8500 && scrollPos < 9100;
-
-      if (introBlind) setIntroOpacity(1 - (scrollPos - 3200) / 1000);
-      if (introScale) setIntroScale(1 + (scrollPos - 3500) / 3500);
-      if (stickyShoePos) setStickyPos((scrollPos - 5400) / 100);
-      if (visionBlind) setVisionOpacity(1 - (scrollPos - 8000) / 1000);
-      if (visionScale) setVisionScale(1 + (scrollPos - 8500) / 2000);
+      setSectionAnimate(sectionArea, enterSection, scrollPos);
     }
 
     window.addEventListener('scroll', throttle(handleScroll, 10));
@@ -48,7 +83,7 @@ export default function MainStickyArea({ sectionArea }) {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [sectionArea]);
 
   const stickyImages = () => {
     return sectionArea === 'introduce' || sectionArea === 'vision' ? (
@@ -66,12 +101,12 @@ export default function MainStickyArea({ sectionArea }) {
           <img
             src="images/stickyLeftShoe.png"
             alt="left"
-            style={{ transform: `translateX(${stickyPos}vw)` }}
+            style={{ transform: `translateX(${shoePos}vw)` }}
           />
           <img
             src="images/stickyRightShoe.png"
             alt="right"
-            style={{ transform: `translateX(-${stickyPos}vw)` }}
+            style={{ transform: `translateX(-${shoePos}vw)` }}
           />
         </div>
       )
@@ -80,19 +115,19 @@ export default function MainStickyArea({ sectionArea }) {
 
   const stickyHeader = () => {
     return sectionArea === 'introduce' ? (
-      <div className="stickyHeader white">
+      <div className="stickyHeader white" ref={introRef}>
         <span className="strong">WELCOME TO</span>
         <span className="strong">DRHW MEMBERS</span>
       </div>
     ) : sectionArea === 'introShoe' ? (
-      <div className="stickyHeader padding600">
+      <div className="stickyHeader padding600" ref={introShoeRef}>
         <span>오리지널</span>
         <span className="strong">겁나 좋은</span>
         <span className="strong">신발</span>
       </div>
     ) : (
       sectionArea === 'vision' && (
-        <div className="stickyHeader white">
+        <div className="stickyHeader white" ref={visionRef}>
           <span className="grey strong">닥터희원</span>
           <span className="strong">반항적인</span>
           <span className="strong">이름 표현의 역사</span>

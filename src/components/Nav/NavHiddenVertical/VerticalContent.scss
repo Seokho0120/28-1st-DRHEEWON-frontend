@@ -1,0 +1,74 @@
+@import '../../../styles/baseStyle/colors.scss';
+@import '../../../styles/baseStyle/font.scss';
+
+@mixin fontAwesomeIconDisabled {
+  svg {
+    pointer-events: none;
+
+    path {
+      pointer-events: none;
+    }
+  }
+}
+
+.verticalContent {
+  display: flex;
+  flex-basis: 40%;
+  height: 80%;
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    margin: 0;
+    font-size: 48px;
+    transition: transform 0.5s;
+    line-height: 60px;
+
+    li {
+      display: flex;
+      flex-direction: column;
+
+      .verticalEachHead {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          position: relative;
+          margin-left: 20px;
+          font-size: 24px;
+
+          @include fontAwesomeIconDisabled;
+        }
+      }
+
+      ul {
+        display: none;
+        height: auto;
+        margin: 0;
+        padding: 0 0 0 10px;
+        font-size: $mediumFont;
+        line-height: 30px;
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .verticalScrollBar {
+    width: 10px;
+    height: 60px;
+    border-radius: 25px;
+    background-color: #999;
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0;
+  }
+
+  &:hover {
+    .verticalScrollBar {
+      opacity: 1;
+    }
+  }
+}
