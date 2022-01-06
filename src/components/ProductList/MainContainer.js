@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import { Navigate } from 'react-router';
 
 export default function MainContainer({ locationSearch }) {
   const [products, setProducts] = useState([]);

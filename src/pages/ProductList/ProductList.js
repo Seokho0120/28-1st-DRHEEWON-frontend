@@ -1,6 +1,4 @@
-// import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-// import queryString from 'querystring';
 
 import Filter from '../../components/ProductList/Filter';
 import MainContainer from '../../components/ProductList/MainContainer';
@@ -11,8 +9,6 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './ProductList.scss';
-
-// const API = 'http://10.58.4.135:8080/products';
 
 const KEYWORD_LIST = [
   '롱부츠',
@@ -25,22 +21,8 @@ const KEYWORD_LIST = [
 ];
 
 export default function ProductList() {
-  // const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-
-  // const [isOpen, setIsOpen] = useState(false);
-  // console.log(useState);
-
-  // const toggleMenu = () => {
-  //   setMenu(isOpen => !isOpen);
-  // };
-  // useEffect(() => {
-  //   fetch(`${API}${location.search}`)
-  //     .then(res => res.json())
-  //     .then(data => setProducts(data.results));
-  // }, [location.search]);
-  // console.log(location);
 
   const updateList = buttonList => {
     const list = buttonList;
@@ -48,7 +30,6 @@ export default function ProductList() {
 
     navigate(`/products?subcategory=${queryString}`);
   };
-  // console.log(updateList);
 
   return (
     <div>
