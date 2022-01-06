@@ -1,4 +1,7 @@
 import { useEffect } from 'react';
+
+import config from './../../config/config.json';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,24 +13,40 @@ const CartList = ({
   setProductData,
   setIsCheckedAll,
 }) => {
-  const { id, thumbnailImage, productName, centeColor, size, price, quantity } =
-    product;
+  const {
+    cartId,
+    thumbnailImage,
+    productName,
+    centeColor,
+    size,
+    price,
+    quantity,
+  } = product;
+
+  const userToken = localStorage.getToken('user');
 
   // 상품 직접 클릭하여 삭제 (delete btn)
   const deleteProduct = e => {
-    // const { name } = e.target;
-    // fetch('https://062c-211-106-114-186.ngrok.io/carts', {
-    //   method: 'POST',
-    //   headers: {
-    //     Authorization:
-    //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
-    //   },
-    //   body: {
-    //     user_id: name,
-    //   },
-    // })
-    //   .then(res => res.json())
-    //   .then(data => setProductData(data.result));
+    const { BASE_URL } = config;
+    const { name } = e.target;
+
+    fetch(`${BASE_URL}carts?cartId=${name}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: userToken,
+      },
+      body: JSON.stringify({ cartId: name }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        fetch(`${config.BASE_URL}carts`, {
+          headers: {
+            Authorization: userToken,
+          },
+        })
+          .then(res => res.json())
+          .then(data => setProductData(data.result));
+      });
   };
 
   // 상품 개별 선택
@@ -35,8 +54,8 @@ const CartList = ({
     const { name } = e.target;
     setProductData(current => {
       const newList = [...current];
-      newList.forEach((item, index) => {
-        if (index + 1 === Number(name)) item.isChecked = !item.isChecked;
+      newList.forEach(item => {
+        if (item.cartId === Number(name)) item.isChecked = !item.isChecked;
       });
       return newList;
     });
@@ -53,14 +72,14 @@ const CartList = ({
 
   return (
     <li>
-      <div className="productContent">
+      <div className="cartProductContent">
         <input
-          name={id}
+          name={cartId}
           type="checkbox"
           onChange={toggleCheckItem}
           checked={product.isChecked}
         />
-        <button onClick={deleteProduct} name={id} className="deleteProduct">
+        <button onClick={deleteProduct} name={cartId} className="deleteProduct">
           <FontAwesomeIcon
             icon={faTimes}
             size="2x"

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import config from './../../config/config.json';
 
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
@@ -12,11 +14,25 @@ const validPassword =
 
 const Register = () => {
   const [formInput, setFormInput] = useState({});
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLoginInput = e => {
     const { value, name } = e.target;
     setFormInput({ ...formInput, [name]: value });
+  };
+
+  // 중복 검사
+  const DuplicateIdCheck = () => {
+    const { BASE_URL } = config;
+    fetch(`${BASE_URL}users/signup?userId=${formInput.id}`)
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'UserExists') {
+          alert('중복된 아이디 입니다.');
+        } else if (result.message === 'UserDoesNotExists') {
+          alert('사용 가능한 아이디입니다.');
+        }
+      });
   };
 
   const checkFormValid = () => {
@@ -56,31 +72,34 @@ const Register = () => {
       tel: '휴대폰 번호가 입력되지 않았습니다.',
     };
 
-    const goToMain = () => {
-      // fetch('http://b9b1-14-38-21-133.ngrok.io/users/signup', {
-      //   method: 'POST',
-      //   body: JSON.stringify({
-      //     username: formInput.name,
-      //     user_id: formInput.id,
-      //     email: formInput.email,
-      //     password: formInput.password,
-      //     birth: formInput.birth,
-      //     mobile_number: formInput.tel,
-      //   }),
-      // })
-      //   .then(response => response.json())
-      //   .then(result => {
-      //     if (result.message === 'SUCCESS') {
-      //       localStorage.setItem('user', result.token);
-      //       alert('환영합니다. 로그인을 해주세요.');
-      //       navigate('/login');
-      //     }
-      //   });
-      return 'hi';
+    const successRegister = () => {
+      const { BASE_URL } = config;
+      fetch(`${BASE_URL}users/signup?userId=${formInput.id}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          username: formInput.name,
+          userId: formInput.id,
+          email: formInput.email,
+          password: formInput.password,
+          birth: formInput.birth,
+          mobileNumber: formInput.tel,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.message === 'SUCCESS') {
+            alert('환영합니다. 로그인을 해주세요.');
+            goToLogin();
+          }
+        });
+    };
+
+    const goToLogin = () => {
+      navigate('/login');
     };
 
     if (findKey() === null) {
-      goToMain();
+      successRegister();
     } else {
       alert(alertMessage[findKey()]);
     }
@@ -120,7 +139,9 @@ const Register = () => {
                     />
                   </td>
                   <td>
-                    <button type="button">중복 확인</button>
+                    <button onClick={DuplicateIdCheck} type="button">
+                      중복 확인
+                    </button>
                   </td>
                 </tr>
                 <tr>

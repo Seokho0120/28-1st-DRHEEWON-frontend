@@ -1,18 +1,14 @@
 @import './../../styles/baseStyle/colors.scss';
-@import './../../styles/baseStyle/size.scss';
 @import './../../styles/baseStyle/font.scss';
 @import './../../styles/baseStyle/border.scss';
 
 .emptyCartContainer {
-  width: $mainContentWidth;
-  margin: 0 auto;
-  padding-top: $navPaddingTop;
-  padding-bottom: 144px;
+  padding: 100px 32px;
 
   .emptyText {
     color: $deepGrey;
     font-size: $mediumFont;
-    margin-top: 144px;
+    // margin-top: 144px;
     text-align: center;
   }
   .goToMain {

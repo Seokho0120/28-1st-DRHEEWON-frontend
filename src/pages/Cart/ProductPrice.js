@@ -1,3 +1,5 @@
+import config from './../../config/config.json';
+
 const ProductPrice = ({ totalPrice, productData, setProductData }) => {
   // 구매하기 버튼
   const buyProduct = () => {
@@ -5,19 +7,30 @@ const ProductPrice = ({ totalPrice, productData, setProductData }) => {
     const CheckedItems = productData.filter(item => item.isChecked);
     if (!CheckedItems.length) return alert('선택된 상품이 없습니다.');
     else {
-      CheckedItems.map(item => item.id);
-      // const idArray = CheckedItems.map(item => item.id);
-      // console.log(idArray);
-    }
+      const idArray = CheckedItems.map(item => item.cartId);
+      const userToken = localStorage.getToken('user');
 
-    // fetch('https://062c-211-106-114-186.ngrok.io/carts', {
-    //   method: 'POST',
-    //   body: {
-    //     user_id: idArray,
-    //   },
-    // })
-    //   .then(res => res.json())
-    //   .then(data => setProductData(data.result));
+      const { BASE_URL } = config;
+      fetch(`${BASE_URL}orders?cartId=${idArray}`, {
+        method: 'POST',
+        headers: {
+          Authorization: userToken,
+        },
+        body: JSON.stringify({ cartId: idArray }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          fetch(`${BASE_URL}carts`, {
+            headers: {
+              Authorization: userToken,
+            },
+          })
+            .then(res => res.json())
+            .then(data => {
+              setProductData(data.result);
+            });
+        });
+    }
   };
 
   return (
