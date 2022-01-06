@@ -33,6 +33,7 @@
       .verticalEachHead {
         display: flex;
         justify-content: space-between;
+        cursor: pointer;
 
         button {
           position: relative;
@@ -50,8 +51,13 @@
         padding: 0 0 0 10px;
         font-size: $mediumFont;
         line-height: 30px;
+
         &.active {
           display: block;
+        }
+
+        li {
+          width: 50%;
         }
       }
     }
