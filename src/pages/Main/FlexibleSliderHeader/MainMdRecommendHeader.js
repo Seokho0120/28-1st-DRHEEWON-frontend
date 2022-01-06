@@ -5,7 +5,7 @@ export default function MainMdRecommendHeader({ selectedIcon, stateHandler }) {
   const flexSliderMenuWrapper = useScrollFadeIn();
 
   return (
-    <section className="rapper">
+    <section className="recommendBtnsWrapper">
       <div className="recommendBtnsContainer" {...flexSliderMenuWrapper}>
         <BorderButton
           type="longBoots"
