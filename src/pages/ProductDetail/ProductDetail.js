@@ -50,7 +50,7 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    ('/ProductDetail/product/jaden.json', { method: 'GET' })
+    fetch('/ProductDetail/product/jaden.json', { method: 'GET' })
       .then(data => data.json())
       .then(data => setDetailData(data));
   }, []);

@@ -15,10 +15,10 @@ const selectedCategory = {
 
 export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
   const [products, setProducts] = useState([]);
-  const [isProducted, setIsProducted] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsProducted(false);
+    setIsLoaded(false);
     switch (sectionArea) {
       case 'bestIcon':
         fetch(
@@ -39,14 +39,14 @@ export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
   }, [sectionArea, selectedIcon]);
 
   useEffect(() => {
-    products.length > 0 && setIsProducted(true);
+    products.length > 0 && setIsLoaded(true);
   }, [products]);
 
   return (
     <FlexibleSlider
       sectionArea={sectionArea}
       products={products}
-      isLoad={isProducted}
+      isLoad={isLoaded}
     />
   );
 }
