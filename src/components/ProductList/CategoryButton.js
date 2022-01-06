@@ -1,15 +1,29 @@
 import React from 'react';
 
-export default function CategoryButton({ updateOffset }) {
+export default function CategoryButton({ updateList }) {
   return (
     <div className="container">
-      <button className="containerCategory" onClick={() => updateOffset(1)}>
-        슈즈
+      <button
+        type="button"
+        className="containerCategory"
+        onClick={() => updateList('워커')}
+        subcategory="워커"
+      >
+        워커
       </button>
-      <button className="containerCategory" onClick={() => updateOffset(2)}>
-        부츠
+      <button
+        type="button"
+        className="containerCategory"
+        onClick={() => updateList('운동화')}
+        subcategory="운동화"
+      >
+        운동화
       </button>
-      <button className="containerCategory" onClick={() => updateOffset(3)}>
+      <button
+        type="button"
+        className="containerCategory"
+        onClick={() => updateList('')}
+      >
         전체 보기
       </button>
     </div>

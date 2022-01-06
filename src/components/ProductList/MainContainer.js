@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
 
-export default function MainContainer() {
-  const [data, setProducts] = useState([]);
+export default function MainContainer({ locationSearch }) {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://ba73-211-106-114-186.ngrok.io/products')
+    fetch(`http://10.58.4.135:8080/products${locationSearch}`)
       .then(res => res.json())
-      .then(res => setProducts(res));
-  }, []);
+      .then(data => {
+        setProducts(data.result);
+      });
+  }, [locationSearch]);
 
   return (
     <section className="mainContainer">
       <article className="mainContainerWrapper">
         <ul className="mainContainerWrapper">
-          {data.result?.map(item => {
+          {products.map(item => {
             return (
               <li className="item" key={item.id}>
                 <div className="itemImage">
-                  <img src={item.thumbNailImage} alt="이미지" />
+                  <img src={item.thumbnailImage} alt="이미지" />
                 </div>
                 <div className="itemRow">
                   <div className="itemColumnLeft">
@@ -25,7 +27,7 @@ export default function MainContainer() {
                     <div className="additionalInfo">{item.centerColor}</div>
                   </div>
                   <div className="itemColumnRight">
-                    <div className="priceWrapper">{item.price}</div>
+                    <div className="priceWrapper">₩{item.price}</div>
                     <button className="cartButton">장바구니 담기</button>
                   </div>
                 </div>
