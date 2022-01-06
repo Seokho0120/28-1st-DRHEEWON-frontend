@@ -13,11 +13,11 @@ export default function VerticalItems({ item, index }) {
   };
 
   return (
-    <li onClick={handleSelected}>
-      <div className="verticalEachHead strong">
+    <li>
+      <div className="verticalEachHead strong" onClick={handleSelected}>
         {item.name}
 
-        <button name={index}>
+        <button name={index} onClick={handleSelected}>
           <FontAwesomeIcon icon={isSelected ? faChevronUp : faChevronDown} />
         </button>
       </div>

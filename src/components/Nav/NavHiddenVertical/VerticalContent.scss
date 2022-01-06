@@ -29,11 +29,11 @@
     li {
       display: flex;
       flex-direction: column;
-      cursor: pointer;
 
       .verticalEachHead {
         display: flex;
         justify-content: space-between;
+        cursor: pointer;
 
         button {
           position: relative;
