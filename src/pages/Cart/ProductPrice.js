@@ -8,13 +8,13 @@ const ProductPrice = ({ totalPrice, productData, setProductData }) => {
     if (!CheckedItems.length) return alert('선택된 상품이 없습니다.');
     else {
       const idArray = CheckedItems.map(item => item.cartId);
+      const userToken = localStorage.getToken('user');
 
       const { BASE_URL } = config;
       fetch(`${BASE_URL}orders?cartId=${idArray}`, {
         method: 'POST',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+          Authorization: userToken,
         },
         body: JSON.stringify({ cartId: idArray }),
       })
@@ -22,8 +22,7 @@ const ProductPrice = ({ totalPrice, productData, setProductData }) => {
         .then(data => {
           fetch(`${BASE_URL}carts`, {
             headers: {
-              Authorization:
-                'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+              Authorization: userToken,
             },
           })
             .then(res => res.json())

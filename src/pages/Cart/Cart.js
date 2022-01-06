@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import config from './../../config/config.json';
 
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import CartList from './CartList';
 import ProductPrice from './ProductPrice';
-// import EmptyCart from './EmptyCart';
 
 import './Cart.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,17 +18,20 @@ const Cart = () => {
   const [isFetched, setIsFetched] = useState(false);
   const [isCheckedAll, setIsCheckedAll] = useState(false);
 
-  useEffect(() => {
-    // if (!localStorage.getToken('user')) {
-    //   alert('회원가입을 해주세요.');
-    //   // navigate('/register');
-    // }
+  const navigate = useNavigate();
 
+  const userToken = localStorage.getToken('user');
+
+  if (!userToken) {
+    alert('회원가입을 해주세요.');
+    navigate('/register');
+  }
+
+  useEffect(() => {
     const { BASE_URL } = config;
     fetch(`${BASE_URL}carts`, {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+        Authorization: userToken,
       },
     })
       .then(res => res.json())
@@ -36,14 +39,13 @@ const Cart = () => {
         data.result.forEach(item => (item.isChecked = false));
         setProductData(data.result);
       });
-  }, [isFetched]);
+  }, [isFetched, userToken]);
 
   const totalPrice = productData
     .filter(item => item.isChecked)
     .reduce((acc, cur) => {
       return acc + cur.price * cur.quantity;
     }, 0);
-  // const totalPrice = 0;
 
   // 전체 상품 선택
   const checkProductAll = e => {
@@ -67,13 +69,12 @@ const Cart = () => {
     fetch(`${BASE_URL}carts?cartId=${countDeleteItemId}`, {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+        Authorization: userToken,
       },
       body: JSON.stringify({ cartId: countDeleteItemId }),
-    }).then(res => res.json());
-
-    setIsFetched(!isFetched);
+    })
+      .then(res => res.json())
+      .then(setIsFetched(!isFetched));
   };
 
   return (

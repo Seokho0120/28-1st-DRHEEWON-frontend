@@ -23,6 +23,8 @@ const CartList = ({
     quantity,
   } = product;
 
+  const userToken = localStorage.getToken('user');
+
   // 상품 직접 클릭하여 삭제 (delete btn)
   const deleteProduct = e => {
     const { BASE_URL } = config;
@@ -31,8 +33,7 @@ const CartList = ({
     fetch(`${BASE_URL}carts?cartId=${name}`, {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+        Authorization: userToken,
       },
       body: JSON.stringify({ cartId: name }),
     })
@@ -40,8 +41,7 @@ const CartList = ({
       .then(data => {
         fetch(`${config.BASE_URL}carts`, {
           headers: {
-            Authorization:
-              'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
+            Authorization: userToken,
           },
         })
           .then(res => res.json())
