@@ -33,7 +33,7 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/productDetail" element={<ProductDetail />} />
-        <Route path="/ProductList" element={<ProductList />} />
+        <Route path="/productList" element={<ProductList />} />
 
         <Route path="/products/:id" element={<ProductList />} />
       </Routes>

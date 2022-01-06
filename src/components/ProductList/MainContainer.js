@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router';
+// import { Navigate } from 'react-router';
 
 export default function MainContainer() {
   const [data, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://8ec5-211-106-114-186.ngrok.io/products')
+    fetch('http://10.58.4.135:8080/products')
       .then(res => res.json())
       .then(data => {
         setProducts(data.result);

@@ -12,11 +12,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './ProductList.scss';
 
-const API = 'http://8ec5-211-106-114-186.ngrok.io/products?subcategory';
+const API = 'http://10.58.4.135:8080/products';
 // const { search } = this.props.location;
 // const queryObj = queryString.parse(search);
 
-const KEYWORDLIST = [
+const KEYWORD_LIST = [
   '롱부츠',
   '베스트셀러',
   '콜라보레이션',
@@ -26,14 +26,15 @@ const KEYWORDLIST = [
   '슬리퍼',
 ];
 
-const objArr = [updateOffset(1), updateOffset(2), updateOffset(3)];
+// const objArr = [updateOffset(1), updateOffset(2), updateOffset(3)];
 
 export default function ProductList() {
-  const [category, setCategory] = useState([]);
-  const navigate = useNavigate(objArr);
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // console.log(useState);
 
   // const toggleMenu = () => {
   //   setMenu(isOpen => !isOpen);
@@ -41,18 +42,18 @@ export default function ProductList() {
   useEffect(() => {
     fetch(`${API}${location.search}`)
       .then(res => res.json())
-      .then(data => setCategory(data.results));
-  }, []);
+      .then(data => setProducts(data.results));
+  }, [location.search]);
 
-  const updateOffset = buttonIndex => {
-    // const LIMIT = 8;
-    // const offset = buttonIndex * LIMIT;
-    // const queryString = `limit=${LIMIT}&offset=${offset}`;
-    const queryString = useNavigate;
-    console.log(queryString);
+  const updateList = buttonList => {
+    const list = buttonList;
+    const queryString = `${list}`;
 
-    navigate(`?${queryString}`);
+    // console.log(queryString);
+
+    navigate(`/products/subcategory?${queryString}`);
   };
+  // console.log(updateList);
 
   return (
     <div>
@@ -72,7 +73,7 @@ export default function ProductList() {
           <section className="headContainer">
             <article className="layoutWrapper">
               <div className="layoutWrapperBorder">
-                <CategoryButton updateOffset={updateOffset} />
+                <CategoryButton updateList={updateList} />
                 <div className="containerDetail">
                   남성 부츠 컬렉션입니다. 남성 부츠는 수십년 동안 자기 자신의
                   표현 수단으로서 자리잡았습니다. 클래식한 첼시 부츠부터
@@ -99,7 +100,7 @@ export default function ProductList() {
               <p>당신에게 맞는 키워드를 클릭해 보세요.</p>
             </article>
             <ul className="keywordList">
-              {KEYWORDLIST.map((list, idx) => {
+              {KEYWORD_LIST.map((list, idx) => {
                 return (
                   <li key={idx}>
                     <div className="keywordListArr">{list}</div>
