@@ -6,19 +6,19 @@ export default function SlideShow({ slidePosition, movePrev, moveNext }) {
         style={{ transform: `translateX(-${slidePosition * 560}px)` }}
       >
         <li className="slideContent">
-          <img src="ProductDetail/drmartens1.jpeg" alt="drmartens1" />
+          <img src="/ProductDetail/drmartens1.jpeg" alt="drmartens1" />
         </li>
         <li className="slideContent">
-          <img src="ProductDetail/drmartens2.jpeg" alt="drmartens2" />
+          <img src="/ProductDetail/drmartens2.jpeg" alt="drmartens2" />
         </li>
         <li className="slideContent">
-          <img src="ProductDetail/drmartens3.jpeg" alt="drmartens3" />
+          <img src="/ProductDetail/drmartens3.jpeg" alt="drmartens3" />
         </li>
         <li className="slideContent">
-          <img src="ProductDetail/drmartens4.jpeg" alt="drmartens4" />
+          <img src="/ProductDetail/drmartens4.jpeg" alt="drmartens4" />
         </li>
         <li className="slideContent">
-          <img src="ProductDetail/drmartens5.jpeg" alt="drmartens5" />
+          <img src="/ProductDetail/drmartens5.jpeg" alt="drmartens5" />
         </li>
       </ul>
       <div className="slideButton">
