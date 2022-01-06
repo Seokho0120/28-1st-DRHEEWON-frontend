@@ -13,8 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './ProductList.scss';
 
 const API = 'http://10.58.4.135:8080/products';
-// const { search } = this.props.location;
-// const queryObj = queryString.parse(search);
 
 const KEYWORD_LIST = [
   '롱부츠',
@@ -25,8 +23,6 @@ const KEYWORD_LIST = [
   '스웨이드 클리너 사용법',
   '슬리퍼',
 ];
-
-// const objArr = [updateOffset(1), updateOffset(2), updateOffset(3)];
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -39,19 +35,18 @@ export default function ProductList() {
   // const toggleMenu = () => {
   //   setMenu(isOpen => !isOpen);
   // };
-  useEffect(() => {
-    fetch(`${API}${location.search}`)
-      .then(res => res.json())
-      .then(data => setProducts(data.results));
-  }, [location.search]);
+  // useEffect(() => {
+  //   fetch(`${API}${location.search}`)
+  //     .then(res => res.json())
+  //     .then(data => setProducts(data.results));
+  // }, [location.search]);
+  // console.log(location);
 
   const updateList = buttonList => {
     const list = buttonList;
     const queryString = `${list}`;
 
-    // console.log(queryString);
-
-    navigate(`/products/subcategory?${queryString}`);
+    navigate(`/products?subcategory=${queryString}`);
   };
   // console.log(updateList);
 
@@ -89,7 +84,7 @@ export default function ProductList() {
           </section>
           <section className="mainContainer">
             <article className="mainContainerWrapper">
-              <MainContainer />
+              <MainContainer locationSearch={location.search} />
             </article>
           </section>
         </main>

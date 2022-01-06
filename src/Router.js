@@ -35,7 +35,7 @@ export default function Router() {
         <Route path="/productDetail" element={<ProductDetail />} />
         <Route path="/productList" element={<ProductList />} />
 
-        <Route path="/products/:id" element={<ProductList />} />
+        <Route path="/products" element={<ProductList />} />
       </Routes>
     </BrowserRouter>
   );

@@ -14,7 +14,7 @@ export default function CategoryButton({ updateList }) {
         type="button"
         className="containerCategory"
         onClick={() => updateList('워커')}
-        value="워커"
+        subcategory="워커"
       >
         워커
       </button>
@@ -22,7 +22,7 @@ export default function CategoryButton({ updateList }) {
         type="button"
         className="containerCategory"
         onClick={() => updateList('운동화')}
-        value="운동화"
+        subcategory="운동화"
       >
         운동화
       </button>
@@ -30,7 +30,7 @@ export default function CategoryButton({ updateList }) {
         type="button"
         className="containerCategory"
         onClick={() => updateList('전체보기')}
-        value="워커+운동화"
+        subcategory=""
       >
         전체 보기
       </button>
