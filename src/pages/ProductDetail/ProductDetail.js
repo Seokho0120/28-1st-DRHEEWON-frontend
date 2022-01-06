@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import SlideShow from './SlideShow/SlideShow';
 import ProductContent from './ProductContent/ProductContent';
 import ProductExplain from './ProductExplain/ProductExplain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faShareAlt,
   faStar,
-  faWonSign,
-  faMinus,
-  faPlus,
   faSquare,
   faPen,
   faMale,
   faFemale,
 } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import './ProductDetail.scss';
 import './SlideShow/SlideShow.scss';
 import './ProductContent/ProductContent.scss';
@@ -27,7 +23,8 @@ export default function ProductDetail() {
   const [prefer, setPrefer] = useState([]);
   const [remainLength, setRemainLength] = useState();
   const [comments, setComments] = useState([]);
-  console.log(comments);
+
+  const { id } = useParams();
 
   const movePrev = () => {
     slidePosition > 0
@@ -50,19 +47,26 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    fetch('/ProductDetail/product/jaden.json', { method: 'GET' })
+    fetch(`http://10.58.4.135:8080/products/${id}`, {
+      method: 'GET',
+    })
       .then(data => data.json())
-      .then(data => setDetailData(data));
+      .then(data => {
+        // console.log()
+        setDetailData(data.result);
+      });
   }, []);
 
   useEffect(() => {
-    fetch('/ProductDetail/review/reviewStats.json', { method: 'GET' })
+    fetch(`http://10.58.4.135:8080/review/${id}`, {
+      method: 'GET',
+    })
       .then(res => res.json())
-      .then(res => setPrefer(res));
+      .then(data => setPrefer(data.result));
   }, []);
 
   useEffect(() => {
-    fetch('http://8ec5-211-106-114-186.ngrok.io/review/2/comments?offset=0')
+    fetch(`http://10.58.4.135:8080/review/${id}/comments?offset=0`)
       .then(res => res.json())
       .then(data => {
         setRemainLength(data.result.shift());
@@ -75,7 +79,7 @@ export default function ProductDetail() {
 
   const requestMoreBtn = () => {
     fetch(
-      `http://8ec5-211-106-114-186.ngrok.io/review/2/comments?offset=${comments.length}`
+      `http://10.58.4.135:8080/review/${id}/comments?offset=${comments.length}`
     )
       .then(res => res.json())
       .then(data => {
@@ -93,19 +97,14 @@ export default function ProductDetail() {
         slidePosition={slidePosition}
         movePrev={movePrev}
         moveNext={moveNext}
+        detailData={detailData}
       />
       <ProductContent
         FontAwesomeIcon={FontAwesomeIcon}
-        faShareAlt={faShareAlt}
-        faHeart={faHeart}
-        faStar={faStar}
         detailData={detailData}
         quantity={quantity}
         minusNumber={minusNumber}
-        faMinus={faMinus}
         plusNumber={plusNumber}
-        faPlus={faPlus}
-        faWonSign={faWonSign}
       />
       <ProductExplain
         detailData={detailData}
@@ -249,6 +248,3 @@ export default function ProductDetail() {
     </div>
   );
 }
-
-// [...state, ...state]
-// offset = 0 / limit = 3;

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faShareAlt,
+  faStar,
+  faWonSign,
+  faMinus,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 export default function ProductContent({
-  FontAwesomeIcon,
-  faShareAlt,
-  faHeart,
-  faStar,
   detailData,
   quantity,
   minusNumber,
-  faMinus,
   plusNumber,
-  faPlus,
-  faWonSign,
 }) {
   const [selectedSize, setSelectedSize] = useState(-1);
   // selectedSize 클릭된 버튼의 인덱스이고, 배열은 0부터 시작하기 때문에 마이너스부터 시작 (공란, -, 상관없는 값) 모두 가능
@@ -27,7 +29,7 @@ export default function ProductContent({
     <aside className="productContent">
       <div className="detailTop">
         <FontAwesomeIcon icon={faShareAlt} />
-        <div className="topFaheart">
+        <div className="topFaHeart">
           <FontAwesomeIcon icon={faHeart} />
           <span>7552</span>
         </div>
@@ -77,10 +79,7 @@ export default function ProductContent({
           {detailData.centerColor &&
             detailData.centerColor.map((colorItem, idx) => {
               return (
-                <button
-                  className={`centerColor ${colorItem.color}`}
-                  key={idx}
-                />
+                <button className={`centerColor ${colorItem}`} key={idx} />
               );
             })}
         </div>
