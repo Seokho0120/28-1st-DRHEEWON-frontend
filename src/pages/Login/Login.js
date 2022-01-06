@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import config from './../../config/config.json';
+
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
 
@@ -23,16 +25,14 @@ const Login = () => {
   };
 
   const goToMain = () => {
-    fetch(
-      'http://4e28-2001-2d8-68ae-f75f-69a9-efc2-5be1-6eec.ngrok.io/users/signin',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          user_id: formInput.id,
-          password: formInput.pw,
-        }),
-      }
-    )
+    const { BASE_URL } = config;
+    fetch(`${BASE_URL}users/signin`, {
+      method: 'POST',
+      body: JSON.stringify({
+        userId: formInput.id,
+        password: formInput.pw,
+      }),
+    })
       .then(response => response.json())
       .then(result => {
         if (result.status === 200) {

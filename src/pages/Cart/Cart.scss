@@ -89,7 +89,7 @@
       .cartListWrap {
         width: 680px;
 
-        & > li {
+        & > li:not(.emptyCartContainer) {
           position: relative;
           padding: 35px 32px 35px 77px;
           background-color: $lightGrey;
@@ -99,7 +99,7 @@
             margin-top: 10px;
           }
 
-          .productContent {
+          .cartProductContent {
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
@@ -119,13 +119,16 @@
               display: block;
               width: 25px;
               height: 25px;
+              z-index: 100;
 
               svg {
+                pointer-events: none;
                 width: 100%;
                 height: 100%;
                 vertical-align: top;
 
                 path {
+                  pointer-events: none;
                   color: #999;
                 }
               }
