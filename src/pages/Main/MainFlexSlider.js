@@ -23,7 +23,9 @@ export default function MainFlexArea({ sectionArea }) {
   return (
     <section className="flexSliderSection">
       <header>
-        <h1 {...flexSliderHeadText}>{sectionName[sectionArea]}</h1>
+        <h1 className="strong" {...flexSliderHeadText}>
+          {sectionName[sectionArea]}
+        </h1>
       </header>
       <div className="sectionMargin" />
       {sectionArea === 'bestIcon' && (
