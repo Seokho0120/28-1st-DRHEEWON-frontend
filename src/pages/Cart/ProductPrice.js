@@ -17,7 +17,7 @@ const ProductPrice = ({ totalPrice, productData, setProductData }) => {
     //   },
     // })
     //   .then(res => res.json())
-    //   .then(data => setProductData(data));
+    //   .then(data => setProductData(data.result));
   };
 
   return (

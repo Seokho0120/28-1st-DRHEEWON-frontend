@@ -15,7 +15,7 @@ const CartList = ({
 
   // 상품 직접 클릭하여 삭제 (delete btn)
   const deleteProduct = e => {
-    // const { ProductId } = e.target;
+    // const { name } = e.target;
     // fetch('https://062c-211-106-114-186.ngrok.io/carts', {
     //   method: 'POST',
     //   headers: {
@@ -23,11 +23,11 @@ const CartList = ({
     //       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQsImV4cCI6MTY0MTUyMDI0NH0.2qLf-fKTaAl3ZvhbiEODeyEVKTkdIj7dQnnfrY4_jG4',
     //   },
     //   body: {
-    //     user_id: ProductId,
+    //     user_id: name,
     //   },
     // })
     //   .then(res => res.json())
-    //   .then(data => setProductData(data));
+    //   .then(data => setProductData(data.result));
   };
 
   // 상품 개별 선택
@@ -60,7 +60,7 @@ const CartList = ({
           onChange={toggleCheckItem}
           checked={product.isChecked}
         />
-        <button onClick={deleteProduct} className="deleteProduct">
+        <button onClick={deleteProduct} name={id} className="deleteProduct">
           <FontAwesomeIcon
             icon={faTimes}
             size="2x"
