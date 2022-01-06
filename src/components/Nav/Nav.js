@@ -28,6 +28,10 @@ export default function Nav() {
     navigate('/');
   };
 
+  const goToCart = () => {
+    navigate('/cart');
+  };
+
   return (
     <>
       <header className={SetClassCondition('navHead', visibleValue, 'hide', 0)}>
@@ -80,7 +84,11 @@ export default function Nav() {
               </div>
             </div>
             <FontAwesomeIcon className="fontAwesomeIcon" icon={faHeart} />
-            <FontAwesomeIcon className="fontAwesomeIcon" icon={faShoppingBag} />
+            <FontAwesomeIcon
+              className="fontAwesomeIcon"
+              icon={faShoppingBag}
+              onClick={goToCart}
+            />
             <FontAwesomeIcon className="fontAwesomeIcon" icon={faEye} />
             <FontAwesomeIcon className="fontAwesomeIcon" icon={faUser} />
           </div>

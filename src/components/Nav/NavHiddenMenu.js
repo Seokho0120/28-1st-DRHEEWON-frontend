@@ -29,7 +29,7 @@ export default function NavHiddenMenu({ isShow, toggleHiddenMenu }) {
     <section className={SetClassCondition('hiddenMenu', delayRender, 'active')}>
       <div className="menuHeaderWrapper">
         <div className="menuHeader">
-          <a href="#!">
+          <a href="/Cart">
             <FontAwesomeIcon className="fontAwesomeIcon" icon={faClipboard} />
           </a>
 
