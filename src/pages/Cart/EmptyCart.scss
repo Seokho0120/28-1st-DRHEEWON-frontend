@@ -1,0 +1,27 @@
+@import './../../styles/baseStyle/colors.scss';
+@import './../../styles/baseStyle/size.scss';
+@import './../../styles/baseStyle/font.scss';
+@import './../../styles/baseStyle/border.scss';
+
+.emptyCartContainer {
+  width: $mainContentWidth;
+  margin: 0 auto;
+  padding-top: $navPaddingTop;
+  padding-bottom: 144px;
+
+  .emptyText {
+    color: $deepGrey;
+    font-size: $mediumFont;
+    margin-top: 144px;
+    text-align: center;
+  }
+  .goToMain {
+    display: block;
+    width: 255px;
+    height: 62px;
+    margin: 39px auto 0px;
+    font-size: 22px;
+    font-weight: 700;
+    border: $btnBorderBlack;
+  }
+}
