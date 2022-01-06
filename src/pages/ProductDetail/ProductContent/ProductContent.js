@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+
+import getUserToken from '../../../customlib/getUserToken';
+import config from '../../../config/config.json';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShareAlt,
@@ -16,13 +20,38 @@ export default function ProductContent({
   plusNumber,
 }) {
   const [selectedSize, setSelectedSize] = useState(-1);
-  // selectedSize 클릭된 버튼의 인덱스이고, 배열은 0부터 시작하기 때문에 마이너스부터 시작 (공란, -, 상관없는 값) 모두 가능
+
+  const userToken = getUserToken();
+
   const handleSelectedSize = event => {
     event.preventDefault();
     const buttonIndex = Number(event.target.getAttribute('name'));
     buttonIndex === selectedSize
       ? setSelectedSize(-1)
       : setSelectedSize(buttonIndex);
+  };
+
+  const inputCart = () => {
+    if (userToken) {
+      fetch(`${config.BASE_URL}carts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'userToken',
+        },
+        body: JSON.stringify({
+          product_id: detailData.id,
+          quantity: quantity,
+          size: selectedSize,
+        }),
+      }).then(res => {
+        res.status === 201
+          ? alert('장바구니에 담겼습니다.')
+          : alert('오류입니다. 관리자에게 문의하세요.');
+      });
+    } else {
+      alert('로그인부터 해주세요!');
+    }
   };
 
   return (
@@ -59,7 +88,7 @@ export default function ProductContent({
         </button>
         <div className="centerSizeDetail">
           {detailData.centerSize &&
-            detailData.centerSize.map((ele, idx) => {
+            detailData.centerSize.map((sizeItem, idx) => {
               return (
                 <button
                   key={idx}
@@ -69,7 +98,7 @@ export default function ProductContent({
                   }`}
                 >
                   <p name={idx} onClick={handleSelectedSize}>
-                    {ele.size}
+                    {sizeItem.size}
                   </p>
                 </button>
               );
@@ -102,7 +131,9 @@ export default function ProductContent({
         </div>
       </div>
       <div className="detailBtn">
-        <button className="cart">장바구니</button>
+        <button className="cart" onClick={inputCart}>
+          장바구니
+        </button>
         <button className="buy">구매하기</button>
       </div>
     </aside>

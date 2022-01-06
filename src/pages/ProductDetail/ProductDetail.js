@@ -15,6 +15,7 @@ import './ProductDetail.scss';
 import './SlideShow/SlideShow.scss';
 import './ProductContent/ProductContent.scss';
 import './ProductExplain/ProductExplain.scss';
+import { faStar as whiteStar } from '@fortawesome/free-regular-svg-icons';
 
 export default function ProductDetail() {
   const [slidePosition, setSlidePosition] = useState(0);
@@ -23,6 +24,8 @@ export default function ProductDetail() {
   const [prefer, setPrefer] = useState([]);
   const [remainLength, setRemainLength] = useState();
   const [comments, setComments] = useState([]);
+
+  const validStar = [1, 2, 3, 4, 5];
 
   const { id } = useParams();
 
@@ -47,20 +50,15 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.4.135:8080/products/${id}`, {
-      method: 'GET',
-    })
+    fetch(`http://10.58.4.135:8080/products/${id}`)
       .then(data => data.json())
       .then(data => {
-        // console.log()
         setDetailData(data.result);
       });
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.135:8080/review/${id}`, {
-      method: 'GET',
-    })
+    fetch(`http://10.58.4.135:8080/review/${id}`)
       .then(res => res.json())
       .then(data => setPrefer(data.result));
   }, []);
@@ -69,6 +67,7 @@ export default function ProductDetail() {
     fetch(`http://10.58.4.135:8080/review/${id}/comments?offset=0`)
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         setRemainLength(data.result.shift());
         setComments(current => {
           const newList = [...current, ...data.result];
@@ -229,12 +228,13 @@ export default function ProductDetail() {
                 <li className="UserReviewBody">
                   <div className="UserReviewTitle">{item.title}</div>
                   <div className="UserReviewRating">
-                    {/* {item.ratingStar} */}
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
+                    {validStar.map((starEach, index) => {
+                      if (starEach <= item.ratingStar) {
+                        return <FontAwesomeIcon icon={faStar} />;
+                      } else {
+                        return <FontAwesomeIcon icon={whiteStar} />;
+                      }
+                    })}
                     <div className="UserReviewOpen">펼치기</div>
                   </div>
                 </li>
@@ -242,9 +242,13 @@ export default function ProductDetail() {
             );
           })}
       </section>
-      <div onClick={requestMoreBtn} className="ReviewMoreBtn">
-        더 많은 후기 보기(+{remainLength}개)
-      </div>
+      {remainLength ? (
+        <div onClick={requestMoreBtn} className="ReviewMoreBtn">
+          더 많은 후기 보기(+{remainLength}개)
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
