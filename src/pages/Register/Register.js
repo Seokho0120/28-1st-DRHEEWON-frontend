@@ -1,15 +1,18 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+// import { useNavigate } from 'react-router-dom';
+
+import ContentHeader from './../../components/RegisterLogin/ContentHeader';
+import Welcome from './../../components/RegisterLogin/Welcome';
+
 import './Register.scss';
 
 const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
-const validPassword = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+const validPassword =
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 const Register = () => {
   const [formInput, setFormInput] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLoginInput = e => {
     const { value, name } = e.target;
@@ -53,9 +56,31 @@ const Register = () => {
       tel: '휴대폰 번호가 입력되지 않았습니다.',
     };
 
+    const goToMain = () => {
+      // fetch('http://b9b1-14-38-21-133.ngrok.io/users/signup', {
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     username: formInput.name,
+      //     user_id: formInput.id,
+      //     email: formInput.email,
+      //     password: formInput.password,
+      //     birth: formInput.birth,
+      //     mobile_number: formInput.tel,
+      //   }),
+      // })
+      //   .then(response => response.json())
+      //   .then(result => {
+      //     if (result.message === 'SUCCESS') {
+      //       localStorage.setItem('user', result.token);
+      //       alert('환영합니다. 로그인을 해주세요.');
+      //       navigate('/login');
+      //     }
+      //   });
+      return 'hi';
+    };
+
     if (findKey() === null) {
-      navigate('/login');
-      alert('환영합니다. 로그인을 해주세요.');
+      goToMain();
     } else {
       alert(alertMessage[findKey()]);
     }
@@ -63,17 +88,9 @@ const Register = () => {
 
   return (
     <div className="registerContainer">
-      <header className="infoPage">
-        <span>
-          <FontAwesomeIcon icon={faArrowLeft} size="3x" className="backArrow" />
-        </span>
-        <h1>회원가입</h1>
-      </header>
+      <ContentHeader pageInfo="회원가입" />
       <main className="RegisterMainWrap">
-        <header className="welcomeWrap">
-          <h2>어서오세요</h2>
-          <p>닥터마틴에 오신걸 환영합니다</p>
-        </header>
+        <Welcome />
         <article className="registerWrap">
           <form action="POST">
             <h3>회원가입</h3>
@@ -125,7 +142,7 @@ const Register = () => {
                       onChange={handleLoginInput}
                       name="password"
                       type="password"
-                      placeholder="특수 문자와 숫자를 포함한 8자 이상"
+                      placeholder="문자와 특수 문자, 숫자를 포함한 8자 이상"
                       required="required"
                     />
                   </td>
