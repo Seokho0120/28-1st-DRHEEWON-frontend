@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './ProductList.scss';
 
-const API = 'http://10.58.4.135:8080/products';
+// const API = 'http://10.58.4.135:8080/products';
 
 const KEYWORD_LIST = [
   '롱부츠',
@@ -25,7 +25,7 @@ const KEYWORD_LIST = [
 ];
 
 export default function ProductList() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
 

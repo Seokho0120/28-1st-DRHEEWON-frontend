@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export default function MainContainer({ locationSearch }) {
   const [products, setProducts] = useState([]);
-  console.log(locationSearch);
+
   useEffect(() => {
     fetch(`http://10.58.4.135:8080/products${locationSearch}`)
       .then(res => res.json())
@@ -11,10 +11,6 @@ export default function MainContainer({ locationSearch }) {
         setProducts(data.result);
       });
   }, [locationSearch]);
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
 
   return (
     <section className="mainContainer">
