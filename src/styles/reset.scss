@@ -55,6 +55,7 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  line-height: 1;
 }
 
 article,
@@ -91,4 +92,14 @@ textarea {
   resize: none;
   outline: none;
   border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  font-weight: normal;
 }

@@ -1,0 +1,7 @@
+[
+  { "id": 1, "age": "10대", "percent": 4 },
+  { "id": 2, "age": "20대", "percent": 54 },
+  { "id": 3, "age": "30대", "percent": 35 },
+  { "id": 4, "age": "40대", "percent": 8 },
+  { "id": 5, "age": "50대", "percent": 1 }
+]

@@ -1,0 +1,267 @@
+@use '../../styles/baseStyle/colors.scss' as color;
+@use '../../styles/baseStyle/font.scss' as font;
+@use '../../styles/baseStyle/size.scss' as size;
+@use '../../styles/baseStyle/border.scss' as border;
+
+@mixin hoverEffect($direction) {
+  transition: all 1s ease;
+  opacity: 1;
+
+  @if ($direction == prev) {
+    transform: translateX(-6px);
+  } @else if ($direction == next) {
+    transform: translateX(6px);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: size.$mainContentWidth;
+  padding-top: 150px;
+
+  // reviewStats
+  .reviewStats {
+    width: 100%;
+
+    .reviewTop {
+      display: flex;
+      padding: 20px 0;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: border.$btnBorderBlack;
+
+      .reviewTopHeader {
+        font-size: 36px;
+        font-weight: 700;
+      }
+
+      .reviewTopWrite {
+        margin-left: auto;
+        padding: 10px 30px;
+        border: border.$btnBorderBlack;
+
+        span {
+          font-size: 16px;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .reviewStats {
+      padding-top: 24px;
+
+      .reviewStatsRating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: border.$btnBorderBlack;
+        padding-bottom: 24px;
+
+        .ratingSummary {
+          font-size: 18px;
+          font-weight: 800;
+          margin-right: 12px;
+        }
+
+        svg {
+          path {
+            color: #ffe716;
+          }
+        }
+      }
+
+      .reviewStateContent {
+        display: flex;
+        justify-content: space-between;
+        padding: 50px 0;
+        border-bottom: border.$btnBorderBlack;
+
+        .contentTitle {
+          text-align: center;
+          font-size: 24px;
+          font-weight: 700;
+          margin: 8px 0 30px 0;
+        }
+
+        .itemTitle.itemPercent {
+          margin: 10px 0;
+        }
+
+        .itemTitle {
+          font-size: 22px;
+        }
+
+        .itemPercent {
+          font-size: 36px;
+          font-weight: 700;
+        }
+
+        .contentGender {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .genderGraphics {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+
+            .genderGraphicsItem {
+              padding: 0 20px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              .itemGraphic {
+                margin: 20px 0;
+                font-size: 220px;
+
+                svg {
+                  path {
+                    color: #ffe716;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .contentAge {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .ageGraphics {
+            display: flex;
+
+            .ageGraphicsItem {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 0 10px;
+
+              .ageItemGraphicFill {
+                position: relative;
+                width: 14px;
+                height: 200px;
+                margin: 22px 0;
+
+                .fillingBar {
+                  position: absolute;
+                  bottom: 0;
+                  width: 14px;
+                  background: #ffe716;
+                }
+
+                .ageItemGraphic {
+                  width: 14px;
+                  height: 100%;
+                  background-color: #f3f3f3;
+                }
+              }
+            }
+          }
+        }
+
+        .contentInfo {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .contentInfoCategory {
+            .categoryTitle {
+              font-size: 24px;
+              font-weight: 700;
+            }
+
+            .categoryBar {
+              width: 100%;
+              height: 6px;
+              margin: 14px 0;
+              background-color: #f3f3f3;
+            }
+
+            .categoryGuide {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 6px;
+              padding: 0 6px;
+
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // UserReview
+  .UserReview {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 100%;
+
+    .UserItems {
+      padding: 20px 32px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      background-color: #fafafa;
+
+      .UserReviewHeader {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 700;
+
+        img {
+          margin-right: 12px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+
+      .UserReviewBody {
+        display: flex;
+        flex-direction: column;
+
+        .UserReviewTitle {
+          font-size: 24px;
+          font-weight: 700;
+          margin-top: 14px;
+          line-height: 1.5;
+        }
+
+        .UserReviewRating {
+          display: flex;
+          justify-content: baseline;
+          font-size: 16px;
+          margin-top: 6px;
+
+          .UserReviewOpen {
+            margin-left: auto;
+            font-weight: 700;
+            border-bottom: border.$btnBorderBlack;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  // ReviewMoreBtn
+  .ReviewMoreBtn {
+    margin: 80px auto;
+    padding: 12px 50px;
+    font-weight: 700;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+}
