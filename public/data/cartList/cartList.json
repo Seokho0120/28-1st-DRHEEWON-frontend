@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "thumbnailImage": "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "productName": "1461 스무스",
+    "centeColor": "블랙",
+    "size": "240",
+    "price": 190000,
+    "quantity": 1
+  },
+  {
+    "id": 2,
+    "thumbnailImage": "https://images.pexels.com/photos/3557818/pexels-photo-3557818.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    "productName": "아드리안 벡스",
+    "centeColor": "화이트",
+    "size": "250",
+    "price": 160000,
+    "quantity": 2
+  }
+]

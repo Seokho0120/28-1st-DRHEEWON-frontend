@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
-
 import { useScrollFadeIn } from '../../hooks/useScroll';
+
+import getUserToken from '../../customlib/getUserToken';
 
 import { SliderButton } from '../../components/Buttons/SliderButton';
 import MainBestIconDetail from '../../pages/Main/FlexibleSliderDetails/MainBestIconDetail';
 import MainMdRecommendDetail from '../../pages/Main/FlexibleSliderDetails/MainMdRecommendDetail';
+
+import BestIconSkeleton from './BestIconSkeleton';
+import MdRecommendSkeleton from './MdRecommendSkeleton';
+
+const userToken = getUserToken();
 
 export function FlexibleSlider({ sectionArea, products, isLoad }) {
   const [sliderPosition, setSliderPosition] = useState(0);
@@ -12,7 +18,7 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
 
   useEffect(() => {
     setSliderPosition(0);
-  }, [products]);
+  }, [isLoad]);
 
   const sliderClick = event => {
     const { name } = event.target;
@@ -37,7 +43,7 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
         className="flexibleSliderContainer"
         style={{ transform: `translateX(-${sliderPosition * 1140}px)` }}
       >
-        {products.length > 0 &&
+        {isLoad ? (
           products.map((item, flexIndex) => {
             return (
               flexIndex % 2 === 0 && (
@@ -47,32 +53,40 @@ export function FlexibleSlider({ sectionArea, products, isLoad }) {
                     sliderPosition === flexIndex / 2 ? 'active' : ''
                   }`}
                 >
-                  {isLoad ? (
-                    products.map((item, index) => {
-                      return (
-                        index <= flexIndex + 1 &&
-                        index >= flexIndex && (
-                          <div
-                            key={index}
-                            className="flexibleSliderContentsEachWrapper"
-                          >
-                            {sectionArea === 'bestIcon' && (
-                              <MainBestIconDetail item={item} />
-                            )}
-                            {sectionArea === 'mdRecommend' && (
-                              <MainMdRecommendDetail item={item} />
-                            )}
-                          </div>
-                        )
-                      );
-                    })
-                  ) : (
-                    <p>loading</p>
-                  )}
+                  {products.map((item, index) => {
+                    return (
+                      index <= flexIndex + 1 &&
+                      index >= flexIndex && (
+                        <div
+                          key={index}
+                          className="flexibleSliderContentsEachWrapper"
+                        >
+                          {sectionArea === 'bestIcon' && (
+                            <MainBestIconDetail
+                              item={item}
+                              userToken={userToken}
+                            />
+                          )}
+                          {sectionArea === 'mdRecommend' && (
+                            <MainMdRecommendDetail
+                              item={item}
+                              userToken={userToken}
+                            />
+                          )}
+                        </div>
+                      )
+                    );
+                  })}
                 </div>
               )
             );
-          })}
+          })
+        ) : (
+          <>
+            {sectionArea === 'bestIcon' && <BestIconSkeleton />}
+            {sectionArea === 'mdRecommend' && <MdRecommendSkeleton />}
+          </>
+        )}
       </div>
       <div className="flexibleSliderBtn">
         <SliderButton type="slidePrev" onClickMethod={sliderClick} />

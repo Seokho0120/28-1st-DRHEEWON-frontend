@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import ContentHeader from './../../components/RegisterLogin/ContentHeader';
 import Welcome from './../../components/RegisterLogin/Welcome';
 
-import './../../components/RegisterLogin/RegisterLogin.scss';
 import './Register.scss';
 
 const validEmail = /^([a-z0-9_\\.-]+)@([\da-z\\.-]+)\.([a-z\\.]{2,6})$/;
@@ -13,7 +12,7 @@ const validPassword =
 
 const Register = () => {
   const [formInput, setFormInput] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLoginInput = e => {
     const { value, name } = e.target;
@@ -58,25 +57,26 @@ const Register = () => {
     };
 
     const goToMain = () => {
-      fetch('http://b9b1-14-38-21-133.ngrok.io/users/signup', {
-        method: 'POST',
-        body: JSON.stringify({
-          username: formInput.name,
-          user_id: formInput.id,
-          email: formInput.email,
-          password: formInput.password,
-          birth: formInput.birth,
-          mobile_number: formInput.tel,
-        }),
-      })
-        .then(response => response.json())
-        .then(result => {
-          if (result.message === 'SUCCESS') {
-            localStorage.setItem('user', result.token);
-            alert('환영합니다. 로그인을 해주세요.');
-            navigate('/login');
-          }
-        });
+      // fetch('http://b9b1-14-38-21-133.ngrok.io/users/signup', {
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     username: formInput.name,
+      //     user_id: formInput.id,
+      //     email: formInput.email,
+      //     password: formInput.password,
+      //     birth: formInput.birth,
+      //     mobile_number: formInput.tel,
+      //   }),
+      // })
+      //   .then(response => response.json())
+      //   .then(result => {
+      //     if (result.message === 'SUCCESS') {
+      //       localStorage.setItem('user', result.token);
+      //       alert('환영합니다. 로그인을 해주세요.');
+      //       navigate('/login');
+      //     }
+      //   });
+      return 'hi';
     };
 
     if (findKey() === null) {

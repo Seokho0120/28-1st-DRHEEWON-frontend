@@ -1,0 +1,57 @@
+@import '../../../styles/baseStyle/colors.scss';
+@import '../../../styles/baseStyle/font.scss';
+
+.horizontalContent {
+  width: 40vw;
+  height: 58.8vh;
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    height: 90%;
+    transition: transform 0.5s;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      width: 350px;
+      opacity: 1;
+      transition: opacity 1s;
+
+      &.hide {
+        opacity: 0;
+      }
+
+      &:nth-child(n + 2) {
+        margin-left: 20px;
+      }
+
+      p {
+        font-size: $largeFont;
+        text-align: right;
+        height: 10%;
+      }
+
+      img {
+        margin-top: 10%;
+        height: 80%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .horizontalScrollBar {
+    width: 60px;
+    height: 10px;
+    border-radius: 25px;
+    background-color: #999;
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0;
+  }
+
+  &:hover {
+    .horizontalScrollBar {
+      opacity: 1;
+    }
+  }
+}

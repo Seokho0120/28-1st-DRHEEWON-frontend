@@ -1,20 +1,30 @@
+import React, { useState } from 'react';
+
 export default function ProductContent({
   FontAwesomeIcon,
   faShareAlt,
   faHeart,
   faStar,
   detailData,
-  sizeBtnColorChange,
-  sizeColor,
-  qunatity,
+  quantity,
   minusNumber,
   faMinus,
   plusNumber,
   faPlus,
   faWonSign,
 }) {
+  const [selectedSize, setSelectedSize] = useState(-1);
+  // selectedSize 클릭된 버튼의 인덱스이고, 배열은 0부터 시작하기 때문에 마이너스부터 시작 (공란, -, 상관없는 값) 모두 가능
+  const handleSelectedSize = event => {
+    event.preventDefault();
+    const buttonIndex = Number(event.target.getAttribute('name'));
+    buttonIndex === selectedSize
+      ? setSelectedSize(-1)
+      : setSelectedSize(buttonIndex);
+  };
+
   return (
-    <aside className="productDetail">
+    <aside className="productContent">
       <div className="detailTop">
         <FontAwesomeIcon icon={faShareAlt} />
         <div className="topFaheart">
@@ -50,11 +60,15 @@ export default function ProductContent({
             detailData.centerSize.map((ele, idx) => {
               return (
                 <button
-                  onClick={() => sizeBtnColorChange(idx)}
-                  className={`centerSize ${sizeColor}`}
                   key={idx}
+                  name={idx}
+                  className={`centerSize ${
+                    selectedSize === idx ? 'active' : ''
+                  }`}
                 >
-                  <p>{ele.size}</p>
+                  <p name={idx} onClick={handleSelectedSize}>
+                    {ele.size}
+                  </p>
                 </button>
               );
             })}
@@ -73,7 +87,7 @@ export default function ProductContent({
         <div className="centerOption">
           <div className="set">
             <p className="count">수량</p>
-            <input type="number" min="1" max="100" value={qunatity} />
+            <input type="number" min="1" max="100" value={quantity} readOnly />
             <button onClick={minusNumber} className="minus">
               <FontAwesomeIcon icon={faMinus} />
             </button>
@@ -83,7 +97,7 @@ export default function ProductContent({
           </div>
           <div className="price">
             <FontAwesomeIcon icon={faWonSign} />
-            <span>{(qunatity * (detailData.price ?? 0)).toLocaleString()}</span>
+            <span>{(quantity * (detailData.price ?? 0)).toLocaleString()}</span>
             {/* <span>{detailData.price}</span> */}
           </div>
         </div>

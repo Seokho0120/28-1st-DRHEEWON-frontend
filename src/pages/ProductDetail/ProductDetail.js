@@ -10,17 +10,24 @@ import {
   faMinus,
   faPlus,
   faSquare,
+  faPen,
+  faMale,
+  faFemale,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import './ProductDetail.scss';
+import './SlideShow/SlideShow.scss';
+import './ProductContent/ProductContent.scss';
+import './ProductExplain/ProductExplain.scss';
 
 export default function ProductDetail() {
   const [slidePosition, setSlidePosition] = useState(0);
   const [detailData, setDetailData] = useState({});
-  const [sizeColor, setsizeColor] = useState('white');
-  const [qunatity, setQunatity] = useState(1);
-  // console.log(typeof number);
-  // console.log(typeof detailData.price);
+  const [quantity, setQuantity] = useState(1);
+  const [prefer, setPrefer] = useState([]);
+  const [remainLength, setRemainLength] = useState();
+  const [comments, setComments] = useState([]);
+  console.log(comments);
 
   const movePrev = () => {
     slidePosition > 0
@@ -34,16 +41,12 @@ export default function ProductDetail() {
       : setSlidePosition(0);
   };
 
-  const sizeBtnColorChange = idx => {
-    sizeColor === 'white' ? setsizeColor('black') : setsizeColor('white');
-  };
-
   const minusNumber = () => {
-    qunatity === 1 ? setQunatity(1) : setQunatity(qunatity - 1);
+    quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1);
   };
 
   const plusNumber = () => {
-    setQunatity(qunatity + 1);
+    setQuantity(quantity + 1);
   };
 
   useEffect(() => {
@@ -51,6 +54,38 @@ export default function ProductDetail() {
       .then(data => data.json())
       .then(data => setDetailData(data));
   }, []);
+
+  useEffect(() => {
+    fetch('/ProductDetail/review/reviewStats.json', { method: 'GET' })
+      .then(res => res.json())
+      .then(res => setPrefer(res));
+  }, []);
+
+  useEffect(() => {
+    fetch('http://8ec5-211-106-114-186.ngrok.io/review/2/comments?offset=0')
+      .then(res => res.json())
+      .then(data => {
+        setRemainLength(data.result.shift());
+        setComments(current => {
+          const newList = [...current, ...data.result];
+          return newList;
+        });
+      });
+  }, []);
+
+  const requestMoreBtn = () => {
+    fetch(
+      `http://8ec5-211-106-114-186.ngrok.io/review/2/comments?offset=${comments.length}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        setRemainLength(data.result.shift());
+        setComments(current => {
+          const newList = [...current, ...data.result];
+          return newList;
+        });
+      });
+  };
 
   return (
     <div className="container">
@@ -65,9 +100,7 @@ export default function ProductDetail() {
         faHeart={faHeart}
         faStar={faStar}
         detailData={detailData}
-        sizeBtnColorChange={sizeBtnColorChange}
-        sizeColor={sizeColor}
-        qunatity={qunatity}
+        quantity={quantity}
         minusNumber={minusNumber}
         faMinus={faMinus}
         plusNumber={plusNumber}
@@ -79,7 +112,143 @@ export default function ProductDetail() {
         FontAwesomeIcon={FontAwesomeIcon}
         faSquare={faSquare}
       />
-      <div className="test">어렵다 하하하하*^_^*</div>
+      <section className="reviewStats">
+        <div className="reviewTop">
+          <h2 className="reviewTopHeaderTopHeader">상품후기</h2>
+          <button className="reviewTopWrite">
+            <FontAwesomeIcon icon={faPen} />
+            <span>글쓰기</span>
+          </button>
+        </div>
+        <div className="reviewStats">
+          <div className="reviewStatsRating">
+            <p className="ratingSummary">후기 159개 / 별점 4.9</p>
+            <div>
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+          </div>
+          <div className="reviewStateContent">
+            <div className="contentGender">
+              <h3 className="contentTitle">성별 구매 평균</h3>
+              <ul className="genderGraphics">
+                <li className="genderGraphicsItem">
+                  <span className="itemTitle">남성</span>
+                  <div className="itemGraphic">
+                    <FontAwesomeIcon icon={faMale} />
+                  </div>
+                  <span className="itemPercent">9%</span>
+                </li>
+                <li className="genderGraphicsItem">
+                  <span className="itemTitle">여성</span>
+                  <div className="itemGraphic">
+                    <FontAwesomeIcon icon={faFemale} />
+                  </div>
+                  <span className="itemPercent">91%</span>
+                </li>
+              </ul>
+            </div>
+            <div className="contentAge">
+              <h3 className="contentTitle">연령별 구매 평균</h3>
+              <ul className="ageGraphics">
+                {prefer &&
+                  prefer.map((item, idx) => {
+                    return (
+                      <li key={idx} className="ageGraphicsItem">
+                        <span className="itemTitle">{item.age}</span>
+                        <div className="ageItemGraphicFill">
+                          <div
+                            className="fillingBar"
+                            style={{
+                              height: `${item.percent}%`,
+                            }}
+                          />
+                          <div className="ageItemGraphic" />
+                        </div>
+                        <span className="itemPercent">{item.percent}%</span>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+            <div className="contentInfo">
+              <div className="contentInfoCategory">
+                <h3 className="categoryTitle">정사이즈</h3>
+                <div>
+                  <span />
+                  <div className="categoryBar" />
+                </div>
+                <div className="categoryGuide">
+                  <span>보다 작아요</span>
+                  <span>딱맞아요</span>
+                  <span>보다 커요</span>
+                </div>
+              </div>
+              <div className="contentInfoCategory">
+                <h3 className="categoryTitle">실제 색상보다</h3>
+                <div>
+                  <span />
+                  <div className="categoryBar" />
+                </div>
+                <div className="categoryGuide">
+                  <span>어두워요</span>
+                  <span>똑같아요</span>
+                  <span>밝아요</span>
+                </div>
+              </div>
+              <div className="contentInfoCategory">
+                <h3 className="categoryTitle">품질에 대해</h3>
+                <div>
+                  <span />
+                  <div className="categoryBar" />
+                </div>
+                <div className="categoryGuide">
+                  <span>불만이에요</span>
+                  <span>보통이에요</span>
+                  <span>만족해요</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="UserReview">
+        {comments &&
+          comments.map((item, idx) => {
+            return (
+              <ul key={idx} className="UserItems">
+                <li className="UserReviewHeader">
+                  <img
+                    src="https://raw.githubusercontent.com/kimjy-par/DRHEEWON_img/main/avatar/avatar3.jpeg"
+                    alt=""
+                  />
+                  {item.userName}
+                </li>
+                <li className="UserReviewBody">
+                  <div className="UserReviewTitle">{item.title}</div>
+                  <div className="UserReviewRating">
+                    {/* {item.ratingStar} */}
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <FontAwesomeIcon icon={faStar} />
+                    <div className="UserReviewOpen">펼치기</div>
+                  </div>
+                </li>
+              </ul>
+            );
+          })}
+      </section>
+      <div onClick={requestMoreBtn} className="ReviewMoreBtn">
+        더 많은 후기 보기(+{remainLength}개)
+      </div>
     </div>
   );
 }
+
+// [...state, ...state]
+// offset = 0 / limit = 3;

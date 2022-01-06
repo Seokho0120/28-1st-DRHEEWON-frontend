@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "name": "고급진 신발",
-    "imgPath": "images/black_shoe.png",
-    "amount": 290000,
+    "productName": "고급진 신발",
+    "thumbnailImage": "images/black_shoe.png",
+    "price": 290000,
     "like": 1007
   }
 ]

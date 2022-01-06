@@ -2,7 +2,18 @@ import { useState, useEffect } from 'react';
 
 import { FlexibleSlider } from '../../components/FlexibleSlider/FlexibleSlider';
 
-export default function MainFlexSlider({ sectionArea, selectedIcon }) {
+import config from '../../config/config.json';
+
+const selectedCategory = {
+  1: '워커',
+  2: '운동화',
+  3: '워커',
+  4: '운동화',
+  5: '워커',
+  6: '운동화',
+};
+
+export default function MainFlexSliderFetch({ sectionArea, selectedIcon }) {
   const [products, setProducts] = useState([]);
   const [isProducted, setIsProducted] = useState(false);
 
@@ -10,14 +21,18 @@ export default function MainFlexSlider({ sectionArea, selectedIcon }) {
     setIsProducted(false);
     switch (sectionArea) {
       case 'bestIcon':
-        `http://localhost:3000/data/bestIcon${selectedIcon}.json`
+        fetch(
+          `${config.BASE_URL}products?limit=${selectedIcon}&subcategory=${selectedCategory[selectedIcon]}&sort=launch`
+        )
           .then(res => res.json())
-          .then(data => setProducts(data));
+          .then(data => setProducts(data.result));
         break;
       case 'mdRecommend':
-        `http://localhost:3000/data/mdRecommend${selectedIcon}.json`
+        fetch(
+          `${config.BASE_URL}products?limit=${selectedIcon}&subcategory=${selectedCategory[selectedIcon]}&sort=price`
+        )
           .then(res => res.json())
-          .then(data => setProducts(data));
+          .then(data => setProducts(data.result));
         break;
       default:
     }
