@@ -1,8 +1,7 @@
-export default function ProductExplain({
-  detailData,
-  FontAwesomeIcon,
-  faSquare,
-}) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquare } from '@fortawesome/free-solid-svg-icons';
+
+export default function ProductExplain({ detailData }) {
   return (
     <div className="productExplain">
       <div className="explainText">
