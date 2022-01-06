@@ -11,16 +11,6 @@
     .headerWrap {
       width: 1140px;
       margin: 0 auto;
-
-      .subHeadBottom {
-        font-size: 20px;
-        font-weight: 700;
-      }
-
-      h1 {
-        justify-content: center;
-        margin-top: 30px;
-      }
     }
   }
 
@@ -47,6 +37,8 @@
               padding: 0 30px 0 30px;
               border: 1px solid black;
               font-size: 18px;
+              // opacity: 0;
+              // transition: opacity 0.5s;
             }
 
             button.active {
@@ -220,23 +212,27 @@
         }
       }
     }
-
+    // 상품리스트
     section.mainContainer {
       width: 1140px;
       margin: 0 auto;
-      padding-top: 80px;
-      padding-bottom: 120px;
+      padding-top: 50px;
+
       flex: 0;
 
       article.mainContainerWrapper {
         ul {
           display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          list-style: none;
 
           li.item {
             display: inline;
-
-            width: 365px;
-            height: 455px;
+            width: 385px;
+            height: 485px;
+            margin: 0 25px 150px 0;
+            // flex: 1 1 1;
 
             .itemImage {
               width: 365px;
@@ -259,15 +255,16 @@
                 margin-right: 10px;
 
                 h2 {
-                  margin: 17px 0;
-                  font-size: 22px;
+                  margin: 22px 0;
+                  font-size: 26px;
                   font-weight: 600;
                 }
 
                 .additionalInfo {
-                  margin-bottom: 15px;
+                  margin: 15px 0;
                   line-height: 1;
                   font-size: 15px;
+                  color: #666;
 
                   p {
                     display: flex;
@@ -305,10 +302,13 @@
                 flex-direction: column;
                 flex: 0 0 auto;
                 width: 140px;
+                margin-right: 10px;
 
                 .priceWrapper {
                   width: 100%;
-                  margin: 15px 0;
+                  margin: 18px 0;
+                  font-weight: 700;
+                  font-size: 20px;
                   text-align: right;
 
                   span {
@@ -319,6 +319,8 @@
                 button.cartButton {
                   height: 50px;
                   padding: 0 17px;
+                  font-size: 18px;
+                  font-weight: 500;
                   border: 1px solid black;
 
                   span {

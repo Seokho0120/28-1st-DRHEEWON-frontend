@@ -6,7 +6,6 @@ import TopButton from '../../components/Buttons/TopButton';
 import Footer from '../../components/Footer/Footer';
 
 import './Main.scss';
-
 export default function Main() {
   return (
     <div className="mainWrapper">
