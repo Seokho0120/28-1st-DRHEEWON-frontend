@@ -3,7 +3,28 @@ import { BorderButton } from '../../../components/Buttons/BorderButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
-export default function MainMdRecommendDetail({ item }) {
+import config from '../../../config/config.json';
+
+export default function MainMdRecommendDetail({ item, userToken }) {
+  const inputCart = () => {
+    if (userToken) {
+      fetch(`${config.BASE_URL}carts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: userToken,
+        },
+        body: JSON.stringify({ product_id: item.id, quantity: 1, size: '270' }),
+      }).then(res => {
+        res.status === 201
+          ? alert('장바구니에 담겼습니다.')
+          : alert('오류입니다. 관리자에게 문의하세요.');
+      });
+    } else {
+      alert('로그인부터 해주세요!');
+    }
+  };
+
   return (
     <div className="mdRecommendDetail strong">
       <p>{item.productName}</p>
@@ -19,7 +40,7 @@ export default function MainMdRecommendDetail({ item }) {
         <p>{`₩ ${item.price
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</p>
-        <BorderButton type="putCart" />
+        <BorderButton type="putCart" onClickMethod={inputCart} />
       </div>
     </div>
   );

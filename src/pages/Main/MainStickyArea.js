@@ -32,7 +32,7 @@ export default function MainStickyArea({ sectionArea }) {
   const visionRef = useRef();
 
   useEffect(() => {
-    const enterSection = getAreaTop(sectionArea) - 1000;
+    const meetSection = getAreaTop(sectionArea) - 1000;
 
     function getAreaTop(sectionArea) {
       switch (sectionArea) {
@@ -46,28 +46,28 @@ export default function MainStickyArea({ sectionArea }) {
       }
     }
 
-    function setSectionAnimate(sectionArea, enterSection, scrollPos) {
+    function setSectionAnimate(sectionArea, meetSection, scrollPos) {
       switch (sectionArea) {
         case 'introduce':
-          scrollPos > enterSection &&
-            scrollPos < enterSection + 650 &&
-            setIntroOpacity(1 - (scrollPos - enterSection) / 1000);
-          scrollPos > enterSection + 300 &&
-            scrollPos < enterSection + 650 &&
-            setIntroScale(1 + (scrollPos - enterSection) / enterSection);
+          scrollPos > meetSection &&
+            scrollPos < meetSection + 650 &&
+            setIntroOpacity(1 - (scrollPos - meetSection) / 1000);
+          scrollPos > meetSection + 300 &&
+            scrollPos < meetSection + 650 &&
+            setIntroScale(1 + (scrollPos - meetSection) / meetSection);
           break;
         case 'introShoe':
-          scrollPos > enterSection &&
-            scrollPos < enterSection + 1000 &&
-            setShoePos((scrollPos - enterSection) / 100);
+          scrollPos > meetSection &&
+            scrollPos < meetSection + 1000 &&
+            setShoePos((scrollPos - meetSection) / 100);
           break;
         case 'vision':
-          scrollPos > enterSection &&
-            scrollPos < enterSection + 600 &&
-            setVisionOpacity(1 - (scrollPos - enterSection) / 1000);
-          scrollPos > enterSection + 600 &&
-            scrollPos < enterSection + 1100 &&
-            setVisionScale(1 + (scrollPos - enterSection + 500) / 2000);
+          scrollPos > meetSection &&
+            scrollPos < meetSection + 600 &&
+            setVisionOpacity(1 - (scrollPos - meetSection) / 1000);
+          scrollPos > meetSection + 300 &&
+            scrollPos < meetSection + 800 &&
+            setVisionScale(1 + (scrollPos - meetSection) / meetSection);
           break;
         default:
       }
@@ -75,10 +75,10 @@ export default function MainStickyArea({ sectionArea }) {
 
     function handleScroll() {
       const scrollPos = window.scrollY;
-      setSectionAnimate(sectionArea, enterSection, scrollPos);
+      setSectionAnimate(sectionArea, meetSection, scrollPos);
     }
 
-    window.addEventListener('scroll', throttle(handleScroll, 10));
+    window.addEventListener('scroll', throttle(handleScroll, 5));
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
