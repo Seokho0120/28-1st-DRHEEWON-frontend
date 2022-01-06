@@ -3,36 +3,36 @@
     "id": 1,
     "productName": "제이든",
     "centerColor": "white",
-    "price": 123456789
+    "price": 1234567823239
   },
   {
     "id": 2,
     "productName": "제이든1",
     "centerColor": "black",
-    "price": 123456789
+    "price": 12345672323289
   },
   {
     "id": 3,
     "productName": "제이든2",
     "centerColor": "brown",
-    "price": 123456789
+    "price": 12345672323289
   },
   {
     "id": 4,
     "productName": "제이든",
     "centerColor": "white",
-    "price": 123456789
+    "price": 12345632323789
   },
   {
     "id": 5,
     "productName": "제이든1",
     "centerColor": "black",
-    "price": 123456789
+    "price": 12345678232329
   },
   {
     "id": 6,
     "productName": "제이든2",
     "centerColor": "brown",
-    "price": 123456789
+    "price": 12345672323289
   }
 ]

@@ -27,7 +27,7 @@ export default function MainContainer({ locationSearch }) {
                     <div className="additionalInfo">{item.centerColor}</div>
                   </div>
                   <div className="itemColumnRight">
-                    <div className="priceWrapper">{item.price}</div>
+                    <div className="priceWrapper">₩{item.price}</div>
                     <button className="cartButton">장바구니 담기</button>
                   </div>
                 </div>

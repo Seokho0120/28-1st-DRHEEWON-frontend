@@ -39,10 +39,10 @@ export default function ProductList() {
             <button>
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
-            <div className="subHeadBottom">
+            <ul className="subHeadBottom">
               <h1>전체 보기</h1>
-              <p>100개의 남성 전체 보기 상품이 있습니다.</p>
-            </div>
+              <p>{ProductList.length}개의 남성 전체 보기 상품이 있습니다.</p>
+            </ul>
           </div>
         </header>
         <main>
@@ -90,3 +90,4 @@ export default function ProductList() {
     </div>
   );
 }
+console.log(ProductList);

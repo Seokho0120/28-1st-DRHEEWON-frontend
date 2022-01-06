@@ -22,8 +22,7 @@ export default function CategoryButton({ updateList }) {
       <button
         type="button"
         className="containerCategory"
-        onClick={() => updateList('전체보기')}
-        subcategory=""
+        onClick={() => updateList('')}
       >
         전체 보기
       </button>
