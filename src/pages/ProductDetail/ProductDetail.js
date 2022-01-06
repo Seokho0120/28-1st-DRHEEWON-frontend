@@ -67,7 +67,6 @@ export default function ProductDetail() {
     fetch(`http://10.58.4.135:8080/review/${id}/comments?offset=0`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setRemainLength(data.result.shift());
         setComments(current => {
           const newList = [...current, ...data.result];
