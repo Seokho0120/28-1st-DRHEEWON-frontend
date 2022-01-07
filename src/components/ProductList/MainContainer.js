@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-
+import config from '../../config/config.json';
 export default function MainContainer({ locationSearch }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://10.58.4.135:8080/products${locationSearch}`)
+    fetch(`${config.BASE_URL}products${locationSearch}`)
       .then(res => res.json())
       .then(data => {
         setProducts(data.result);

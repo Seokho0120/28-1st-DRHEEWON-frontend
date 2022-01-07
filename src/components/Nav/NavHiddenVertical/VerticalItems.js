@@ -15,10 +15,6 @@ export default function VerticalItems({ item, index }) {
     setIsSelected(!isSelected);
   };
 
-  const goToList = () => {
-    navigate('/productList');
-  };
-
   return (
     <li>
       <div className="verticalEachHead strong">
@@ -31,8 +27,8 @@ export default function VerticalItems({ item, index }) {
 
       <ul className={SetClassCondition('', isSelected, 'active')}>
         {item.selectContent.map((item, index) => (
-          <li key={index} name={`${item.name}_${index}`} onClick={goToList}>
-            {item.name}
+          <li key={index} name={`${item.name}_${index}`}>
+            <a href="/productList">{item.name}</a>
           </li>
         ))}
       </ul>
