@@ -17,6 +17,8 @@ import './ProductContent/ProductContent.scss';
 import './ProductExplain/ProductExplain.scss';
 import { faStar as whiteStar } from '@fortawesome/free-regular-svg-icons';
 
+import config from '../../config/config.json';
+
 export default function ProductDetail() {
   const [slidePosition, setSlidePosition] = useState(0);
   const [detailData, setDetailData] = useState({});
@@ -50,7 +52,7 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.4.135:8080/products/${id}`)
+    fetch(`${config.BASE_URL}products/${id}`)
       .then(data => data.json())
       .then(data => {
         setDetailData(data.result);
@@ -58,13 +60,13 @@ export default function ProductDetail() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.135:8080/review/${id}`)
+    fetch(`${config.BASE_URL}review/${id}`)
       .then(res => res.json())
       .then(data => setPrefer(data.result));
   }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.135:8080/review/${id}/comments?offset=0`)
+    fetch(`${config.BASE_URL}review/${id}/comments?offset=0`)
       .then(res => res.json())
       .then(data => {
         setRemainLength(data.result.shift());
@@ -76,9 +78,7 @@ export default function ProductDetail() {
   }, []);
 
   const requestMoreBtn = () => {
-    fetch(
-      `http://10.58.4.135:8080/review/${id}/comments?offset=${comments.length}`
-    )
+    fetch(`${config.BASE_URL}review/${id}/comments?offset=${comments.length}`)
       .then(res => res.json())
       .then(data => {
         setRemainLength(data.result.shift());

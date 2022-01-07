@@ -162,7 +162,7 @@ export default function MainStickyArea({ sectionArea }) {
           대놓고 이름을 지었습니다.
           <br />
           <br />
-          이렇듯 겁나 좋은 신발은 닥터희원의 역사를 상징하는 스니커즈로
+          겁나 좋은 신발은 우리를 대표하는 슈즈로
           <br />
           자유를 향한 반항적 캐릭터를 내포하는
           <br />

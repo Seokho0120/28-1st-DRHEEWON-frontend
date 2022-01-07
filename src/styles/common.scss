@@ -1,5 +1,5 @@
 @import './baseStyle/colors';
-
+@import '../pages/Main/MainMixin.scss';
 *,
 html,
 body {
@@ -26,3 +26,5 @@ body {
 .strong {
   font-weight: 700;
 }
+
+@include topBtn;

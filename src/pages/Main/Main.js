@@ -2,8 +2,6 @@ import MainFullSlider from './MainFullSlider';
 import MainFlexSlider from './MainFlexSlider';
 import MainStickyArea from './MainStickyArea';
 import MainNewJoin from './MainNewJoin';
-import TopButton from '../../components/Buttons/TopButton';
-import Footer from '../../components/Footer/Footer';
 
 import './Main.scss';
 export default function Main() {
@@ -19,8 +17,6 @@ export default function Main() {
       <MainStickyArea sectionArea="introShoe" />
       <MainStickyArea sectionArea="vision" />
       <MainNewJoin />
-      <TopButton />
-      <Footer />
     </div>
   );
 }
