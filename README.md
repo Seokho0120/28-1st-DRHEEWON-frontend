@@ -127,5 +127,8 @@ eslint / prettier
 - 상품 리스트 | **김용선**
 
 - 상품 상세보기 | **이석호**
+![전체 구현](https://user-images.githubusercontent.com/93597794/148706291-b44af6c9-3ba4-4108-9e45-e95f65b4179b.gif)
+
+
 
 - 장바구니 | **강희원**
