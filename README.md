@@ -49,8 +49,22 @@ eslint / prettier
 ## 구현한 내용 🎨
 
 - 메인 페이지
+```
+- 5초 주기로 이동하며, 버튼을 눌러서도 이동가능한 슬라이더
+- 2개 상품, 각각 2개씩의 이미지가 담겨 이동되는 슬라이더
+ - 장바구니 담기 통신 기능 포함 
+- Sticky position과 함께 scroll event가 적용된 동적 영역
+- Skeleton UI
+```
 
 - 네비게이션 바 & 햄버거 메뉴
+```
+- 상단 버튼을 이용한 라우팅 ( 로그인, 회원가입, 로그아웃 )
+- 토큰 존재 유무에 따른 버튼 렌더링 분화. ( 로그인, 회원가입 또는 로그아웃 )
+- localStorage 토큰 삭제를 통한 로그아웃
+- 햄버거 버튼 클릭시 히든 메뉴 점멸
+- 히든 메뉴의 커스텀 수직 / 수평 스크롤바 구현
+```
 
 - 회원가입
 
@@ -93,8 +107,13 @@ eslint / prettier
 ## 담당한 파트 👩🏻‍🎨
 
 - 메인 페이지 | **김정현**
+<img src='https://user-images.githubusercontent.com/23470125/148690794-58291de4-5077-41d5-8159-d471fe43ad54.png' width=50%>
+<img src='https://user-images.githubusercontent.com/23470125/148690814-a08a3e7d-466a-4d5c-b88d-5af452d35690.png' width=50%>
+![skeletonUiEffect](https://user-images.githubusercontent.com/23470125/148690930-40c6fb42-47ec-4d86-97c0-487e13e9c497.gif)
+
 
 - 네비게이션 바 & 햄버거 메뉴 | **김정현**
+![navGif](https://user-images.githubusercontent.com/23470125/148691003-7340f6d4-7166-440b-a1bd-52f93215b015.gif)
 
 - 회원가입 | **강희원**
 
