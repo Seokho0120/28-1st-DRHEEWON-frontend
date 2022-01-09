@@ -1,5 +1,12 @@
 # DRHEEWON | 닥터마틴 클론 프로젝트 - frontend
 
+
+
+<div align='center'>
+ <img src='https://user-images.githubusercontent.com/23470125/148685959-d7769f0e-3f16-46a3-ae6c-86c77673421d.png'>
+</div>
+
+
 ## 프로젝트 소개 💁🏻‍♀️
 
 닥터마틴 클론 프로젝트를 진행한 28기 닥터희원팀입니다.<br>
