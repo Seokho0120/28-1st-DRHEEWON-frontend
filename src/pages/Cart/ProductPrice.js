@@ -8,7 +8,7 @@ const ProductPrice = ({ totalPrice, productData, setProductData }) => {
     if (!CheckedItems.length) return alert('선택된 상품이 없습니다.');
     else {
       const idArray = CheckedItems.map(item => item.cartId);
-      const userToken = localStorage.getToken('user');
+      const userToken = localStorage.getItem('user');
 
       const { BASE_URL } = config;
       fetch(`${BASE_URL}orders?cartId=${idArray}`, {
@@ -28,6 +28,7 @@ const ProductPrice = ({ totalPrice, productData, setProductData }) => {
             .then(res => res.json())
             .then(data => {
               setProductData(data.result);
+              !data.result.length && alert('구매 요청이 진행되었습니다!');
             });
         });
     }

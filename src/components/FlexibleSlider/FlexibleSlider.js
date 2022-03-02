@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useScrollFadeIn } from '../../hooks/useScroll';
 
-import getUserToken from '../../customlib/getUserToken';
+import { userToken } from '../../customlib/getUserToken';
 
 import { SliderButton } from '../../components/Buttons/SliderButton';
 import MainBestIconDetail from '../../pages/Main/FlexibleSliderDetails/MainBestIconDetail';
@@ -9,8 +9,6 @@ import MainMdRecommendDetail from '../../pages/Main/FlexibleSliderDetails/MainMd
 
 import BestIconSkeleton from './BestIconSkeleton';
 import MdRecommendSkeleton from './MdRecommendSkeleton';
-
-const userToken = getUserToken();
 
 export function FlexibleSlider({ sectionArea, products, isLoad }) {
   const [sliderPosition, setSliderPosition] = useState(0);

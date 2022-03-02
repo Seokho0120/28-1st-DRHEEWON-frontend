@@ -25,7 +25,13 @@ export default function VerticalItems({ item, index }) {
       <ul className={SetClassCondition('', isSelected, 'active')}>
         {item.selectContent.map((item, index) => (
           <li key={index} name={`${item.name}_${index}`}>
-            <a href="/productList">{item.name}</a>
+            <a
+              href={`/products?subcategory=${
+                item.name !== '전체보기' ? item.name : ''
+              }`}
+            >
+              {item.name}
+            </a>
           </li>
         ))}
       </ul>

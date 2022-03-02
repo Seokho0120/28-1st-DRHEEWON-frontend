@@ -1,3 +1,1 @@
-export default function getUserToken() {
-  return localStorage.getItem('user');
-}
+export const userToken = localStorage.getItem('user');

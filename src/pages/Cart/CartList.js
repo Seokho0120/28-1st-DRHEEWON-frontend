@@ -23,7 +23,7 @@ const CartList = ({
     quantity,
   } = product;
 
-  const userToken = localStorage.getToken('user');
+  const userToken = localStorage.getItem('user');
 
   // 상품 직접 클릭하여 삭제 (delete btn)
   const deleteProduct = e => {

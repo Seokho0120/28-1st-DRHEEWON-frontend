@@ -3,6 +3,8 @@ import { BorderButton } from '../../../components/Buttons/BorderButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
+import { alertMessage } from '../../../components/FetchAlertMessage/FetchAlertMessage';
+
 import config from '../../../config/config.json';
 
 const colorName = {
@@ -20,11 +22,9 @@ export default function MainBestIconDetail({ item, userToken }) {
           'Content-Type': 'application/json',
           Authorization: userToken,
         },
-        body: JSON.stringify({ product_id: item.id, quantity: 1, size: '270' }),
+        body: JSON.stringify({ productId: item.id, quantity: 1, size: '270' }),
       }).then(res => {
-        res.status === 201
-          ? alert('장바구니에 담겼습니다.')
-          : alert('오류입니다. 관리자에게 문의하세요.');
+        alert(alertMessage[res.status]);
       });
     } else {
       alert('로그인부터 해주세요!');
@@ -33,8 +33,10 @@ export default function MainBestIconDetail({ item, userToken }) {
 
   return (
     <>
-      <img src={item.thumbnailImage} alt="dummy" />
-      <img src={item.thumbnailImage} alt="dummy" />
+      <a href={`/productDetail/${item.id}`}>
+        <img src={item.thumbnailImage} alt="dummy" />
+        <img src={item.thumbnailImage} alt="dummy" />
+      </a>
       <div className="bestIconContentsEachDetail strong">
         <div className="detailLeft">
           <p>{item.productName}</p>

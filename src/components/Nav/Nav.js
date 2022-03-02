@@ -16,7 +16,7 @@ export default function Nav() {
   const { visibleValue } = useToggleNav();
   const navigate = useNavigate();
 
-  const isValidUser = localStorage.getItem('token');
+  const isValidUser = localStorage.getItem('user');
 
   const toggleHiddenMenu = () => {
     setIsShow(!isShow);

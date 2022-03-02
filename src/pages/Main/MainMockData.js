@@ -1,15 +1,15 @@
 export const slideImgsData = [
   {
     id: 1,
-    imgPath: 'images/1.jpg',
+    imgPath: 'images/1.jpeg',
   },
   {
     id: 2,
-    imgPath: 'images/2.jpg',
+    imgPath: 'images/2.jpeg',
   },
   {
     id: 3,
-    imgPath: 'images/3.png',
+    imgPath: 'images/3.jpeg',
   },
 ];
 

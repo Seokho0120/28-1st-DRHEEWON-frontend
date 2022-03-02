@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { userToken } from '../../../customlib/getUserToken';
+import { alertMessage } from '../../../components/FetchAlertMessage/FetchAlertMessage';
 
-import getUserToken from '../../../customlib/getUserToken';
 import config from '../../../config/config.json';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +14,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
+const sizeChange = {
+  0: 220,
+  1: 230,
+  2: 240,
+  3: 250,
+  4: 260,
+  5: 270,
+  6: 280,
+  7: 290,
+  8: 300,
+};
+
 export default function ProductContent({
   detailData,
   quantity,
@@ -20,8 +33,6 @@ export default function ProductContent({
   plusNumber,
 }) {
   const [selectedSize, setSelectedSize] = useState(-1);
-
-  const userToken = getUserToken();
 
   const handleSelectedSize = event => {
     event.preventDefault();
@@ -37,17 +48,15 @@ export default function ProductContent({
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'userToken',
+          Authorization: userToken,
         },
         body: JSON.stringify({
-          product_id: detailData.id,
+          productId: detailData.id,
           quantity: quantity,
-          size: selectedSize,
+          size: sizeChange[selectedSize],
         }),
       }).then(res => {
-        res.status === 201
-          ? alert('장바구니에 담겼습니다.')
-          : alert('오류입니다. 관리자에게 문의하세요.');
+        alert(alertMessage[res.status]);
       });
     } else {
       alert('로그인부터 해주세요!');

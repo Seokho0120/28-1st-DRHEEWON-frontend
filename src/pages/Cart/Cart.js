@@ -12,6 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import EmptyCart from './EmptyCart';
 
+import { userToken } from '../../customlib/getUserToken';
+
 const Cart = () => {
   const [productData, setProductData] = useState([]);
 
@@ -20,12 +22,13 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const userToken = localStorage.getToken('user');
-
-  if (!userToken) {
-    alert('회원가입을 해주세요.');
-    navigate('/register');
-  }
+  useEffect(() => {
+    const userTok = localStorage.getItem('user');
+    if (!userTok) {
+      alert('회원가입을 해주세요.');
+      navigate('/register');
+    }
+  }, []);
 
   useEffect(() => {
     const { BASE_URL } = config;
@@ -74,8 +77,23 @@ const Cart = () => {
       body: JSON.stringify({ cartId: countDeleteItemId }),
     })
       .then(res => res.json())
-      .then(setIsFetched(!isFetched));
+      .then(() => {
+        fetch(`${BASE_URL}carts`, {
+          headers: {
+            Authorization: userToken,
+          },
+        })
+          .then(res => res.json())
+          .then(data => {
+            data.result.forEach(item => (item.isChecked = false));
+            setProductData(data.result);
+          });
+      });
   };
+
+  useEffect(() => {
+    !productData.length && setIsCheckedAll(false);
+  }, [productData]);
 
   return (
     <div className="cartContainer">
