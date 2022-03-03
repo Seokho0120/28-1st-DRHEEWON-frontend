@@ -12,6 +12,8 @@
 닥터마틴 클론 프로젝트를 진행한 28기 닥터희원팀입니다.<br>
 해당 `repository`는 닥터희원팀의 frontend 멤버들이 구현한 내용이 들어 있어요.
 
+실 배포 URL : http://drheewon.s3-website.ap-northeast-2.amazonaws.com/
+
 <br>
 
 ## 구성원 👥
