@@ -33,7 +33,7 @@ export default function MainBestIconDetail({ item, userToken }) {
 
   return (
     <>
-      <a href={`/productDetail/${item.id}`}>
+      <a href={`/productdetail?id=${item.id}`}>
         <img src={item.thumbnailImage} alt="dummy" />
         <img src={item.thumbnailImage} alt="dummy" />
       </a>

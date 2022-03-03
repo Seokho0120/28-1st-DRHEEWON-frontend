@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import SlideShow from './SlideShow/SlideShow';
 import ProductContent from './ProductContent/ProductContent';
 import ProductExplain from './ProductExplain/ProductExplain';
@@ -28,8 +28,8 @@ export default function ProductDetail() {
   const [comments, setComments] = useState([]);
 
   const validStar = [1, 2, 3, 4, 5];
-
-  const { id } = useParams();
+  const location = useLocation();
+  const id = location.search.split('=')[1];
 
   const movePrev = () => {
     slidePosition > 0

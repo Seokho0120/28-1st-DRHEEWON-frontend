@@ -41,7 +41,7 @@ export default function MainContainer({ locationSearch }) {
             return (
               <li className="item" key={item.id}>
                 <div className="itemImage">
-                  <a href={`/ProductDetail/${item.id}`}>
+                  <a href={`/productdetail?id=${item.id}`}>
                     <img src={item.thumbnailImage} alt="이미지" />
                   </a>
                 </div>
