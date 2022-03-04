@@ -116,6 +116,7 @@ eslint / prettier
 - 메인 페이지 | **김정현**
 <img src='https://user-images.githubusercontent.com/23470125/148690794-58291de4-5077-41d5-8159-d471fe43ad54.png' width=50%>
 <img src='https://user-images.githubusercontent.com/23470125/148690814-a08a3e7d-466a-4d5c-b88d-5af452d35690.png' width=50%>
+
 ![skeletonUiEffect](https://user-images.githubusercontent.com/23470125/148690930-40c6fb42-47ec-4d86-97c0-487e13e9c497.gif)
 
 
